@@ -1,0 +1,2 @@
+class UniversityProgram < ApplicationRecord
+end
