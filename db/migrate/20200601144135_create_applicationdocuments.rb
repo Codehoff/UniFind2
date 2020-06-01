@@ -1,6 +1,6 @@
-class CreateApplicationdocuments < ActiveRecord::Migration[6.0]
+class CreateApplicationDocuments < ActiveRecord::Migration[6.0]
   def change
-    create_table :applicationdocuments do |t|
+    create_table :application_documents do |t|
       t.string :file_url
       t.string :uploaded_at
       t.timestamps
