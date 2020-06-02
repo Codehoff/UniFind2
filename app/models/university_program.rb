@@ -1,2 +1,0 @@
-class UniversityProgram < ApplicationRecord
-end
