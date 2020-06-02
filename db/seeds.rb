@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Application.destroy_all
+Document.destroy_all
+ApplicationsDocument.destroy_all
+ProgramsDocument.destroy_all
+Program.destroy_all
+UniversitiesProgram.destroy_all
+University.destroy_all
+User.destroy_all
+Notification.destroy_all
+
+Document.create(name: "Visa")
+Document.create(name: "CV")
+Document.create(name: "motivational letter")
+
+University.create(name: "TU Berlin", city: "Berlin")
+Universitiy.create(name: "LMU München", city: "München")
+
+Program.create(name: "Economics", degree: "Bachelor", semesters: 6)
+Program.create(name: "Engineering", degree: "Bachelor", semesters: 6)
+
