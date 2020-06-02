@@ -1,32 +1,38 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
+User.destroy_all
 Application.destroy_all
 Document.destroy_all
 ApplicationsDocument.destroy_all
-UniversitiesProgramsDocuments.destroy_all
-Program.destroy_all
+UniversitiesProgramsDocument.destroy_all
 UniversitiesProgram.destroy_all
+Program.destroy_all
 University.destroy_all
-User.destroy_all
+
 Notification.destroy_all
 
-Document.create(name: "Visa")
-Document.create(name: "CV")
-Document.create(name: "motivational letter")
+enno = User.create(email: "enno.kirchhoff@gmail.com", password: "123456")
+hans = User.create(email: "hans@franz.de", password: "123456")
 
-University.create(name: "TU Berlin", city: "Berlin")
-Universitiy.create(name: "LMU München", city: "München")
+visa = Document.create(name: "Visa")
+cv = Document.create(name: "CV")
+mv = Document.create(name: "motivational letter")
 
-Program.create(name: "Economics")
-Program.create(name: "Engineering")
+tu = University.create(name: "TU Berlin", city: "Berlin")
+lmu = University.create(name: "LMU München", city: "München")
 
-UniversitiesProgram.create(program: "Engineering", university: "TU Berlin")
-UniversitiesProgram.create(program: "Economics", university: "LMU München")
+eco = Program.create(name: "Economics")
+eng = Program.create(name: "Engineering")
 
+
+
+tu_eng = UniversitiesProgram.create(university: tu, program: eng, degree: "Bachelor", language: "German")
+
+app_enno = Application.create(universities_program_id: tu_eng.id, user_id: enno.id)
+
+noti = Notification.create(content: "SELL SELL SELL", application_id: app_enno.id)
+
+tu_eng_docs = UniversitiesProgramsDocument.create(universities_program_id: tu_eng.id, document_id: mv.id)
+
+
+
+app_docs_enno = ApplicationsDocument.create(document: mv, application: app_enno)
 
