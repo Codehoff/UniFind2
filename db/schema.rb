@@ -40,9 +40,9 @@ ActiveRecord::Schema.define(version: 2020_06_02_105020) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "applications_document_id", null: false
-    t.bigint "programs_document_id", null: false
+    t.bigint "universities_programs_document_id", null: false
     t.index ["applications_document_id"], name: "index_documents_on_applications_document_id"
-    t.index ["programs_document_id"], name: "index_documents_on_programs_document_id"
+    t.index ["universities_programs_document_id"], name: "index_documents_on_universities_programs_document_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -57,21 +57,17 @@ ActiveRecord::Schema.define(version: 2020_06_02_105020) do
     t.string "name"
     t.integer "quota"
     t.string "degree"
+    t.string "webpage_url"
+    t.string "discipline"
+    t.string "language"
+    t.integer "semesters"
+    t.string "deadline"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "programs_document_id", null: false
+    t.bigint "universities_programs_document_id", null: false
     t.bigint "universities_program_id", null: false
-    t.index ["programs_document_id"], name: "index_programs_on_programs_document_id"
     t.index ["universities_program_id"], name: "index_programs_on_universities_program_id"
-  end
-
-  create_table "programs_documents", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "program_id", null: false
-    t.bigint "document_id", null: false
-    t.index ["document_id"], name: "index_programs_documents_on_document_id"
-    t.index ["program_id"], name: "index_programs_documents_on_program_id"
+    t.index ["universities_programs_document_id"], name: "index_programs_on_universities_programs_document_id"
   end
 
   create_table "universities", force: :cascade do |t|
@@ -94,6 +90,15 @@ ActiveRecord::Schema.define(version: 2020_06_02_105020) do
     t.index ["university_id"], name: "index_universities_programs_on_university_id"
   end
 
+  create_table "universities_programs_documents", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "program_id", null: false
+    t.bigint "document_id", null: false
+    t.index ["document_id"], name: "index_universities_programs_documents_on_document_id"
+    t.index ["program_id"], name: "index_universities_programs_documents_on_program_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -114,14 +119,14 @@ ActiveRecord::Schema.define(version: 2020_06_02_105020) do
   add_foreign_key "applications_documents", "applications"
   add_foreign_key "applications_documents", "documents"
   add_foreign_key "documents", "applications_documents"
-  add_foreign_key "documents", "programs_documents"
+  add_foreign_key "documents", "universities_programs_documents"
   add_foreign_key "notifications", "applications"
-  add_foreign_key "programs", "programs_documents"
   add_foreign_key "programs", "universities_programs"
-  add_foreign_key "programs_documents", "documents"
-  add_foreign_key "programs_documents", "programs"
+  add_foreign_key "programs", "universities_programs_documents"
   add_foreign_key "universities", "universities_programs"
   add_foreign_key "universities_programs", "programs"
   add_foreign_key "universities_programs", "universities"
+  add_foreign_key "universities_programs_documents", "documents"
+  add_foreign_key "universities_programs_documents", "programs"
   add_foreign_key "users", "applications", column: "applications_id"
 end

@@ -9,7 +9,7 @@
 Application.destroy_all
 Document.destroy_all
 ApplicationsDocument.destroy_all
-ProgramsDocument.destroy_all
+UniversitiesProgramsDocument.destroy_all
 Program.destroy_all
 UniversitiesProgram.destroy_all
 University.destroy_all
@@ -23,6 +23,10 @@ Document.create(name: "motivational letter")
 University.create(name: "TU Berlin", city: "Berlin")
 Universitiy.create(name: "LMU München", city: "München")
 
-Program.create(name: "Economics", degree: "Bachelor", semesters: 6)
-Program.create(name: "Engineering", degree: "Bachelor", semesters: 6)
+Program.create(name: "Economics")
+Program.create(name: "Engineering")
+
+UniversitiesProgram.create(program: "Engineering", university: "TU Berlin")
+UniversitiesProgram.create(program: "Economics", university: "LMU München")
+
 
