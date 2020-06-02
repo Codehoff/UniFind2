@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_06_02_105020) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
-    t.bigint "applications_document_id", null: false
+    t.bigint "applications_document_id"
     t.bigint "universities_program_id", null: false
     t.index ["applications_document_id"], name: "index_applications_on_applications_document_id"
     t.index ["universities_program_id"], name: "index_applications_on_universities_program_id"
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 2020_06_02_105020) do
   create_table "applications_documents", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "application_id", null: false
-    t.bigint "document_id", null: false
+    t.bigint "application_id"
+    t.bigint "document_id"
     t.index ["application_id"], name: "index_applications_documents_on_application_id"
     t.index ["document_id"], name: "index_applications_documents_on_document_id"
   end
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_06_02_105020) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "applications_document_id", null: false
+    t.bigint "applications_document_id"
     t.bigint "universities_programs_document_id", null: false
     t.index ["applications_document_id"], name: "index_documents_on_applications_document_id"
     t.index ["universities_programs_document_id"], name: "index_documents_on_universities_programs_document_id"

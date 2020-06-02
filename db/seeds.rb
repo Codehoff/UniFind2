@@ -9,7 +9,7 @@
 Application.destroy_all
 Document.destroy_all
 ApplicationsDocument.destroy_all
-UniversitiesProgramsDocument.destroy_all
+UniversitiesProgramsDocuments.destroy_all
 Program.destroy_all
 UniversitiesProgram.destroy_all
 University.destroy_all
