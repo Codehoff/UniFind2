@@ -1,0 +1,12 @@
+<ul>
+    <% @universities_programs.each do |program|%>
+    <li>
+    <h3>University:</h3>
+    <%= program.university.name %>
+    <h3>Program:</h3>
+    <%= program.program.name%>
+    <h3>Degree:</h3>
+    <%=program.degree%>
+    </li>
+    <%end%>
+</ul>

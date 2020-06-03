@@ -16,15 +16,24 @@ visa = Document.create(name: "Visa")
 cv = Document.create(name: "CV")
 mv = Document.create(name: "motivational letter")
 
-tu = University.create(name: "TU Berlin", city: "Berlin")
-lmu = University.create(name: "LMU München", city: "München")
+tuberlin = University.create(name: "TU Berlin", city: "Berlin")
+lmumuenchen = University.create(name: "LMU München", city: "München")
+huberlin = University.create(name: "HU Berlin", city: "Berlin")
+fuberlin = University.create(name: "FU Berlin", city: "Berlin")
+hsemdenleer = University.create(name: "Hochschule Emden/Leer", city: "Emden")
+
 
 eco = Program.create(name: "Economics")
 eng = Program.create(name: "Engineering")
+bio = Program.create(name: "Biomechanics")
+phil = Program.create(name: "Philisophy")
 
 
-
-tu_eng = UniversitiesProgram.create(university: tu, program: eng, degree: "Bachelor", language: "German", deadline: "10/06/2020")
+tu_eng = UniversitiesProgram.create(university: tuberlin, program: eng, degree: "Bachelor", language: "German", deadline: "10/06/2020")
+hu_phil = UniversitiesProgram.create(university: huberlin, program: bio, degree: "Bachelor", language: "German", deadline: "21/10/2020")
+hu_phil = UniversitiesProgram.create(university: hsemdenleer, program: bio, degree: "Bachelor", language: "German", deadline: "16/06/2020")
+hu_phil = UniversitiesProgram.create(university: fuberlin, program: phil, degree: "Master", language: "German", deadline: "20/06/2020")
+hu_phil = UniversitiesProgram.create(university: tuberlin, program: eng, degree: "Bachelor", language: "German", deadline: "15/12/2020")
 
 app_enno = Application.create(universities_program_id: tu_eng.id, user_id: enno.id)
 
