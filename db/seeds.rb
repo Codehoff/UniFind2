@@ -15,6 +15,8 @@ hans = User.create(email: "hans@franz.de", password: "123456")
 visa = Document.create(name: "Visa")
 cv = Document.create(name: "CV")
 mv = Document.create(name: "motivational letter")
+mom = Document.create(name: "A Picture of your mom")
+code = Document.create(name: "Some Code you wrote")
 
 tuberlin = University.create(name: "TU Berlin", city: "Berlin")
 lmumuenchen = University.create(name: "LMU München", city: "München")
@@ -30,16 +32,19 @@ phil = Program.create(name: "Philisophy")
 
 
 tu_eng = UniversitiesProgram.create(university: tuberlin, program: eng, degree: "Bachelor", language: "German", deadline: "10/06/2020")
-hu_phil = UniversitiesProgram.create(university: huberlin, program: bio, degree: "Bachelor", language: "German", deadline: "21/10/2020")
-hu_phil = UniversitiesProgram.create(university: hsemdenleer, program: bio, degree: "Bachelor", language: "German", deadline: "16/06/2020")
-hu_phil = UniversitiesProgram.create(university: fuberlin, program: phil, degree: "Master", language: "German", deadline: "20/06/2020")
-hu_phil = UniversitiesProgram.create(university: tuberlin, program: eng, degree: "Bachelor", language: "German", deadline: "15/12/2020")
+hu_bio = UniversitiesProgram.create(university: huberlin, program: bio, degree: "Bachelor", language: "German", deadline: "21/10/2020")
+hsemd_bio = UniversitiesProgram.create(university: hsemdenleer, program: bio, degree: "Bachelor", language: "German", deadline: "16/06/2020")
+fuphil = UniversitiesProgram.create(university: fuberlin, program: phil, degree: "Master", language: "German", deadline: "20/06/2020")
 
 app_enno = Application.create(universities_program_id: tu_eng.id, user_id: enno.id)
 
 noti = Notification.create(content: "SELL SELL SELL", application_id: app_enno.id)
 
-tu_eng_docs = UniversitiesProgramsDocument.create(universities_program_id: tu_eng.id, document_id: mv.id)
+tu_eng_docs = UniversitiesProgramsDocument.create(universities_program: tu_eng, document: mv)
+fu_phil_docs1 = UniversitiesProgramsDocument.create(universities_program: fuphil, document: code)
+fu_phil_docs2 = UniversitiesProgramsDocument.create(universities_program: fuphil, document: mv)
+fu_phil_docs3 = UniversitiesProgramsDocument.create(universities_program: fuphil, document: cv)
+fu_phil_docs4 = UniversitiesProgramsDocument.create(universities_program: fuphil, document: mom)
 
 
 

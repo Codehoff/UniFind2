@@ -6,6 +6,7 @@ class UniversitiesProgramsController < ApplicationController
     end 
 
     def show
+      @application = Application.new
     end
 
     private
