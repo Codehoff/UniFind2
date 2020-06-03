@@ -40,13 +40,14 @@ app_enno = Application.create(universities_program_id: tu_eng.id, user_id: enno.
 
 noti = Notification.create(content: "SELL SELL SELL", application_id: app_enno.id)
 
-tu_eng_docs = UniversitiesProgramsDocument.create(universities_program: tu_eng, document: mv)
+tu_eng_docs1 = UniversitiesProgramsDocument.create(universities_program: tu_eng, document: mv)
+tu_eng_docs2 = UniversitiesProgramsDocument.create(universities_program: tu_eng, document: cv)
+
 fu_phil_docs1 = UniversitiesProgramsDocument.create(universities_program: fuphil, document: code)
 fu_phil_docs2 = UniversitiesProgramsDocument.create(universities_program: fuphil, document: mv)
 fu_phil_docs3 = UniversitiesProgramsDocument.create(universities_program: fuphil, document: cv)
 fu_phil_docs4 = UniversitiesProgramsDocument.create(universities_program: fuphil, document: mom)
 
-
-
-app_docs_enno = ApplicationsDocument.create(document: mv, application: app_enno)
-
+hsemd_bio_docs = UniversitiesProgramsDocument.create(universities_program: hsemd_bio, document: mom)
+hsemd_bio_docs = UniversitiesProgramsDocument.create(universities_program: hsemd_bio, document: cv)
+hsemd_bio_docs = UniversitiesProgramsDocument.create(universities_program: hsemd_bio, document: code)
