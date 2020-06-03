@@ -1,0 +1,13 @@
+<h1>Your Applications:</h1>
+<ul>
+  <%@applications.each do |app|%>
+    <%if current_user.id == app.user.id%>    
+      <li>
+        <h3><%=app.university.name%></h3>
+        <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <i class="fa fa-trash" aria-hidden="true"></i><% end %>
+        <% raise %>
+      </li>
+    <%end%>
+            
+  <%end%>
+</ul>
