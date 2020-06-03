@@ -24,7 +24,7 @@ eng = Program.create(name: "Engineering")
 
 
 
-tu_eng = UniversitiesProgram.create(university: tu, program: eng, degree: "Bachelor", language: "German")
+tu_eng = UniversitiesProgram.create(university: tu, program: eng, degree: "Bachelor", language: "German", deadline: "10/06/2020")
 
 app_enno = Application.create(universities_program_id: tu_eng.id, user_id: enno.id)
 
