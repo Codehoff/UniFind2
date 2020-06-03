@@ -4,8 +4,14 @@
     <%if current_user.id == app.user.id%>    
       <li>
         <h3><%=app.university.name%></h3>
+        <ul>
+          <%app.universities_program.documents.each do |doc|%>
+            <li>
+              <%=doc.name%>
+            </li>
+          <%end%>
+        </ul>
         <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <i class="fa fa-trash" aria-hidden="true"></i><% end %>
-        <% raise %>
       </li>
     <%end%>
             
