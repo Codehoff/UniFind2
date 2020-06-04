@@ -4,7 +4,7 @@ class ApplicationsController < ApplicationController
 
   def index
     @applications = Application.all
-    authorize @application, policy_class: RequestPolicy
+
   end
 
   def show
@@ -16,14 +16,12 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-      @universities_program = UniversitiesProgram.find(params[:universities_program_id])
+  
 
       @application = Application.new(application_params)
       @application.user = current_user
 
-      authorize @application, policy_class: RequestPolicy
-
-      @application.universities_program = @universities_program
+      
 
       if @application.save
           redirect_to applications_path
@@ -56,6 +54,10 @@ class ApplicationsController < ApplicationController
 
   def application_params
     params.require(:application).permit(:universities_program_id)
+  end
+
+  def skip_pundit?
+    true
   end
 
 end

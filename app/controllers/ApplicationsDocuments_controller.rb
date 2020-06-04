@@ -22,6 +22,10 @@ class ApplicationsDocumentsController < ApplicationController
     def applications_document_params
       params.require(:applications_document).permit(:application_id, :document_id)
     end
+
+    def skip_pundit?
+      true
+    end
   
   end
   
