@@ -4,6 +4,7 @@ class ApplicationsController < ApplicationController
 
   def index
     @applications = Application.all
+    authorize @application, policy_class: RequestPolicy
   end
 
   def show
@@ -15,17 +16,16 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-      @universities_program = UniversitiesProgram.find(params.require(:application)[:universities_program_id])
- 
+      @universities_program = UniversitiesProgram.find(params[:universities_program_id])
+
       @application = Application.new(application_params)
       @application.user = current_user
-     
-      @application.universities_program = @universities_program
-      
+      authorize @application, policy_class: RequestPolicy
 
+      @application.universities_program = @universities_program
 
       if @application.save
-          redirect_to "/applications"
+          redirect_to applications_path
       else
           render :new
       end
@@ -36,6 +36,7 @@ class ApplicationsController < ApplicationController
 
   def update
     @application.update(application_params)
+    authorize @application, policy_class: RequestPolicy
     redirect_to "/applications", notice: 'Your application was successfully updated.'
   end
 
@@ -48,6 +49,8 @@ class ApplicationsController < ApplicationController
 
   def set_application
     @application = Application.find(params[:id])
+    authorize @application, policy_class: RequestPolicy
+
   end
 
   def application_params
