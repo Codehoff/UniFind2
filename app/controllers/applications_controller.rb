@@ -20,6 +20,7 @@ class ApplicationsController < ApplicationController
 
       @application = Application.new(application_params)
       @application.user = current_user
+
       authorize @application, policy_class: RequestPolicy
 
       @application.universities_program = @universities_program
@@ -41,7 +42,7 @@ class ApplicationsController < ApplicationController
   end
 
   def destroy
-    @application.destroy
+    @application.destroy!
     redirect_to "/applications"
   end
 
