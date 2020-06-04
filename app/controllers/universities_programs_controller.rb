@@ -27,4 +27,8 @@ class UniversitiesProgramsController < ApplicationController
   def universities_program_params
     params.require(:universities_program).permit(:university_id, :program_id, :programs_documents_id, :quota, :degree, :webpage_url, :discipline, :language, :semesters, :deadline)
   end
+
+  def skip_pundit?
+    true
+  end
 end

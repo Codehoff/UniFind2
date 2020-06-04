@@ -1,4 +1,4 @@
-class UniversitiesprogramPolicy < ApplicationPolicy
+class UniversitiesProgramPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -10,6 +10,12 @@ class UniversitiesprogramPolicy < ApplicationPolicy
   end
 
   def show?
+    true
+  end
+
+  private
+
+  def skip_pundit?
     true
   end
 end
