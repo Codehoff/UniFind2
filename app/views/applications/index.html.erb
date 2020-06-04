@@ -1,6 +1,7 @@
 <h1>Your Applications:</h1>
-<ul>
+
   <%@applications.each do |app|%>
+    <% @appdoc = ApplicationsDocument.new %>
     <%if current_user.id == app.user.id%>    
       <li>
         <h3><%=app.university.name%></h3>
@@ -9,11 +10,19 @@
             <li>
               <%=doc.name%>
             </li>
+           <%= simple_form_for([app, @appdoc]) do |f| %>
+            <p class= "desc-text" style="text-align:left;">Select the required document:</p>
+            <%= f.association :document %>
+            <%= f.input :document, as: :file %>
+            <%= f.button :submit, class: "btn btn-main" %>
+          <% end %>
+
           <%end%>
-        </ul>
+        </ul>    
         <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <i class="fa fa-trash" aria-hidden="true"></i><% end %>
       </li>
-    <%end%>
-            
+    <%end%>            
   <%end%>
 </ul>
+
+

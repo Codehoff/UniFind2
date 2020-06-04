@@ -22,8 +22,6 @@ class ApplicationsController < ApplicationController
      
       @application.universities_program = @universities_program
       
-
-
       if @application.save
           redirect_to "/applications"
       else
@@ -40,7 +38,7 @@ class ApplicationsController < ApplicationController
   end
 
   def destroy
-    @application.destroy
+    @application.destroy!
     redirect_to "/applications"
   end
 
