@@ -11,21 +11,21 @@
 
     <%= form_tag applications_path, method: :post do %>
     <%= hidden_field_tag "application[universities_program_id]", @universities_program.id %>
-    <%= submit_tag "Apply now", class: "btn btn-primary" %>
+    <%= submit_tag "Add to dashboard", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
-<div class="container">
+<div class="container" style="min-width: 100vh; margin-top: 40px; ">
   <div class="uni-info" width="200">
-    <h3>Learn more about us</h3>
-    <p>The Technical University of Munich (TUM) is one of the best universities in Europe. They are characterized by excellence in research and teaching, interdisciplinarity and talent promotion. There are also strong alliances with companies and scientific institutions around the world. The TUM is one of the first three universities of excellence in Germany. It regularly performs excellently in international and national rankings....</p>
-    <a href="https://www.tum.de/studium/studienangebot/detail/architektur-bachelor-of-arts-ba/" target="_blank"><label class="secondary-btn">Read more</label></a>
+    <h3 style="font-size: 24px;">Learn more about us</h3>
+    <p style="font-size: 16px;">The Technical University of Munich (TUM) is one of the best universities in Europe. They are characterized by excellence in research and teaching, interdisciplinarity and talent promotion. There are also strong alliances with companies and scientific institutions around the world. The TUM is one of the first three universities of excellence in Germany. It regularly performs excellently in international and national rankings....</p>
+    <a href="https://www.tum.de/studium/studienangebot/detail/architektur-bachelor-of-arts-ba/" target="_blank"><label class="secondary-btn">Official Page</label></a>
     <br>
     <br>
-    <h3>What it's like to study architecture at TU Munich</h3>
-    <p>The first four semesters teach the basics of perception and design, the methodology of architectural design, as well as the basics of science, technology, and the humanities and social sciences in architecture. They are therefore predominantly characterized by compulsory subjects.
+    <h3 style="font-size: 24px;" >What it's like to study architecture at TU Munich</h3>
+    <p style="font-size: 16px;"> The first four semesters teach the basics of perception and design, the methodology of architectural design, as well as the basics of science, technology, and the humanities and social sciences in architecture. They are therefore predominantly characterized by compulsory subjects.
     In the 5th and 6th semester, the study takes place at a foreign partner university. The learning content will continue to be closely coordinated with the Faculty of Architecture at the TU Munich.....</p>
-    <a href="https://www.tum.de/studium/bewerbung/onlinebewerbung/" target="_blank"><label class="secondary-btn">Read more</label></a>
+    <a style="margin-bottom: 40px;" href="https://www.tum.de/studium/bewerbung/onlinebewerbung/" target="_blank"><label class="secondary-btn">Application Site</label></a>
   </div>
 </div>
 
