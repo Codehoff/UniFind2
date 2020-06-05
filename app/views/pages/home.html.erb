@@ -14,7 +14,9 @@
             <div class="input-group">
               <%= search_field_tag :search, @search_term, placeholder: "Program Name", :class => 'home-search-input col-md-8' %>
               <div class="input-group-btn">
-                <%= button_tag "Search", :class => 'btn primary-btn' %>
+              <%= link_to "universities_programs" do %>
+                <%= button_tag "Search", :class => 'btn primary-btn' %>                          
+              <%end%>
               </div>
             </div>
             <% end %>
