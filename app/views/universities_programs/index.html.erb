@@ -9,26 +9,44 @@
         <%= submit_tag "Search", class: "btn btn-block primary-btn " %>
         <% end %>
       </div>
+      <div class="w-100 mt-3 d-flex flex-column">
+        <h5>Filter by major:</h5> 
+        <div><i class="fa fa-square mt-1" aria-hidden="true" style="display:inline; color: grey"></i><p class= ml-2 style="display:inline">Natural Sciences</p></div>
+        <div><i class="fa fa-square mt-1" aria-hidden="true" style="display:inline; color: grey"></i><p class= ml-2 style="display:inline">Humanities</p></div>     
+        <div><i class="fa fa-square mt-1" aria-hidden="true" style="display:inline; color: grey"></i><p class= ml-2 style="display:inline">Law</p></div>     
+        <div><i class="fa fa-square mt-1" aria-hidden="true" style="display:inline; color: grey"></i><p class= ml-2 style="display:inline">Arts</p></div>             
+        <h5 class=mt-2>Filter by degree:</h5> 
+        <div><i class="fa fa-square mt-1" aria-hidden="true" style="display:inline; color: grey"></i><p class= ml-2 style="display:inline">Bachelor</p></div>
+        <div><i class="fa fa-square mt-1" aria-hidden="true" style="display:inline; color: grey"></i><p class= ml-2 style="display:inline">Master</p></div>
+        <h5 class=mt-2>Filter by semesters:</h5> 
+        <div><i class="fa fa-square mt-1" aria-hidden="true" style="display:inline; color: grey"></i><p class= ml-2 style="display:inline">≤ 6</p></div>
+        <div><i class="fa fa-square mt-1" aria-hidden="true" style="display:inline; color: grey"></i><p class= ml-2 style="display:inline">> 6</p></div>
+      </div>
     </div>
-    <div class="col-9">
-      <div class="row mx-2">
-        <p>(number) results found</p>
-      </div>
-      <div class="row mx-2">
-        <p>filters:</p>
-      </div>
-      <div class="row">
-        <% @universities_programs.each do |program|%>
-        <div class="card-product-infos" style="border: 1px solid red;">
-          <img class="col-2" src="assets/campus.png" />
-          <h2><%= program.program.name%></h2>
-          <h3><%= program.university.name %></h3>
-          <p><%=program.degree%></p>
-          <%= link_to "universities_programs/#{program.id}" do %>
-          <label class="secondary-btn">See details</label>
+    <div class="col-9 pl-3 pr-0">
+      <div class="col-12" style="background-color: #F3F4FF; border: 1px solid #6E76A9">
+        <div class="row mx-2">
+          <h5 class=mt-2><%=UniversitiesProgram.where(program_id: 1).count%> results found</h5>
+        </div>
+        <div class="row mx-2 mb-0">
+          <h5 class=mb-0 style="font-size: 18px;">Applied filters:</h5>
+        </div>
+        <div class="row pl-3 pr-3 pt-0">
+          <% @universities_programs.each do |program|%>
+          <div class="card-product mt-3 col-12 pl-0 d-flex justify-content-between text-center" >
+            <img class="col-3 pl-0" src="assets/campus.png" />
+            <div class="col-7 text-left" style="line-height: 150%">
+              <h2><%= program.program.name%></h2>
+              <h3 style="display:inline"><%= program.university.name %></h3>
+              <p style="display:inline"><%=program.university.city%></p>
+              <h3><%=program.degree%></h3>
+            </div>
+            <%= link_to "universities_programs/#{program.id}" do %>
+            <button class="secondary-btn">See details</button>
+            <%end%>
+          </div>
           <%end%>
         </div>
-        <%end%>
       </div>
     </div>
   </div>

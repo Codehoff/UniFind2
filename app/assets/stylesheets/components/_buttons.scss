@@ -12,10 +12,15 @@
 
 .secondary-btn {
   font-size: 14px;
-  color: $text1;
+  color: white;
   background-color: $secondary;
   padding: 6px 16px;
   border-radius: 4px;
+}
+
+.secondary-btn:hover {
+  background-color: white;
+  color: $secondary;
 }
 
 .transparent-btn {
