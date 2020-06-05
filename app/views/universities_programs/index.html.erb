@@ -1,24 +1,40 @@
-<%= form_tag universities_programs_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Search for a program"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-3 left-frame">
+      <div class="w-100">
+      <h5>Search</h5>
+      <%= form_tag universities_programs_path, method: :get do %>
+      <%= text_field_tag :query,
+      params[:query], :class => "home-search-input w-100 mb-2", placeholder: "Program Name"%>
+        <%= submit_tag "Search", class: "btn btn-block primary-btn " %>
+        <% end %>
+      </div>
+      </div>
+      <div class="col-9">
+        <div class="row mx-2">
+          <p>(number) results found</p>
+        </div>
+        <div class="row mx-2">
+          <p>filters:</p>
+        </div>
+        <div class="row">
+        <ul >
+          <% @universities_programs.each do |program|%>
+          <li>
+            <h2><%= program.program.name%></h2>
 
-<ul>
-    <% @universities_programs.each do |program|%>
-    <li>
-        <h3>University:</h3>
-        <%= program.university.name %>
-        <h3>Program:</h3>
-        <%= program.program.name%>
-        <h3>Degree:</h3>
-        <%=program.degree%>
-        <%= link_to "universities_programs/#{program.id}" do %>
-            <h2>Visit</h2>
-        <%end%>
-    </li>
-    <%end%>
-</ul>
+            <h3><%= program.university.name %></h3>
+
+            <p><%=program.degree%></p>
+
+            <%= link_to "universities_programs/#{program.id}" do %>
+            <label class="secondary-btn">See details</label>
+            <%end%>
+          </li>
+          <%end%>
+        </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+

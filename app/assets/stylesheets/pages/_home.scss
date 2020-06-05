@@ -1,1 +1,64 @@
 // Specific CSS for your home-page
+.frame {
+  background-color: $primary;
+}
+
+.fill {
+  margin-top: 16px;
+  background-color: $tertiary;
+  border-radius: 6px;
+  box-shadow: 0 8px 8px #D3D6F5;
+}
+
+.count-status {
+margin: 64px 0 0 0;
+}
+
+.bg {
+  background-image: url(searching.png);
+  background-repeat:  no-repeat;
+  background-size: 280px;
+  background-position: right 32px bottom -20px;
+}
+
+.explore {
+ background-image: url(explore.png);
+  background-repeat:  no-repeat;
+  background-size: 33%;
+  height: 180px;
+  background-position: center;
+}
+
+.learn {
+ background-image: url(learn.png);
+  background-repeat:  no-repeat;
+  background-size: 33%;
+  height: 180px;
+  background-position: center;
+}
+
+.follow {
+ background-image: url(follow.png);
+  background-repeat:  no-repeat;
+  background-size: 33%;
+  height: 180px;
+  background-position: center;
+}
+
+.prepare {
+ background-image: url(prepare.png);
+  background-repeat:  no-repeat;
+  background-size: 33%;
+  height: 180px;
+  background-position: center;
+}
+
+.fluid-box {
+  border-bottom: 1px solid $primary;
+}
+
+.disc-icon {
+  background-color: $secondary;
+  height: 160px;
+  margin: 2px;
+}
