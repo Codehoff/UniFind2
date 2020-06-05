@@ -4,7 +4,9 @@
     <% @appdoc = ApplicationsDocument.new %>
     <%if current_user.id == app.user.id%>    
       <li>
+
         <h2><%=app.university.name%></h2>
+        <h5>Deadline for applying: <%=app.universities_program.deadline%></h5>
         <%uploaded_documents = []%>
         <%app.documents.each do |doc|%>
           <%uploaded_documents << doc.name %>
