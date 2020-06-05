@@ -1,0 +1,23 @@
+.dashboard-left {
+  background-color: $tertiary;
+  border-radius: 8px 0 0 8px;
+  height: 80vh;
+  margin-bottom: 40px;
+}
+
+.dashboard-middle {
+  height: 80vh;
+  background-color: white;
+  overflow: scroll;
+   margin-bottom: 40px;
+}
+
+.dashboard-right {
+  height: 80vh;
+  background-color: white;
+  overflow: scroll;
+  border-radius: 0px 8px 8px 0px ;
+  border-left: 1px solid $tertiary;
+  margin-bottom: 40px;
+  position: relative;
+}
