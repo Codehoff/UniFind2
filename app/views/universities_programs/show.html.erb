@@ -1,13 +1,31 @@
-<h3 style="display: inline"><%=@universities_program.university.name%></h3>
-<p style="display: inline"><%=@universities_program.university.city%></p>
-<br>
-<br>
-<h4><%=@universities_program.program.name%></h4>
-<br>
-<h4><%=@universities_program.degree%></h4>
-<h3><%=@universities_program.semesters%></h3>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/donatadietz/image/upload/v1591355034/TUM2_bqy4rd.jpg);">
+  <div class="container">
 
-<%= form_tag applications_path, method: :post do %>
-  <%= hidden_field_tag "application[universities_program_id]", @universities_program.id %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+    <h3 style="display: inline"><%=@universities_program.university.name%></h3>, <p style="display: inline"><%=@universities_program.university.city%></p>
+    <br>
+    <br>
+    <h4><%=@universities_program.program.name%></h4>
+    <br>
+    <h5>You can do your <%=@universities_program.degree%> here</h5>
+    <h5>The Bachelor goes on for <%=@universities_program.semesters%> Semesters</h5>
+
+    <%= form_tag applications_path, method: :post do %>
+    <%= hidden_field_tag "application[universities_program_id]", @universities_program.id %>
+    <%= submit_tag "Apply now", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+<div class="container">
+  <div class="uni-info" width="200">
+    <h3>Learn more about us</h3>
+    <p>The Technical University of Munich (TUM) is one of the best universities in Europe. They are characterized by excellence in research and teaching, interdisciplinarity and talent promotion. There are also strong alliances with companies and scientific institutions around the world. The TUM is one of the first three universities of excellence in Germany. It regularly performs excellently in international and national rankings....</p>
+    <a href="https://www.tum.de/studium/studienangebot/detail/architektur-bachelor-of-arts-ba/" target="_blank"><label class="secondary-btn">Read more</label></a>
+    <br>
+    <br>
+    <h3>What it's like to study architecture at TU Munich</h3>
+    <p>The first four semesters teach the basics of perception and design, the methodology of architectural design, as well as the basics of science, technology, and the humanities and social sciences in architecture. They are therefore predominantly characterized by compulsory subjects.
+    In the 5th and 6th semester, the study takes place at a foreign partner university. The learning content will continue to be closely coordinated with the Faculty of Architecture at the TU Munich.....</p>
+    <a href="https://www.tum.de/studium/bewerbung/onlinebewerbung/" target="_blank"><label class="secondary-btn">Read more</label></a>
+  </div>
+</div>
+
