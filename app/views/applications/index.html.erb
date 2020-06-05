@@ -13,7 +13,6 @@
       <% @appdoc = ApplicationsDocument.new %>
       <%if current_user.id == app.user.id%>
       <ul>
-
         <h2><%=app.universities_program.program.name%></h2>
         <h3><%=app.university.name%></h3>
         <h5>Application deadline: <%=app.universities_program.deadline%></h5>
