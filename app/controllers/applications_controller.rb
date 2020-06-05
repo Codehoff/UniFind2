@@ -16,12 +16,8 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-  
-
       @application = Application.new(application_params)
       @application.user = current_user
-
-      
 
       if @application.save
           redirect_to applications_path

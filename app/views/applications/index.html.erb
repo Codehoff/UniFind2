@@ -4,20 +4,29 @@
     <% @appdoc = ApplicationsDocument.new %>
     <%if current_user.id == app.user.id%>    
       <li>
-        <h3><%=app.university.name%></h3>
+        <h2><%=app.university.name%></h2>
+        <%uploaded_documents = []%>
+        <%app.documents.each do |doc|%>
+          <%uploaded_documents << doc.name %>
+        <%end%>
         <ul>
           <%app.universities_program.documents.each do |doc|%>
-            <li>
+            <%if uploaded_documents.include? doc.name%>
+              <li style="color:green">
+                <%=doc.name%>
+              </li>
+            <%else%>
+            <li style="color:red">
               <%=doc.name%>
             </li>
-           <%= simple_form_for([app, @appdoc]) do |f| %>
-            <p class= "desc-text" style="text-align:left;">Select the required document:</p>
-            <%= f.association :document %>
-            <%= f.input :document, as: :file %>
-            <%= f.button :submit, class: "btn btn-main" %>
-          <% end %>
-
+            <%end%>
           <%end%>
+          <%= simple_form_for([app, @appdoc]) do |f| %>
+          <p class= "desc-text" style="text-align:left;">Select the document you want to upload:</p>
+          <%= f.association :document, label: false%>
+          <%= f.input :document, as: :file %>
+          <%= f.button :submit, class: "btn btn-main" %>
+          <% end %>
         </ul>    
         <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <i class="fa fa-trash" aria-hidden="true"></i><% end %>
       </li>

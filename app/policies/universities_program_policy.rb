@@ -15,7 +15,5 @@ class UniversitiesProgramPolicy < ApplicationPolicy
 
   private
 
-  def skip_pundit?
-    true
-  end
+
 end
