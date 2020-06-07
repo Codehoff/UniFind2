@@ -1,0 +1,17 @@
+.calendar-wrapper {
+  z-index: 2;
+  position: absolute;
+  top: 30%;
+  left: 35%;
+  background: blue;
+}
+
+#calendar {
+  z-index: 1;
+  background: green;
+}
+
+.fa {
+  z-index: 0;
+}
+

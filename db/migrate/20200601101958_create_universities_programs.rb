@@ -7,7 +7,7 @@ class CreateUniversitiesPrograms < ActiveRecord::Migration[6.0]
       t.string :discipline
       t.string :language
       t.integer :semesters
-      t.date :deadline
+      t.datetime :start_time
       t.timestamps
     end
   end
