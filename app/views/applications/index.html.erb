@@ -4,7 +4,7 @@
     <a href="#" onclick="myOtherFunction(); return false;"><i class="fa fa-times" style="color:black" aria-hidden="true"></i></a>
     </div>
       <div id=calendar>
-        <%= month_calendar events: @universities_programs do |date, universities_programs| %>
+        <%= month_calendar events: @universities_programs_done + @universities_programs do |date, universities_programs, universities_programs_done| %>
           <%= date.day %>     
           <% universities_programs.each do |program|%>
             <div>
@@ -27,6 +27,7 @@
     <div class="col-10 dashboard-right">
 
       <%@applications.each do |app|%>
+      <%= app.universities_program.documents - app.documents == []%>
       <% @appdoc = ApplicationsDocument.new %>
       <%if current_user.id == app.user.id%>
       <ul>
@@ -40,13 +41,13 @@
         <ul>
           <%app.universities_program.documents.each do |doc|%>
           <%if uploaded_documents.include? doc.name%>
-          <li style="color:green">
-            <%=doc.name%>
-          </li>
+            <li style="color:green">
+              <%=doc.name%>
+            </li>
           <%else%>
-          <li style="color:red">
-            <%=doc.name%>
-          </li>
+            <li style="color:red">
+              <%=doc.name%>
+            </li>
           <%end%>
           <%end%>
           <%= simple_form_for([app, @appdoc]) do |f| %>

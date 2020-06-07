@@ -1,17 +1,63 @@
 .calendar-wrapper {
   z-index: 2;
-  position: absolute;
-  top: 30%;
-  left: 35%;
-  background: blue;
+  margin: 0 auto;
+  top: 2%;
+  left: 27%;
+  background: white;
 }
 
 #calendar {
   z-index: 1;
-  background: green;
+  background: white;
 }
 
 .fa {
   z-index: 0;
 }
 
+.simple-calendar {
+  .day {
+    background: #9397FF;
+  }
+
+  .wday-0 {
+    height: 120px;
+    width: 120px;
+  }
+  .wday-1 {
+    height: 120px;
+    width: 120px;
+  }
+  .wday-2 {
+    height: 120px;
+    width: 120px;
+  }
+  .wday-3 {
+    height: 120px;
+    width: 120px;
+  }
+  .wday-4 {
+    height: 120px;
+    width: 120px;
+  }
+  .wday-5 {
+    height: 120px;
+    width: 120px;
+  }
+  .wday-6 {
+    height: 120px;
+    width: 120px;
+  }
+
+  .today {}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month { }
+  .current-month {}
+
+  .has-events {}
+}
