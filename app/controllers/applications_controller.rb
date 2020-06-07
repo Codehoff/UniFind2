@@ -3,7 +3,11 @@ class ApplicationsController < ApplicationController
 
 
   def index
-    @applications = Application.all
+    @applications = Application.where(user: current_user)
+    @universities_programs = []
+    @applications.each do |app| 
+      @universities_programs << app.universities_program
+    end
 
   end
 

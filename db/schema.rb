@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2020_06_02_152325) do
     t.string "discipline"
     t.string "language"
     t.integer "semesters"
-    t.date "deadline"
+    t.datetime "start_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "program_id"
