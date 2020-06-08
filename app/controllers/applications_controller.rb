@@ -3,8 +3,16 @@ class ApplicationsController < ApplicationController
 
 
   def index
-    @applications = Application.all
-
+    @applications = Application.where(user: current_user)
+    @universities_programs_done = []
+    @universities_programs = []
+    @applications.each do |app|
+      if app.universities_program.documents - app.documents == []
+        @universities_programs_done << app.universities_program
+      else
+        @universities_programs << app.universities_program
+      end
+    end
   end
 
   def show
