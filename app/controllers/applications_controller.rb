@@ -2,7 +2,6 @@ class ApplicationsController < ApplicationController
   before_action :set_application, only: [:show, :edit, :update, :destroy]
   before_action :new_notification, only: [:index]
 
-
   def index
     @applications = Application.joins(:universities_program).order("start_time ASC")
     @universities_programs = []
@@ -11,8 +10,8 @@ class ApplicationsController < ApplicationController
     end
     @universities_programs_done = []
     @applications.each do |app|
-      if app.universities_program.documents - app.documents == []
-        @universities_programs_done << app.universities_program
+      if app.universities_program.documents - app.documents == [] 
+        @universities_programs_done << app.universities_program if app.user_id == current_user.id
       end
     end
   end
@@ -41,7 +40,6 @@ class ApplicationsController < ApplicationController
 
   def update
     @application.update(application_params)
-    authorize @application, policy_class: RequestPolicy
     redirect_to "/applications", notice: 'Your application was successfully updated.'
   end
 
@@ -50,7 +48,6 @@ class ApplicationsController < ApplicationController
     redirect_to "/applications"
   end
 
-      
   def new_notification
     @user_apps = Application.joins(:universities_program).order("start_time ASC").where(user_id: current_user.id)
     @user_programs = [] 
@@ -58,14 +55,17 @@ class ApplicationsController < ApplicationController
       @user_programs << app.universities_program
     end    
     @user_apps.each do |app|
-      if (app.universities_program.documents - app.documents).count > 0 && ((app.universities_program.start_time - Time.now)/86400) <= 30
-        if app.notifications == []
-          Notification.create(application_id: app.id, content:"Only #{((app.universities_program.start_time - Time.now)/86400).ceil} days left for your application at #{app.universities_program.university.name}")
-        end 
+      if (Time.now - current_user.current_sign_in_at).floor <= 20
+        if (app.universities_program.documents - app.documents) != [] 
+          if ((app.universities_program.start_time - Time.now)/86400) <= 30
+            if app.notifications == []
+              Notification.create(application_id: app.id, content:"Only #{((app.universities_program.start_time - Time.now)/86400).ceil} days left for your application at #{app.universities_program.university.name}")
+            end 
+          end
+        end
       end
     end
   end 
-
 
   private
 
