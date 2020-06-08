@@ -4,13 +4,20 @@
     <a href="#" onclick="myOtherFunction(); return false;"><i class="fa fa-times" style="color:black" aria-hidden="true"></i></a>
     </div>
       <div id=calendar>
-        <%= month_calendar events: @universities_programs_done + @universities_programs do |date, universities_programs, universities_programs_done| %>
-          <%= date.day %>     
+        <%= month_calendar events: @universities_programs do |date, universities_programs| %>
+          <%= date.day %>
           <% universities_programs.each do |program|%>
-            <div>
-              <%=program.university.name%>
-              <%=program.program.name%>
-            </div>
+            <% if @universities_programs_done.include? program %>
+              <div class=mt-1 style="border: 2px solid green; color:black">
+                <%=program.university.name%>
+                <%=program.program.name%>
+              </div>
+            <% else %>
+              <div class=mt-1 style="border: 2px solid  red;color:black">
+                <%=program.university.name%>
+                <%=program.program.name%>
+              </div>
+            <%end%>
           <%end%>
         <% end %>
       </div>
@@ -84,6 +91,12 @@ function myOtherFunction() {
   var x = document.querySelector(".calendar-wrapper");
     x.style.display = "none";
 }
+
+var today = document.querySelector(".today")
+today.insertAdjacentHTML("beforeend", "<br><br><div>Today</div>")
+
+
+
+
 </script>
 </body>
-
