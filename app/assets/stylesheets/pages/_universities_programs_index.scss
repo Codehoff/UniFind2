@@ -3,5 +3,8 @@
   background-color: $tertiary;
   padding: 16px;
   border-radius: 6px;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 8px;
 
 }
