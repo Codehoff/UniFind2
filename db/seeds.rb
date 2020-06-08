@@ -208,10 +208,6 @@ hu_bio = UniversitiesProgram.create(university: huberlin, program: bio, degree: 
 hsemd_bio = UniversitiesProgram.create(university: hsemdenleer, program: bio, degree: "Bachelor", language: "German", start_time: "16/06/2020")
 fuphil = UniversitiesProgram.create(university: fuberlin, program: phil, degree: "Master", language: "German", start_time: "20/06/2020")
 
-app_enno = Application.create(universities_program_id: tu_eng.id, user_id: enno.id)
-
-noti = Notification.create(content: "SELL SELL SELL", application_id: app_enno.id)
-
 tu_eng_docs1 = UniversitiesProgramsDocument.create(universities_program: tu_eng, document: mv)
 tu_eng_docs2 = UniversitiesProgramsDocument.create(universities_program: tu_eng, document: cv)
 

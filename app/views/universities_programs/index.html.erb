@@ -23,7 +23,7 @@
         <div><i class="fa fa-square mt-1" aria-hidden="true" style="display:inline; color: grey"></i><p class= ml-2 style="display:inline">> 6</p></div>
       </div>
     </div>
-    <div class="col-9 pl-3 mb-5 pr-0">
+    <div class="col-9 pl-3 mb-5 pr-0 ">
       <div class="col-12" style="background-color: #F3F4FF; border-radius: 6px; padding-bottom: 32px;">
         <div class="row mx-2">
           <h5 class=mt-2><%=UniversitiesProgram.where(program_id: 1).count%> results found</h5>
@@ -34,7 +34,7 @@
           <div style="font-size: 12px"><label class="tag-label p-1 rounded">Program name: architecture <i class="fas fa-times"></i></label></div>
 
         </div>
-        <div class="row pl-3 pr-3 pt-0">
+        <div class="row pl-3 pr-3 pt-0 transition1">
           <% @universities_programs.each do |program|%>
           <div class="card-product mt-3 col-12 pl-0 d-flex justify-content-between text-center" style="border-radius: 4px;" >
             <img class="col-3 pl-0" src="assets/campus.png" />
