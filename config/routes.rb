@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'notifications/destroy'
   devise_for :users
   root to: 'pages#home'
   resources :applications do
@@ -7,5 +8,6 @@ Rails.application.routes.draw do
   resources :universities_programs do
     resources :applications, only: [:new, :create]
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :notifications, only: [:destroy]
 end

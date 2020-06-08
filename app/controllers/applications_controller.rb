@@ -1,9 +1,10 @@
 class ApplicationsController < ApplicationController
   before_action :set_application, only: [:show, :edit, :update, :destroy]
+  before_action :new_notification, only: [:index]
 
 
   def index
-    @applications = Application.where(user: current_user)
+    @applications = Application.joins(:universities_program).order("start_time ASC")
     @universities_programs = []
     @applications.each do |app|
       @universities_programs << app.universities_program if app.user_id == current_user.id 
@@ -48,6 +49,23 @@ class ApplicationsController < ApplicationController
     @application.destroy!
     redirect_to "/applications"
   end
+
+      
+  def new_notification
+    @user_apps = Application.joins(:universities_program).order("start_time ASC").where(user_id: current_user.id)
+    @user_programs = [] 
+    @user_apps.each do |app|
+      @user_programs << app.universities_program
+    end    
+    @user_apps.each do |app|
+      if (app.universities_program.documents - app.documents).count > 0 && ((app.universities_program.start_time - Time.now)/86400) <= 30
+        if app.notifications == []
+          Notification.create(application_id: app.id, content:"Only #{((app.universities_program.start_time - Time.now)/86400).ceil} days left for your application at #{app.universities_program.university.name}")
+        end 
+      end
+    end
+  end 
+
 
   private
 

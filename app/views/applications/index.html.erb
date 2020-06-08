@@ -34,16 +34,15 @@
     <div class="col-10 dashboard-right">
 
       <%@applications.each do |app|%>
-      <%= app.universities_program.documents - app.documents == []%>
       <% @appdoc = ApplicationsDocument.new %>
       <%if current_user.id == app.user.id%>
       <ul>
         <h2><%=app.universities_program.program.name%></h2>
         <h3><%=app.university.name%></h3>
-        <h5>Application deadline: <%=app.universities_program.start_time%></h5>
+        <h5>Application deadline: <%=app.universities_program.start_time.strftime("%A, %d/%m/%Y")%></h5>
         <%uploaded_documents = []%>
         <%app.documents.each do |doc|%>
-        <%uploaded_documents << doc.name %>
+          <%uploaded_documents << doc.name %>
         <%end%>
         <ul>
           <%app.universities_program.documents.each do |doc|%>
