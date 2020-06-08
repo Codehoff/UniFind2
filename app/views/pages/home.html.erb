@@ -1,102 +1,96 @@
 
-  <div class="container-fluid">
-    <div class="container fill bg">
-      <div class="row">
-        <div class="col-md-8 offset-md-1">
+<div class="container-fluid">
+  <div class="container fill bg">
+    <div class="row">
+      <div class="col-md-8 offset-md-1">
 
-          <p class="mt-4 note"> <%= UniversitiesProgram.count %> programs available</p>
-          <h1 class="mt-0">Looking for your next studies?</h1>
-          <p>Finding the right program for your studies requires special attention and takes an effort. <br>
-          Use UNIFind to search for programs, track deadlines and organize your documents during the process.</p>
+        <p class="mt-4 note"> <%= UniversitiesProgram.count %> programs available</p>
+        <h1 class="mt-0">Looking for your next studies?</h1>
+        <p>Finding the right program for your studies requires special attention and takes an effort. <br>
+        Use UNIFind to search for programs, track deadlines and organize your documents during the process.</p>
 
-          <div class="home-search pb-5">
-            <%= form_tag "" ,url: universities_programs_path, role: "search", method: :get do %>
-            <div class="input-group">
-              <%= search_field_tag :search, @search_term, placeholder: "Program Name", :class => 'home-search-input col-md-8' %>
-              <div class="input-group-btn">
+        <div class="home-search pb-5">
+          <%= form_tag "" ,url: universities_programs_path, role: "search", method: :get do %>
+          <div class="input-group">
+            <%= search_field_tag :search, @search_term, placeholder: "Program Name", :class => 'home-search-input col-md-8' %>
+            <div class="input-group-btn">
               <%= link_to "universities_programs" do %>
-                <%= submit_tag "Search", :class => 'btn primary-btn' %>
+              <%= submit_tag "Search", :class => 'btn primary-btn' %>
               <%end%>
-              </div>
-            </div>
-            <% end %>
-          </div>
-
-          <div class="row mt-4 mb-4 transition1">
-            <div class="col-md-8 mt-2">
-              <h6>Most searched programs:</h6>
-              <label class="tag-label">Medicine</label>
-              <label class="tag-label">Engineering</label>
-              <label class="tag-label">Archeology</label>
-              <label class="tag-label">Product Design</label>
-              <label class="tag-label">Literature</label>
-              <label class="tag-label">Preschool Teaching</label>
             </div>
           </div>
+          <% end %>
+        </div>
+
+        <div class="row mt-4 mb-4 transition1">
+          <div class="col-md-8 mt-2">
+            <h6>Most searched programs:</h6>
+            <label class="tag-label">Medicine</label>
+            <label class="tag-label">Engineering</label>
+            <label class="tag-label">Archeology</label>
+            <label class="tag-label">Product Design</label>
+            <label class="tag-label">Literature</label>
+            <label class="tag-label">Preschool Teaching</label>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+<div class="container mt-5 transition2">
+  <div class="row justify-content-md-center">
+    <h3 class="col-md-auto">HOW TO GET STARTED</h3>
+  </div>
+  <div class="row justify-content-md-center">
+    <h2 class="col-md-auto">Four simple steps to get going:</h2>
+  </div>
+  <div class="row justify-content-md-center">
+    <p class="col-md-auto">Here we will write another value proposition.
+    Also will be a general overview description of how the site is supposed to help people. (User Story)</p>
+  </div>
+
+  <div class="row justify-content-between">
+    <div class="col-3">
+      <div class="explore"></div>
+      <h3 class="text-center">EXPLORE</h3>
+      <p class="text-center">There are <%= UniversitiesProgram.count %> programs available in our system for the user waiting to be explored.</p>
     </div>
-    <div class="container mt-5 transition2">
-      <div class="row justify-content-md-center">
-        <h3 class="col-md-auto">HOW TO GET STARTED</h3>
-      </div>
-      <div class="row justify-content-md-center">
-        <h2 class="col-md-auto">Four simple steps to get going:</h2>
-      </div>
-      <div class="row justify-content-md-center">
-        <p class="col-md-auto">Here we will write another value proposition.
-        Also will be a general overview description of how the site is supposed to help people. (User Story)</p>
-      </div>
-
-      <div class="row justify-content-between">
-        <div class="col-3">
-          <div class="explore"></div>
-          <h3 class="text-center">EXPLORE</h3>
-          <p class="text-center">There are <%= UniversitiesProgram.count %> programs available in our system for the user waiting to be explored.</p>
-        </div>
-        <div class="col-3">
-          <div class="learn"></div>
-          <h3 class="text-center">LEARN</h3>
-          <p class="text-center">Pretty much all the essential information will be found on the department page.</p>
-        </div>
-        <div class="col-3">
-          <div class="follow"></div>
-          <h3 class="text-center">FOLLOW</h3>
-          <p class="text-center">We have to mention that we have created a handy dashboard for the user to list their desired programs.</p>
-        </div>
-        <div class="col-3">
-          <div class="prepare"></div>
-          <h3 class="text-center">PREPARE</h3>
-          <p class="text-center">Make a collection of your preparation documents and track the progress  via a visualized tool.</p>
-        </div>
-      </div>
-
-      <div class="container mt-4">
-        <div class="row justify-content-md-center">
-          <h2 class="col-md-auto mt-4">List by discipline</h2>
-        </div>
-        <div class="row mt-2">
-          <div class="col disc-icon"></div>
-          <div class="col disc-icon"></div>
-          <div class="col disc-icon"></div>
-          <div class="col disc-icon"></div>
-          <div class="col disc-icon"></div>
-          <div class="col disc-icon"></div>
-        </div>
-        <div class="row mb-4">
-          <div class="col disc-icon"></div>
-          <div class="col disc-icon"></div>
-          <div class="col disc-icon"></div>
-          <div class="col disc-icon"></div>
-          <div class="col disc-icon"></div>
-          <div class="col disc-icon"></div>
-        </div>
-      </div>
+    <div class="col-3">
+      <div class="learn"></div>
+      <h3 class="text-center">LEARN</h3>
+      <p class="text-center">Pretty much all the essential information will be found on the department page.</p>
     </div>
+    <div class="col-3">
+      <div class="follow"></div>
+      <h3 class="text-center">FOLLOW</h3>
+      <p class="text-center">We have to mention that we have created a handy dashboard for the user to list their desired programs.</p>
+    </div>
+    <div class="col-3">
+      <div class="prepare"></div>
+      <h3 class="text-center">PREPARE</h3>
+      <p class="text-center">Make a collection of your preparation documents and track the progress  via a visualized tool.</p>
+    </div>
+  </div>
 
-
-
-
-
-
+  <div class="container mt-4">
+    <div class="row justify-content-md-center">
+      <h2 class="col-md-auto mt-4">List by discipline</h2>
+    </div>
+    <div class="row mt-2">
+      <div class="col disc-icon"></div>
+      <div class="col disc-icon"></div>
+      <div class="col disc-icon"></div>
+      <div class="col disc-icon"></div>
+      <div class="col disc-icon"></div>
+      <div class="col disc-icon"></div>
+    </div>
+    <div class="row mb-4">
+      <div class="col disc-icon"></div>
+      <div class="col disc-icon"></div>
+      <div class="col disc-icon"></div>
+      <div class="col disc-icon"></div>
+      <div class="col disc-icon"></div>
+      <div class="col disc-icon"></div>
+    </div>
+  </div>
+</div>
