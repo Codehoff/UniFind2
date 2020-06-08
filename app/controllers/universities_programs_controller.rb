@@ -15,9 +15,8 @@ class UniversitiesProgramsController < ApplicationController
 
   def show
     @application = Application.new
-    authorize @application, policy_class: RequestPolicy
-  end
-
+  end  
+    
   private
 
   def set_universities_program

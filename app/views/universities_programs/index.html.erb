@@ -9,20 +9,8 @@
         <%= submit_tag "Search", class: "btn btn-block primary-btn " %>
         <% end %>
       </div>
-      <div class="w-100 mt-3 d-flex flex-column">
-        <h5>Filter by major:</h5>
-        <div><i class="fa fa-square mt-1" aria-hidden="true" style="display:inline; color: grey"></i><p class= ml-2 style="display:inline">Natural Sciences</p></div>
-        <div><i class="fa fa-square mt-1" aria-hidden="true" style="display:inline; color: grey"></i><p class= ml-2 style="display:inline">Humanities</p></div>
-        <div><i class="fa fa-square mt-1" aria-hidden="true" style="display:inline; color: grey"></i><p class= ml-2 style="display:inline">Law</p></div>
-        <div><i class="fa fa-square mt-1" aria-hidden="true" style="display:inline; color: grey"></i><p class= ml-2 style="display:inline">Arts</p></div>
-        <h5 class=mt-2>Filter by degree:</h5>
-        <div><i class="fa fa-square mt-1" aria-hidden="true" style="display:inline; color: grey"></i><p class= ml-2 style="display:inline">Bachelor</p></div>
-        <div><i class="fa fa-square mt-1" aria-hidden="true" style="display:inline; color: grey"></i><p class= ml-2 style="display:inline">Master</p></div>
-        <h5 class=mt-2>Filter by semesters:</h5>
-        <div><i class="fa fa-square mt-1" aria-hidden="true" style="display:inline; color: grey"></i><p class= ml-2 style="display:inline">≤ 6</p></div>
-        <div><i class="fa fa-square mt-1" aria-hidden="true" style="display:inline; color: grey"></i><p class= ml-2 style="display:inline">> 6</p></div>
-      </div>
     </div>
+
     <div class="col-9 pl-3 mb-5 pr-0 ">
       <div class="col-12" style="background-color: #F3F4FF; border-radius: 6px; padding-bottom: 32px;">
         <div class="row mx-2">
@@ -30,13 +18,12 @@
         </div>
         <div class="row mx-2 mb-0">
 
-          <h5 class=mb-0 style="font-size: 18px;"> Applied filters:
-          <div style="font-size: 12px"><label class="tag-label p-1 rounded">Program name: architecture <i class="fas fa-times"></i></label></div>
+
 
         </div>
-        <div class="row pl-3 pr-3 pt-0 transition1">
+        <div class="row pl-3 pr-3 pt-0">
           <% @universities_programs.each do |program|%>
-          <div class="card-product mt-3 col-12 pl-0 d-flex justify-content-between text-center" style="border-radius: 4px;" >
+          <div class="card-product mt-3 col-12 pl-0 d-flex justify-content-between text-center transition1" style="border-radius: 4px;" >
             <img class="col-3 pl-0" src="assets/campus.png" />
             <div class="col-7 text-left" style="line-height: 150%">
               <h2><%= program.program.name%></h2>
