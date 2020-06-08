@@ -49,11 +49,16 @@
     width: 120px;
   }
 
-  .today {}
+  .today {
+    color:#9397FF;
+    background: white;
+    border: 1px solid red;
+  }
   .past {}
   .future {}
 
-  .start-date {}
+  .start-date {
+  }
 
   .prev-month {}
   .next-month { }
