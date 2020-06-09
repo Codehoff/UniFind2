@@ -52,10 +52,10 @@
               <p class= 'search-header'>Most searched cities</p>
               <div class="my-row">
                 <div class="cities small-btn d-flex justify-content-between">
-                  <%= button_to 'Berlin', universities_programs_path, method: :get, class: "secondary-btn" %>
-                  <%= button_to 'Cologne', universities_programs_path, method: :get, class: "secondary-btn" %>
-                  <%= button_to 'Karlsruhe', universities_programs_path, method: :get, class: "secondary-btn" %>
-                  <%= button_to 'Munich', universities_programs_path, method: :get, class: "secondary-btn" %>
+                  <%= button_to 'Berlin', universities_programs_path, method: :get, params: {query: 'Berlin'}, class: "secondary-btn" %>
+                  <%= button_to 'Cologne', universities_programs_path, method: :get, params: {query: 'Cologne'}, class: "secondary-btn" %>
+                  <%= button_to 'Karlsruhe', universities_programs_path, method: :get, params: {query: 'Karlsruhe'}, class: "secondary-btn" %>
+                  <%= button_to 'Munich', universities_programs_path, method: :get, params: {query: 'Munich'}, class: "secondary-btn" %>
                 </div>
               </div>
             </div>
@@ -64,7 +64,7 @@
               <p class= 'search-header'>Select a degree</p>
               <div class="my-row">
                 <div class="small-btn d-flex justify-content-between">
-                  <%= button_to "Bachelor of Science", universities_programs_path, method: :get, params: {query: 'Bachelor of Arts'}, class: "secondary-btn" %>
+                  <%= button_to "Bachelor of Science", universities_programs_path, method: :get, params: {query: 'Bachelor of Science'}, class: "secondary-btn" %>
                   <%= button_to "Bachelor of Arts", universities_programs_path, method: :get, params: {query: 'Bachelor of Arts'}, class: "secondary-btn" %>
                   <%= button_to "Master's degree", universities_programs_path, method: :get, params: {query: 'Master'}, class: "secondary-btn" %>
                 </div>
