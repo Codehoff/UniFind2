@@ -10,3 +10,28 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbarSupportedContent {
+  position: relative;
+}
+
+.notification {
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  position:absolute;
+  right: 23%;
+  top: 18%;
+  z-index: 1;
+}
+
+.diese-hier {
+  position:absolute;
+  right: 5%;
+  top: 100%;
+  width: 400px;
+}
+
+.this-one {
+  width: 50px;
+}
