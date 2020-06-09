@@ -14,7 +14,7 @@
     <div class="col-9 pl-3 mb-5 pr-0 ">
       <div class="col-12" style="background-color: #F3F4FF; border-radius: 6px; padding-bottom: 32px;">
         <div class="row mx-2">
-          <h5 id=num_results class= "mt-2"> results found</h5>
+          <h5 id=num_results class= "mt-2"></h5>
         </div>
         <div class="row mx-2 mb-0">
 
@@ -45,7 +45,13 @@
 <script>
 var results = document.getElementById("num_results");
 var count = document.getElementById("all_programs").childElementCount;
-results.insertAdjacentHTML("afterbegin", count)
+insertion = ""
+if (count === 1){
+  insertion = `${count} result found`
+} else {
+  insertion = `${count} results found`
+}
+results.insertAdjacentHTML("afterbegin", insertion)
 
 
 </script>
