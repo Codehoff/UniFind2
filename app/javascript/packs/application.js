@@ -27,7 +27,7 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-import { hiddenSearch } from 'hidden-search';
+import { hiddenSearch } from '../components/hidden-search';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
