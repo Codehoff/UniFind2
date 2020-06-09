@@ -4,10 +4,12 @@ class UniversitiesProgramsController < ApplicationController
   def index
     if params[:query].present?
       sql_query = " \
-      universities_programs.discipline ILIKE :query \
-      OR programs.name ILIKE :query \
+      universities_programs.discipline ILIKE :query 
+      OR programs.name ILIKE :query
+      OR universities.name ILIKE :query
+      OR universities_programs.degree ILIKE :query
       "
-      @universities_programs = UniversitiesProgram.joins(:program).where(sql_query, query: "%#{params[:query]}%")
+      @universities_programs = UniversitiesProgram.joins(:program, :university).where(sql_query, query: "%#{params[:query]}%")
     else
       @universities_programs = UniversitiesProgram.all
     end

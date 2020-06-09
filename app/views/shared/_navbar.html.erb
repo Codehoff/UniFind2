@@ -17,20 +17,29 @@
       <li class="nav-item">
           <%= link_to "Programs", "/universities_programs", class: "nav-link" %>
         </li>
-      <% if user_signed_in? %>
-        <li class="nav-item dropdown">
-          <%= image_tag "https://cdn.pixabay.com/photo/2015/12/16/17/41/bell-1096279_960_720.png", class: "notification dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right p-1" aria-labelledby="navbarDropdown">
-            <% @notifications.each do |notification|%>
-              <%if notification.application.user_id == current_user.id%>
-                <%= link_to notification_path(notification), method: :delete do %>
-                  <%= notification.content%>
-                <%end%>
-              <% end %>  
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown this-one">
+            <% if current_user.notifications == []%>
+              <%= image_tag "https://cdn.pixabay.com/photo/2015/12/16/17/41/bell-1096279_960_720.png", class: "notification dropdown-toggle", id: "notification-dropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+              <%= image_tag "https://cdn.pixabay.com/photo/2015/12/16/17/41/bell-1096279_960_720.png", class: "notification dropdown-toggle", id: "notification-dropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% end %>
-
-          </div>
-        </li>
+            <div class="dropdown-menu dropdown-menu-right diese-hier p-1" aria-labelledby="navbarDropdown">
+              <% if current_user.notifications == []%>
+                <div>
+                  No notifications
+                </div>
+              <% else %>
+                <% @notifications.each do |notification|%>
+                  <%if notification.application.user_id == current_user.id%>
+                    <%= link_to notification_path(notification), method: :delete do %>
+                      <%= notification.content%>
+                    <% end %>
+                  <% end %>  
+                <% end %>
+              <% end %>
+            </div>
+          </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://www.tagesspiegel.de/images/heprodimagesfotos881201101055875247-jpg/3688806/2-format43.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -48,4 +57,5 @@
   </div>
 </div>
 </div>
+
 

@@ -1,42 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://kit.fontawesome.com/9bc9c7a1c8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="container fill bg">
+      <div class="row">
+        <div class="col-md-8 offset-md-1">
 
-<div class="container-fluid">
-  <div class="container fill bg">
-    <div class="row">
-      <div class="col-md-8 offset-md-1">
+          <p class="mt-4 note"> <%= UniversitiesProgram.count %> programs available</p>
+          <h1 class="mt-0">Looking for your next studies?</h1>
+          <p>Finding the right program for your studies requires special attention and takes an effort. <br>
+          Use UNIFind to search for programs, track deadlines and organize your documents during the process.</p>
 
-        <p class="mt-4 note"> <%= UniversitiesProgram.count %> programs available</p>
-        <h1 class="mt-0">Looking for your next studies?</h1>
-        <p>Finding the right program for your studies requires special attention and takes an effort. <br>
-        Use UNIFind to search for programs, track deadlines and organize your documents during the process.</p>
 
-        <div class="home-search pb-5">
-          <%= form_tag "" ,url: universities_programs_path, role: "search", method: :get do %>
-          <div class="input-group">
-            <%= search_field_tag :search, @search_term, placeholder: "Program Name", :class => 'home-search-input col-md-8' %>
-            <div class="input-group-btn">
-              <%= link_to "universities_programs" do %>
-              <%= submit_tag "Search", :class => 'btn primary-btn' %>
-              <%end%>
+          <div class="my-container pb-5">
+            <div class="box query-input">
+              <div class="home-search pb-5">
+              <%= form_tag universities_programs_path, method: :get do %>
+              <div class="my-row">
+                <div class="top-search d-flex justify-content-between align-self-stretch">
+                  <%= text_field_tag :query,
+                  params[:query], :class => "home-search-input w-100 mb-2", placeholder: "Program Name"%>
+                  <%= submit_tag "Search", class: "btn btn-block primary-btn " %>
+                </div>
+                </div>
+              </div>
+            </div>
+            <% end %>
+
+            <div id="hidden-search">
+              <div class="results box">
+                <div class="d-flex">
+                  <p class= 'search-header justify-content-start'>See all results</p>
+                  <i class="far fa-times-square" id="close"></i>
+                </div>
+                <div class="my-row">
+                  <div class="results d-flex justify-content-between">
+                    <%= button_to 'All', universities_programs_path, method: :get, class: "secondary-btn" %>
+                    <%#= link_to 'create goal', goals_path, method: :post %>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="cities box">
+                <p class= 'search-header'>Most searched cities</p>
+                <div class="my-row">
+                  <div class="cities small-btn d-flex justify-content-between">
+                    <%= button_to 'Berlin', universities_programs_path, method: :get, params: {query: 'Berlin'}, class: "secondary-btn" %>
+                    <%= button_to 'Cologne', universities_programs_path, method: :get, params: {query: 'Cologne'}, class: "secondary-btn" %>
+                    <%= button_to 'Karlsruhe', universities_programs_path, method: :get, params: {query: 'Karlsruhe'}, class: "secondary-btn" %>
+                    <%= button_to 'Munich', universities_programs_path, method: :get, params: {query: 'Munich'}, class: "secondary-btn" %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="degrees box">
+                <p class= 'search-header'>Select a degree</p>
+                <div class="my-row">
+                  <div class="small-btn d-flex justify-content-between">
+                    <%= button_to "Bachelor of Science", universities_programs_path, method: :get, params: {query: 'Bachelor of Science'}, class: "secondary-btn" %>
+                    <%= button_to "Bachelor of Arts", universities_programs_path, method: :get, params: {query: 'Bachelor of Arts'}, class: "secondary-btn" %>
+                    <%= button_to "Master's degree", universities_programs_path, method: :get, params: {query: 'Master'}, class: "secondary-btn" %>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <% end %>
-        </div>
-
         <div class="row mt-4 mb-4 transition1">
           <div class="col-md-8 mt-2">
-            <h6>Most searched programs:</h6>
-            <label class="tag-label"><a href= "/universities_programs?query=architecture" class="tag-label">Architecture</a></label>
-            <label class="tag-label">Engineering</label>
-            <label class="tag-label">Archeology</label>
-            <label class="tag-label">Product Design</label>
-            <label class="tag-label">Literature</label>
-            <label class="tag-label">Preschool Teaching</label>
+
+            <h6 class=>Most searched programs:</h6>
+            <a href= "/universities_programs?query=medicine" class="tag-label">Medicine</a>
+            <a href= "/universities_programs?query=engineering" class="tag-label">Engineering</a>
+            <a href= "/universities_programs?query=archeology" class="tag-label">Archeology</a>
+            <a href= "/universities_programs?query=product+design" class="tag-label">Product Design</a>
+            <a href= "/universities_programs?query=literature" class="tag-label">Literature</a>
+            <a href= "/universities_programs?query=preschool+teaching" class="tag-label">Preschool Teaching</a>
+
           </div>
+
         </div>
       </div>
     </div>
   </div>
-</div>
+
 <div class="container mt-5 transition2">
   <div class="row justify-content-md-center">
     <h3 class="col-md-auto">HOW TO GET STARTED</h3>
@@ -76,21 +128,93 @@
     <div class="row justify-content-md-center">
       <h2 class="col-md-auto mt-4">List by discipline</h2>
     </div>
-    <div class="row mt-2">
-      <div class="col disc-icon"></div>
-      <div class="col disc-icon"></div>
-      <div class="col disc-icon"></div>
-      <div class="col disc-icon"></div>
-      <div class="col disc-icon"></div>
-      <div class="col disc-icon"></div>
+    <div class="row mt-2">   
+      <div class="col disc-icon coding d-flex flex-column">
+      <h3 style=color:white>Computer Sciences</h3>
+      <a href="/universities_programs?query=computer+sciences">
+        <img src="/assets/icons8-developer-100(1).png" alt="Computer Scieasdnces">
+      </a>
+      </div>
+     
+      <div class="col disc-icon archeology d-flex flex-column">
+      <h3 style=color:white>Archeology</h3>
+      <a href="/universities_programs?query=archeology">
+        <img src="/assets/icons8-archeology-100(1).png" alt="Computer Scieasdnces">
+      </a>
+      </div>
+
+      <div class="col disc-icon engineering d-flex flex-column">
+      <h3 style=color:white>Engineering</h3>
+      <a href="/universities_programs?query=engineering">
+        <img src="/assets/icons8-engineering-100(1).png" alt="Computer Scieasdnces">
+      </a>
+      </div>
+
+      <div class="col disc-icon architecture d-flex flex-column">
+      <h3 style=color:white>Architecture</h3>
+      <a href="/universities_programs?query=architecture">
+        <img src="/assets/icons8-skyscrapers-100.png" alt="Computer Scieasdnces">
+      </a>
+      </div>
+
+      <div class="col disc-icon biology d-flex flex-column">
+      <h3 style=color:white>Biology</h3>
+      <a href="/universities_programs?query=biology">
+        <img src="/assets/icons8-biotech-100.png" alt="Computer Scieasdnces">
+      </a>
+      </div>
+      <div class="col disc-icon maths d-flex flex-column">
+      <h3 style=color:white>Mathematics</h3>
+      <a href="/universities_programs?query=maths">
+        <img src="/assets/icons8-trigonometry-100.png" alt="Computer Scieasdnces">
+      </a>
+      </div>
     </div>
     <div class="row mb-4">
-      <div class="col disc-icon"></div>
-      <div class="col disc-icon"></div>
-      <div class="col disc-icon"></div>
-      <div class="col disc-icon"></div>
-      <div class="col disc-icon"></div>
-      <div class="col disc-icon"></div>
+
+      <div class="col disc-icon economics d-flex flex-column">
+      <h3 style=color:white>Economics</h3>
+      <a href="/universities_programs?query=economics">
+        <img src="/assets/icons8-stocks-100.png" alt="Computer Scieasdnces">
+      </a>
+      </div>
+
+      <div class="col disc-icon agriculture d-flex flex-column">
+      <h3 style=color:white>Agriculture</h3>
+      <a href="/universities_programs?query=agriculture">
+        <img src="/assets/icons8-tractor-100.png" alt="Computer Scieasdnces">
+      </a>
+      </div>
+
+      <div class="col disc-icon physics d-flex flex-column">
+      <h3 style=color:white>Physics</h3>
+      <a href="/universities_programs?query=physics">
+        <img src="/assets/icons8-physics-100.png" alt="Computer Scieasdnces">
+      </a>
+      </div>
+
+      <div class="col disc-icon chemistry d-flex flex-column">
+      <h3 style=color:white>Chemistry</h3>
+      <a href="/universities_programs?query=chemistry">
+        <img src="/assets/icons8-test-tube-100.png" alt="Computer Scieasdnces">
+      </a>
+      </div>
+
+      <div class="col disc-icon law d-flex flex-column">
+      <h3 style=color:white>Law</h3>
+      <a href="/universities_programs?query=law">
+        <img src="/assets/icons8-law-100(1).png" alt="Computer Scieasdnces">
+      </a>
+      </div>
+
+      <div class="col disc-icon medicine d-flex flex-column">
+      <h3 style=color:white>Medicine</h3>
+      <a href="/universities_programs?query=medicine">
+        <img src="/assets/icons8-syringe-100.png" alt="Computer Scieasdnces">
+      </a>
+      </div>
     </div>
   </div>
 </div>
+<body>
+</html>

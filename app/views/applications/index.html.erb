@@ -1,4 +1,5 @@
 
+
 <div class="container-fluid" style="border-top:1px solid gray;">
   <div class="container p-0">
   <div class="row">
@@ -7,24 +8,26 @@
         <div class="col-12">
           <% @applications.each do |app|%>
           <% app.universities_program.documents - app.documents == []%>
+
           <% @appdoc = ApplicationsDocument.new %>
           <%if current_user.id == app.user.id%>
           <ul>
-            <h2><%=app.universities_program.program.name%></h2>
-            <h3><%=app.university.name%></h3>
-            <h5>Application deadline: <%=app.universities_program.start_time%></h5>
-            <%uploaded_documents = []%>
-            <%app.documents.each do |doc|%>
-            <%uploaded_documents << doc.name %>
-            <%end%>
+            <h2><%= app.universities_program.program.name %></h2>
+            <h3><%= app.university.name %></h3>
+            <h5>Application deadline: <%= app.universities_program.start_time %></h5>
+            <% uploaded_documents = [] %>
+            <% app.documents.each do |doc| %>
+            <% uploaded_documents << doc.name %>
+            <% end %>
             <ul>
-              <%app.universities_program.documents.each do |doc|%>
-              <%if uploaded_documents.include? doc.name%>
+              <% app.universities_program.documents.each do |doc| %>
+              <% if uploaded_documents.include? doc.name %>
               <li style="color:green">
-                <%=doc.name%>
+                <%= doc.name %>
               </li>
-              <%else%>
+              <% else %>
               <li style="color:red">
+
                 <%=doc.name%>
                 <%end%>
                 <%end%>
@@ -32,6 +35,7 @@
                 <h5>Attach a required document</h5>
                 <p class= "desc-text" style="text-align:left;">Your document type:</p>
               </li>
+
               <%= f.association :document, label: false , class: "btn secondary-btn" %>
               <%= f.input :document, as: :file%>
               <%= f.button :submit, class: "btn transparent-btn" %>

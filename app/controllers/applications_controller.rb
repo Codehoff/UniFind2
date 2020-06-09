@@ -31,7 +31,7 @@ class ApplicationsController < ApplicationController
       if @application.save
           redirect_to applications_path
       else
-          render :new
+          redirect_to "/universities_programs/#{params[:application][:universities_program_id]}", notice: 'You already applied for this program.'
       end
     end
 
