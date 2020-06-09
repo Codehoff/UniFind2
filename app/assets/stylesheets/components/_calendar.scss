@@ -3,7 +3,10 @@
   margin: 0 auto;
   top: 2%;
   left: 27%;
-  background: white;
+  background: $tertiary;
+  margin-top: 16px;
+  border-radius: 12px;
+  padding: 16px;
 }
 
 #calendar {
@@ -16,53 +19,95 @@
 }
 
 .simple-calendar {
+
   .day {
-    background: #9397FF;
+    background: $white;
   }
 
   .wday-0 {
-    height: 120px;
+
     width: 120px;
+    background-color: $text2;
+    border: 1px white solid;
+    text-align: center;
   }
   .wday-1 {
-    height: 120px;
+    border: 1px white solid;
     width: 120px;
+    text-align: center;
   }
   .wday-2 {
-    height: 120px;
+    border: 1px white solid;
     width: 120px;
+    text-align: center;
   }
   .wday-3 {
-    height: 120px;
+    border: 1px white solid;
     width: 120px;
+    text-align: center;
   }
   .wday-4 {
-    height: 120px;
+    border: 1px white solid;
+    height: 60px;
     width: 120px;
+    text-align: center;
   }
   .wday-5 {
-    height: 120px;
+    border: 1px white solid;
+    height: 60px;
     width: 120px;
+    text-align: center;
+
   }
   .wday-6 {
-    height: 120px;
+    border: 1px white solid;
+    height: 60px;
     width: 120px;
+    background-color: $text2;
+    text-align: center;
   }
 
   .today {
-    color:#9397FF;
+    color:red;
     background: white;
-    border: 1px solid red;
+    text-align: center;
+    border-radius: 50%;
+
   }
-  .past {}
+
+  .past {
+
+  }
+
   .future {}
 
   .start-date {
   }
 
-  .prev-month {}
-  .next-month { }
-  .current-month {}
+  .prev-month {
+    background-color: $text3;
+    opacity: 0.2;
+  }
+  .next-month {
+   background-color: $text3;
+   opacity: 0.2;
+ }
+ .current-month {}
 
-  .has-events {}
+ .has-events {
+
+ }
+ .round {
+  border-radius: 50%;
+  width: 2px;
+  height: 2px;
+
+
+
+  background-color: red;
+
+  color: #666;
+  text-align: center;
 }
+}
+

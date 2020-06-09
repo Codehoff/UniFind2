@@ -1,39 +1,14 @@
-<body class="frame">
-  <div class="calendar-wrapper p-3" >
-    <div class= close>
-      <a href="#" onclick="myOtherFunction(); return false;"><i class="fa fa-times" style="color:black" aria-hidden="true"></i></a>
-    </div>
-    <div id=calendar>
-      <%= month_calendar events: @universities_programs do |date, universities_programs| %>
-      <%= date.day %>
-      <% universities_programs.each do |program| %>
-      <% if @universities_programs_done.include? program %>
-      <div class=mt-1 style="border: 2px solid green; color:black">
-        <%= program.university.name %>
-        <%= program.program.name %>
-      </div>
-      <% else %>
-      <div class=mt-1 style="border: 2px solid  red;color:black">
-        <%= program.university.name %>
-        <%= program.program.name %>
-      </div>
-      <% end %>
-      <% end %>
-      <% end %>
-    </div>
-  </div>
-  <div class="container-fluid" style="padding: 60px;">
-    <div class="container">
-      <div class="row">
-        <div class="col-2 dashboard-left">
-          <div class="row justify-content-center">
-            <h1 class="text-align" style="font-size: 24px;">Dashboard:</h1>
-            <a href="#" onclick="myFunction(); return false;"><i class="fa fa-calendar" aria-hidden="true"></i></a>
-          </div>
-        </div>
-        <div class="col-10 dashboard-right">
 
+
+<div class="container-fluid" style="border-top:1px solid gray;">
+  <div class="container p-0">
+  <div class="row">
+    <div class="col-8" style="height: 100vh; border-right:1px solid gray">
+      <div class="row">
+        <div class="col-12">
           <% @applications.each do |app|%>
+          <% app.universities_program.documents - app.documents == []%>
+
           <% @appdoc = ApplicationsDocument.new %>
           <%if current_user.id == app.user.id%>
           <ul>
@@ -52,39 +27,74 @@
               </li>
               <% else %>
               <li style="color:red">
-                <%= doc.name %>
+
+                <%=doc.name%>
+                <%end%>
+                <%end%>
+                <%= simple_form_for([app, @appdoc]) do |f| %>
+                <h5>Attach a required document</h5>
+                <p class= "desc-text" style="text-align:left;">Your document type:</p>
               </li>
-              <% end %>
-              <% end %>
-              <%= simple_form_for([app, @appdoc]) do |f| %>
-              <h5>Attach a required document</h5>
-              <p class= "desc-text" style="text-align:left;">Your document type:</p>
+
               <%= f.association :document, label: false , class: "btn secondary-btn" %>
               <%= f.input :document, as: :file%>
               <%= f.button :submit, class: "btn transparent-btn" %>
+              <div class="col-12">
+
+          <% docs_count = uploaded_documents.count %>
+          <% docs_required = app.universities_program.documents.count %>
+          <% ratio_docs_uploaded = 100 * (docs_count.to_f / docs_required.to_f) %>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%=ratio_docs_uploaded%>%" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+        </div>
+              </div>
+              <!-- <a href="#" onclick="myFunction(); return false;"><i class="fa fa-calendar" aria-hidden="true"></i></a> -->
               <% end %>
             </ul>
             <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <i class="fa fa-trash" aria-hidden="true"></i><% end %>
           </ul>
 
-          <% docs_count = uploaded_documents.count %>
-          <% docs_required = app.universities_program.documents.count %>
-          <% ratio_docs_uploaded = 100 * (docs_count.to_f / docs_required.to_f) %>
-          <div class="progress">
-            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%=ratio_docs_uploaded%>%" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
-          </div>
-          <%end%>
-          <%end%>
-        </ul>
-      </div>
+        </div>
+        <%end%>
+        <%end%>
+      </ul>
+    </div>
 
+
+
+
+  <div class="col-4" style="height: 100vh; background-color: white;">
+    <div class="calendar-wrapper p-3" >
+      <div class= close>
+        <!-- <a href="#" onclick="myOtherFunction(); return false;"><i class="fa fa-times" style="color:black" aria-hidden="true"></i></a> -->
+      </div>
+      <div id=calendar>
+        <h2>Your calendar:</h2> <%= DateTime.now.strftime('%d %A') %>
+        <%= month_calendar events: @universities_programs do |date, universities_programs| %>
+        <%= date.day %>
+        <% universities_programs.each do |program|%>
+        <% if @universities_programs_done.include? program %>
+        <div class=mt-1 style="border: 2px solid green; color:black">
+          <%=program.university.name%>
+          <%=program.program.name%>
+        </div>
+        <% else %>
+        <!-- comment -->
+
+        <%end%>
+        <%end%>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
+</div>
+</div>
+  </div>
 
 <script>
   document.addEventListener("DOMContentLoaded", function(){
-    document.querySelector(".calendar-wrapper").style.display='none';
+    // document.querySelector(".calendar-wrapper").style.display='none';
   });
 
   function myFunction() {
@@ -98,10 +108,7 @@
   }
 
   var today = document.querySelector(".today")
-  today.insertAdjacentHTML("beforeend", "<br><br><div>Today</div>")
-
-
-
+  today.classList.add("round")
 
 </script>
-</body>
+
