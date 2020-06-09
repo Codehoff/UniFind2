@@ -1,10 +1,9 @@
 class UniversitiesProgramsController < ApplicationController
   before_action :set_universities_program, only: [ :show, :edit, :update, :destroy ]
-
   def index
     if params[:query].present?
       sql_query = " \
-      universities_programs.discipline ILIKE :query 
+      universities_programs.discipline ILIKE :query
       OR programs.name ILIKE :query
       OR universities.name ILIKE :query
       OR universities_programs.degree ILIKE :query
@@ -17,8 +16,10 @@ class UniversitiesProgramsController < ApplicationController
 
   def show
     @application = Application.new
-  end  
-    
+    @uniphotos = @universities_program.university.uniphotos.photo_url
+    raise
+  end
+
   private
 
   def set_universities_program
