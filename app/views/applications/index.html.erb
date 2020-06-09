@@ -6,19 +6,19 @@
     <div id=calendar>
       <%= month_calendar events: @universities_programs do |date, universities_programs| %>
       <%= date.day %>
-      <% universities_programs.each do |program|%>
+      <% universities_programs.each do |program| %>
       <% if @universities_programs_done.include? program %>
       <div class=mt-1 style="border: 2px solid green; color:black">
-        <%=program.university.name%>
-        <%=program.program.name%>
+        <%= program.university.name %>
+        <%= program.program.name %>
       </div>
       <% else %>
       <div class=mt-1 style="border: 2px solid  red;color:black">
-        <%=program.university.name%>
-        <%=program.program.name%>
+        <%= program.university.name %>
+        <%= program.program.name %>
       </div>
-      <%end%>
-      <%end%>
+      <% end %>
+      <% end %>
       <% end %>
     </div>
   </div>
@@ -33,29 +33,29 @@
         </div>
         <div class="col-10 dashboard-right">
 
-          <%@applications.each do |app|%>
+          <% @applications.each do |app|%>
           <% @appdoc = ApplicationsDocument.new %>
           <%if current_user.id == app.user.id%>
           <ul>
-            <h2><%=app.universities_program.program.name%></h2>
-            <h3><%=app.university.name%></h3>
-            <h5>Application deadline: <%=app.universities_program.start_time%></h5>
-            <%uploaded_documents = []%>
-            <%app.documents.each do |doc|%>
-            <%uploaded_documents << doc.name %>
-            <%end%>
+            <h2><%= app.universities_program.program.name %></h2>
+            <h3><%= app.university.name %></h3>
+            <h5>Application deadline: <%= app.universities_program.start_time %></h5>
+            <% uploaded_documents = [] %>
+            <% app.documents.each do |doc| %>
+            <% uploaded_documents << doc.name %>
+            <% end %>
             <ul>
-              <%app.universities_program.documents.each do |doc|%>
-              <%if uploaded_documents.include? doc.name%>
+              <% app.universities_program.documents.each do |doc| %>
+              <% if uploaded_documents.include? doc.name %>
               <li style="color:green">
-                <%=doc.name%>
+                <%= doc.name %>
               </li>
-              <%else%>
+              <% else %>
               <li style="color:red">
-                <%=doc.name%>
+                <%= doc.name %>
               </li>
-              <%end%>
-              <%end%>
+              <% end %>
+              <% end %>
               <%= simple_form_for([app, @appdoc]) do |f| %>
               <h5>Attach a required document</h5>
               <p class= "desc-text" style="text-align:left;">Your document type:</p>

@@ -1,16 +1,15 @@
-.home-search {
+.home-search-input {
+  border: 1px solid white;
+  margin-right: 4px;
+  border-radius: 4px;
+  padding: 12px 6px;
+  height: fit-content;
+}
+.top-search {
   position: relative;
   margin-bottom: 16px;
   width:100%;
 }
-
-.home-search-input {
-  border: 1px solid;
-  margin-right: 4px;
-  border-radius: 4px;
-  padding: 12px 6px;
-}
-
 .my-container {
   height: 50px;
   margin-left: auto;
@@ -29,39 +28,46 @@
   display: none;
   background-color: white;
   padding-top: 20px;
-  width: 541px;
+  width: 610px;
   position: absolute;
   padding-bottom: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
   z-index: 2;
   border-radius: 3px;
+  top: 230px;
+  left: -14px;
+  opacity: 0.95;
 }
+
 #close {
-  color: white;
+  color: $primary;
+  opacity: 0.7;
   display: inline;
   position: absolute;
   right: 30px;
   margin-bottom: -10px !important;
 }
+.secondary-btn {
+  color: $primary;
+  color: white;
+}
+
 .box {
-  margin: 0px 30px;
+  position: relative;
+  margin-bottom: 16px;
+  width:100%;
 }
-.binoculars {
-  background-color: transparent;
-  font-size: 18px;
-  color: #ababab;
-  padding: 12px 11px;
-  &:hover{
-    background-color: white;
-    opacity: 0.5;
-  }
-}
+
 .recent {
-  border-top: 1px solid white;
+  border-top: 1px solid $primary;
 }
-.searches {
-  margin-top: 20px;
-  border-top: 1px solid white;
-}
+
+// .searches {
+//   margin-top: 20px;
+//   border-top: 1px solid $primary;
+// }
+
 .explore {
   .simple_form {
     margin: 0 5px;
@@ -71,6 +77,7 @@
     }
   }
 }
+
 .my-row {
   width:100%;
 }
@@ -80,19 +87,14 @@
   height:50px;
   border-radius: 4px 0 0 4px;
   border: none;
-  box-shadow: 0 0px 0.25px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  box-shadow: 0 0 0;
+  transition: 0.3s;
 
 }
 .input-field {
   flex-grow: 1;
 }
-.top-search {
-  .form-group {
-    width: 100%;
-    margin-bottom: 0;
-  }
-}
+
 .search-header {
   font-weight: bold;
   font-size: 12px;
@@ -103,27 +105,4 @@
   box-shadow: none;
 }
 
-.our-btn {
-  color: #3E3E3E;
-  border-radius: 2px;
-  background-color: white;
-  height: 1.6em;
-  min-width: 108px;
-  flex-grow: 1;
-}
 
-.city-btn {
-  font-size: 13px;
-  box-shadow: 0 0px 0.25px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1);
-  -webkit-box-flex: 1;
-  flex-grow: 1;
-  margin: 0px 5px 0px 5px;
-  text-transform: capitalize;
-  border: none;
-}
-
-.explore-btn {
-  height: 1.8em;
-  box-shadow: 0 0px 0.25px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1);
-  border: none;
-}
