@@ -14,14 +14,14 @@
     <div class="col-9 pl-3 mb-5 pr-0 ">
       <div class="col-12" style="background-color: #F3F4FF; border-radius: 6px; padding-bottom: 32px;">
         <div class="row mx-2">
-          <h5 class=mt-2><%=UniversitiesProgram.where(program_id: 1).count%> results found</h5>
+          <h5 id=num_results class= "mt-2"> results found</h5>
         </div>
         <div class="row mx-2 mb-0">
 
 
 
         </div>
-        <div class="row pl-3 pr-3 pt-0">
+        <div id=all_programs class="row pl-3 pr-3 pt-0">
           <% @universities_programs.each do |program|%>
           <div class="card-product mt-3 col-12 pl-0 d-flex justify-content-between text-center transition1" style="border-radius: 4px;" >
             <img class="col-3 pl-0" src="assets/campus.png" />
@@ -41,4 +41,12 @@
     </div>
   </div>
 </div>
+
+<script>
+var results = document.getElementById("num_results");
+var count = document.getElementById("all_programs").childElementCount;
+results.insertAdjacentHTML("afterbegin", count)
+
+
+</script>
 
