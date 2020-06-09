@@ -1,4 +1,11 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://kit.fontawesome.com/9bc9c7a1c8.js" crossorigin="anonymous"></script>
+</head>
+<body>
 <div class="container-fluid">
   <div class="container fill bg">
     <div class="row">
@@ -9,18 +16,63 @@
         <p>Finding the right program for your studies requires special attention and takes an effort. <br>
         Use UNIFind to search for programs, track deadlines and organize your documents during the process.</p>
 
-        <div class="home-search pb-5">
-          <%= form_tag "" ,url: universities_programs_path, role: "search", method: :get do %>
-          <div class="input-group">
-            <%= search_field_tag :search, @search_term, placeholder: "Program Name", :class => 'home-search-input col-md-8' %>
-            <div class="input-group-btn">
-              <%= link_to "universities_programs" do %>
-              <%= submit_tag "Search", :class => 'btn primary-btn' %>
-              <%end%>
+
+
+
+        <div class="my-container">
+            <div class="box query-input">
+              <%= form_tag universities_programs_path, method: :get do %>
+              <div class="my-row">
+                <div class="top-search d-flex justify-content-between align-self-stretch">
+                  <%= text_field_tag :query,
+                  params[:query], :class => "home-search-input w-100 mb-2", placeholder: "Program Name"%>
+                  <%= submit_tag "Search", class: "btn btn-block primary-btn " %>
+                </div>
+              </div>
             </div>
+            <% end %>
           </div>
-          <% end %>
-        </div>
+          </div>
+          <div id="hidden-search">
+            <div class="results box">
+              <div class="d-flex">
+                <p class= 'search-header justify-content-start'>See all results</p>
+                <i class="far fa-times-square" id="close"></i>
+              </div>
+              <div class="my-row">
+                <div class="results d-flex justify-content-between">
+                  <%= button_to 'All', universities_programs_path, method: :get, class: "secondary-btn" %>
+                  <%#= link_to 'create goal', goals_path, method: :post %>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="cities box">
+              <p class= 'search-header'>Most searched cities</p>
+              <div class="my-row">
+                <div class="cities small-btn d-flex justify-content-between">
+                  <%= button_to 'Berlin', universities_programs_path, method: :get, params: {query: 'Berlin'}, class: "secondary-btn" %>
+                  <%= button_to 'Cologne', universities_programs_path, method: :get, params: {query: 'Cologne'}, class: "secondary-btn" %>
+                  <%= button_to 'Karlsruhe', universities_programs_path, method: :get, params: {query: 'Karlsruhe'}, class: "secondary-btn" %>
+                  <%= button_to 'Munich', universities_programs_path, method: :get, params: {query: 'Munich'}, class: "secondary-btn" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="degrees box">
+              <p class= 'search-header'>Select a degree</p>
+              <div class="my-row">
+                <div class="small-btn d-flex justify-content-between">
+                  <%= button_to "Bachelor of Science", universities_programs_path, method: :get, params: {query: 'Bachelor of Science'}, class: "secondary-btn" %>
+                  <%= button_to "Bachelor of Arts", universities_programs_path, method: :get, params: {query: 'Bachelor of Arts'}, class: "secondary-btn" %>
+                  <%= button_to "Master's degree", universities_programs_path, method: :get, params: {query: 'Master'}, class: "secondary-btn" %>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
 
         <div class="row mt-4 mb-4 transition1">
           <div class="col-md-8 mt-2">
@@ -94,3 +146,5 @@
     </div>
   </div>
 </div>
+<body>
+</html>
