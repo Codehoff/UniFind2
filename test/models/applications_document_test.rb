@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ApplicationsDocumentTest < ActiveSupport::TestCase
+class ApplicationsDocumentTest < ActiveSupport::TestCaseü
   # test "the truth" do
   #   assert true
   # end
