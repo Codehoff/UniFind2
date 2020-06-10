@@ -18,6 +18,7 @@
           <%= link_to "Programs", "/universities_programs", class: "nav-link" %>
         </li>
         <% if user_signed_in? %>
+          <div id=notifications-counter></div>
           <li class="nav-item dropdown this-one">
             <% if current_user.notifications == []%>
               <%= image_tag "https://cdn.pixabay.com/photo/2015/12/16/17/41/bell-1096279_960_720.png", class: "notification dropdown-toggle", id: "notification-dropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

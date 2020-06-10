@@ -11,7 +11,7 @@
   width: 40px;
 }
 
-.navbarSupportedContent {
+#navbarSupportedContent {
   position: relative;
 }
 
@@ -37,8 +37,8 @@
 }
 
 #notifications-counter {
-  position:absolute;
-  right: 22.5%;
+  position: absolute;
+  right: 42%;
   color:red;
   font-weight: 600;
   z-index: 3;
