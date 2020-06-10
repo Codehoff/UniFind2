@@ -11,7 +11,7 @@
   width: 40px;
 }
 
-.navbarSupportedContent {
+#navbarSupportedContent {
   position: relative;
 }
 
@@ -34,4 +34,12 @@
 
 .this-one {
   width: 50px;
+}
+
+#notifications-counter {
+  position: absolute;
+  right: 42%;
+  color:red;
+  font-weight: 600;
+  z-index: 3;
 }

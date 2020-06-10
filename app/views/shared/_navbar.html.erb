@@ -18,6 +18,7 @@
           <%= link_to "Programs", "/universities_programs", class: "nav-link" %>
         </li>
         <% if user_signed_in? %>
+          <div id=notifications-counter></div>
           <li class="nav-item dropdown this-one">
             <% if current_user.notifications == []%>
               <%= image_tag "https://cdn.pixabay.com/photo/2015/12/16/17/41/bell-1096279_960_720.png", class: "notification dropdown-toggle", id: "notification-dropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -25,7 +26,7 @@
 
               <%= image_tag "https://cdn.pixabay.com/photo/2015/12/16/17/41/bell-1096279_960_720.png", class: "notification dropdown-toggle", id: "notification-dropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% end %>
-            <div class="dropdown-menu dropdown-menu-right diese-hier p-1" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu dropdown-menu-right diese-hier p-1" id="dropdown-count" aria-labelledby="navbarDropdown">
               <% if current_user.notifications == []%>
                 <div>
                   No notifications
@@ -33,7 +34,7 @@
               <% else %>
                 <% @notifications.each do |notification|%>
                   <%if notification.application.user_id == current_user.id%>
-                    <div>
+                    <div class = notifications-content>
                       <%= notification.content%>
                       <%= link_to notification_path(notification), method: :delete do %><i class="fa fa-times" aria-hidden="true"></i><% end %>
                     </div>
@@ -60,4 +61,14 @@
 </div>
 </div>
 
+<script>
+var results = document.getElementById("notifications-counter");
+var count = document.getElementById("dropdown-count").childElementCount;
+var x = document.querySelectorAll(".notifications-content").length;
 
+if (x > 0) {
+  results.insertAdjacentHTML("beforeend", x);
+}
+
+
+</script>
