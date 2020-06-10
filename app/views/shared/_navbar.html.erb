@@ -22,6 +22,7 @@
             <% if current_user.notifications == []%>
               <%= image_tag "https://cdn.pixabay.com/photo/2015/12/16/17/41/bell-1096279_960_720.png", class: "notification dropdown-toggle", id: "notification-dropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% else %>
+
               <%= image_tag "https://cdn.pixabay.com/photo/2015/12/16/17/41/bell-1096279_960_720.png", class: "notification dropdown-toggle", id: "notification-dropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% end %>
             <div class="dropdown-menu dropdown-menu-right diese-hier p-1" aria-labelledby="navbarDropdown">
