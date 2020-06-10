@@ -35,3 +35,11 @@
 .this-one {
   width: 50px;
 }
+
+#notifications-counter {
+  position:absolute;
+  right: 22.5%;
+  color:red;
+  font-weight: 600;
+  z-index: 3;
+}

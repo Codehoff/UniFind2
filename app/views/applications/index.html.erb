@@ -19,7 +19,7 @@
                       <%end%>
                     </div>
                     <h3 class=ml-2 style=text-align:left>Required Documents:</h3>
-                    <div class="required-docs-container ml-2 mb-2">
+                    <div class="required-docs-container ml-2 mb-2"style="background:white;border:1px solid gray">
                       <div class="ml-2 d-flex align-items-center p-2">
                         <% app.universities_program.documents.each do |doc| %>
                           <% if uploaded_documents.include? doc.name %>
