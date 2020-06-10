@@ -22,13 +22,14 @@
 }
 
 #hidden-search {
+  display: block;
+  overflow: auto;
   margin-top: 16px;
   margin-left: 29px;
   margin-right: auto;
   display: none;
   background-color: white;
   padding-top: 20px;
-  width: 610px;
   position: absolute;
   padding-bottom: 16px;
   padding-left: 32px;
