@@ -32,9 +32,10 @@
               <% else %>
                 <% @notifications.each do |notification|%>
                   <%if notification.application.user_id == current_user.id%>
-                    <%= link_to notification_path(notification), method: :delete do %>
+                    <div>
                       <%= notification.content%>
-                    <% end %>
+                      <%= link_to notification_path(notification), method: :delete do %><i class="fa fa-times" aria-hidden="true"></i><% end %>
+                    </div>
                   <% end %>  
                 <% end %>
               <% end %>
