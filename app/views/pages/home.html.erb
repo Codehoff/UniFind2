@@ -10,7 +10,6 @@
     <div class="container fill bg">
       <div class="row">
         <div class="col-md-8 offset-md-1">
-
           <p class="mt-4 note"> <%= UniversitiesProgram.count %> programs available</p>
           <h1 class="mt-0">Looking for your next studies?</h1>
           <p>Finding the right program for your studies requires special attention and takes an effort. <br>
@@ -21,11 +20,11 @@
             <div class="box query-input">
               <div class="home-search pb-5">
               <%= form_tag universities_programs_path, method: :get do %>
-              <div class="my-row">
+              <div class="row">
                 <div class="top-search d-flex justify-content-between align-self-stretch">
                   <%= text_field_tag :query,
-                  params[:query], :class => "home-search-input w-100 mb-2", placeholder: "Program Name"%>
-                  <%= submit_tag "Search", class: "btn btn-block primary-btn " %>
+                  params[:query], :class => "home-search-input col-md-8", placeholder: "Program Name", autocomplete: 'off'%>
+                  <%= submit_tag "Search", class: "btn primary-btn " %>
                 </div>
                 </div>
               </div>
@@ -124,47 +123,47 @@
     </div>
   </div>
 
-  <div class="container mt-4">
+  <div class="container mt-4 mb-4">
     <div class="row justify-content-md-center">
       <h2 class="col-md-auto mt-4">List by discipline</h2>
     </div>
-    <div class="row mt-2">   
+    <div class="row mt-2">
       <div class="col disc-icon coding d-flex flex-column">
-      <h3 style=color:white>Computer Sciences</h3>
+      <h3>Computer Sciences</h3>
       <a href="/universities_programs?query=computer+sciences">
         <img src="/assets/icons8-developer-100(1).png" alt="Computer Scieasdnces">
       </a>
       </div>
-     
+
       <div class="col disc-icon archeology d-flex flex-column">
-      <h3 style=color:white>Archeology</h3>
+      <h3>Archeology</h3>
       <a href="/universities_programs?query=archeology">
         <img src="/assets/icons8-archeology-100(1).png" alt="Computer Scieasdnces">
       </a>
       </div>
 
       <div class="col disc-icon engineering d-flex flex-column">
-      <h3 style=color:white>Engineering</h3>
+      <h3>Engineering</h3>
       <a href="/universities_programs?query=engineering">
         <img src="/assets/icons8-engineering-100(1).png" alt="Computer Scieasdnces">
       </a>
       </div>
 
       <div class="col disc-icon architecture d-flex flex-column">
-      <h3 style=color:white>Architecture</h3>
+      <h3>Architecture</h3>
       <a href="/universities_programs?query=architecture">
         <img src="/assets/icons8-skyscrapers-100.png" alt="Computer Scieasdnces">
       </a>
       </div>
 
       <div class="col disc-icon biology d-flex flex-column">
-      <h3 style=color:white>Biology</h3>
+      <h3>Biology</h3>
       <a href="/universities_programs?query=biology">
         <img src="/assets/icons8-biotech-100.png" alt="Computer Scieasdnces">
       </a>
       </div>
       <div class="col disc-icon maths d-flex flex-column">
-      <h3 style=color:white>Mathematics</h3>
+      <h3>Mathematics</h3>
       <a href="/universities_programs?query=maths">
         <img src="/assets/icons8-trigonometry-100.png" alt="Computer Scieasdnces">
       </a>
@@ -173,42 +172,42 @@
     <div class="row mb-4">
 
       <div class="col disc-icon economics d-flex flex-column">
-      <h3 style=color:white>Economics</h3>
+      <h3>Economics</h3>
       <a href="/universities_programs?query=economics">
         <img src="/assets/icons8-stocks-100.png" alt="Computer Scieasdnces">
       </a>
       </div>
 
       <div class="col disc-icon agriculture d-flex flex-column">
-      <h3 style=color:white>Agriculture</h3>
+      <h3>Agriculture</h3>
       <a href="/universities_programs?query=agriculture">
         <img src="/assets/icons8-tractor-100.png" alt="Computer Scieasdnces">
       </a>
       </div>
 
       <div class="col disc-icon physics d-flex flex-column">
-      <h3 style=color:white>Physics</h3>
+      <h3>Physics</h3>
       <a href="/universities_programs?query=physics">
         <img src="/assets/icons8-physics-100.png" alt="Computer Scieasdnces">
       </a>
       </div>
 
       <div class="col disc-icon chemistry d-flex flex-column">
-      <h3 style=color:white>Chemistry</h3>
+      <h3>Chemistry</h3>
       <a href="/universities_programs?query=chemistry">
         <img src="/assets/icons8-test-tube-100.png" alt="Computer Scieasdnces">
       </a>
       </div>
 
       <div class="col disc-icon law d-flex flex-column">
-      <h3 style=color:white>Law</h3>
+      <h3>Law</h3>
       <a href="/universities_programs?query=law">
         <img src="/assets/icons8-law-100(1).png" alt="Computer Scieasdnces">
       </a>
       </div>
 
       <div class="col disc-icon medicine d-flex flex-column">
-      <h3 style=color:white>Medicine</h3>
+      <h3>Medicine</h3>
       <a href="/universities_programs?query=medicine">
         <img src="/assets/icons8-syringe-100.png" alt="Computer Scieasdnces">
       </a>
