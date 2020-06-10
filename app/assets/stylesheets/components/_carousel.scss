@@ -1,0 +1,40 @@
+// .carousel-item {
+//   width: 1280px;
+//   height: 540px;
+//   background-size: cover;
+//   opacity: 0.85;
+// }
+.container-all {
+  text-align: center;
+}
+
+.container-carousel {
+  display: inline-block;
+  width: 800px;
+  height: 450px;
+  text-align: center;
+  position: relative;
+  }
+
+.carousel-item {
+  margin-top: 16px;
+  border-radius: 6px;
+  box-shadow: 0 8px 8px #D3D6F5;
+}
+
+.carousel-item img {
+  width: 800px;
+  height: 450px;
+  background-size: auto;
+  border-radius: 8px;
+}
+
+.container-text {
+  background-color: white;
+  color: #121e72;
+  padding: 16px;
+  margin-right: 70px;
+  margin-left: 70px;
+  opacity: 0.8;
+  border-radius: 8px;
+}

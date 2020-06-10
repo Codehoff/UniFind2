@@ -16,8 +16,7 @@ class UniversitiesProgramsController < ApplicationController
 
   def show
     @application = Application.new
-    @uniphotos = @universities_program.university.uniphotos.photo_url
-    raise
+    @uniphotos = @universities_program.university.photo_urls
   end
 
   private

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_09_142559) do
+ActiveRecord::Schema.define(version: 2020_06_10_105135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,15 +61,6 @@ ActiveRecord::Schema.define(version: 2020_06_09_142559) do
     t.index ["universities_programs_document_id"], name: "index_programs_on_universities_programs_document_id"
   end
 
-  create_table "uniphotos", force: :cascade do |t|
-    t.string "photo_url", array: true
-    t.string "logo_url"
-    t.bigint "universities_program_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["universities_program_id"], name: "index_uniphotos_on_universities_program_id"
-  end
-
   create_table "universities", force: :cascade do |t|
     t.string "name"
     t.string "city"
@@ -78,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_06_09_142559) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "universities_program_id"
+    t.string "photo_urls", default: [], array: true
     t.index ["universities_program_id"], name: "index_universities_on_universities_program_id"
   end
 
@@ -94,6 +86,9 @@ ActiveRecord::Schema.define(version: 2020_06_09_142559) do
     t.bigint "program_id"
     t.bigint "university_id"
     t.string "picture"
+    t.string "application_url"
+    t.string "university_info"
+    t.string "application_info"
     t.index ["program_id"], name: "index_universities_programs_on_program_id"
     t.index ["university_id"], name: "index_universities_programs_on_university_id"
   end
@@ -137,7 +132,6 @@ ActiveRecord::Schema.define(version: 2020_06_09_142559) do
   add_foreign_key "notifications", "applications"
   add_foreign_key "programs", "universities_programs"
   add_foreign_key "programs", "universities_programs_documents"
-  add_foreign_key "uniphotos", "universities_programs"
   add_foreign_key "universities", "universities_programs"
   add_foreign_key "universities_programs", "programs"
   add_foreign_key "universities_programs", "universities"

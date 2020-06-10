@@ -4,5 +4,4 @@ class UniversitiesProgram < ApplicationRecord
   has_many :applications, dependent: :destroy
   has_many :universities_programs_documents, dependent: :destroy
   has_many :documents, through: :universities_programs_documents, dependent: :destroy
-  has_many :uniphotos, dependent: :destroy
 end
