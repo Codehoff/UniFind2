@@ -3,6 +3,7 @@ class NotificationsController < ApplicationController
 
   def destroy
     @notification.destroy
+    redirect_to "applications"
   end
 
 

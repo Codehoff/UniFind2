@@ -1,17 +1,14 @@
 .calendar-wrapper {
-  z-index: 2;
-  margin: 0 auto;
-  top: 2%;
-  left: 27%;
-  background: $tertiary;
-  margin-top: 16px;
-  border-radius: 12px;
-  padding: 16px;
+  display: block;
+  overflow: auto;
+  border: 25px solid #F3F4FF;
+  border-radius: 15px;
 }
 
 #calendar {
   z-index: 1;
   background: white;
+  width: 100%;
 }
 
 .fa {
@@ -25,54 +22,64 @@
   }
 
   .wday-0 {
-
-    width: 120px;
+    height: 150px;
+    width: 150px;
     background-color: $text2;
     border: 1px white solid;
     text-align: center;
+    font-size: 25px;
+   
   }
   .wday-1 {
+    height: 150px;
     border: 1px white solid;
-    width: 120px;
+    width: 150px;
     text-align: center;
+    font-size: 25px;
   }
   .wday-2 {
+    height: 150px;
     border: 1px white solid;
-    width: 120px;
+    width: 150px;
     text-align: center;
+    font-size: 25px;
   }
   .wday-3 {
+    height: 150px;
     border: 1px white solid;
-    width: 120px;
+    width: 150px;
     text-align: center;
+    font-size: 25px;
   }
   .wday-4 {
+    height: 150px;
     border: 1px white solid;
-    height: 60px;
-    width: 120px;
+    width: 150px;
     text-align: center;
+    font-size: 25px;
   }
   .wday-5 {
+    height: 150px;
     border: 1px white solid;
-    height: 60px;
-    width: 120px;
+    width: 150px;
     text-align: center;
+    font-size: 25px;
 
   }
   .wday-6 {
+    height: 150px;
     border: 1px white solid;
-    height: 60px;
-    width: 120px;
+    width: 150px;
     background-color: $text2;
     text-align: center;
+    font-size: 25px;
   }
 
   .today {
-    color:red;
-    background: white;
-    text-align: center;
-    border-radius: 50%;
-
+    height: 150px;
+    color:white;
+    background: grey;
+    font-size: 25px;
   }
 
   .past {
@@ -95,19 +102,79 @@
  .current-month {}
 
  .has-events {
-
  }
- .round {
-  border-radius: 50%;
-  width: 2px;
-  height: 2px;
-
-
-
-  background-color: red;
-
-  color: #666;
-  text-align: center;
 }
+
+.program-done {
+  display: block;
+  overflow: auto;
+  border: 1px green solid;
 }
+
+.program-todo {
+  display: block;
+  overflow: auto;
+  border: 1px red solid;
+}
+
+#secret-box {
+
+font-size: 25px;
+
+}
+
+.tabs-underlined {
+  display: flex;
+  align-items: center;
+}
+
+.tabs-underlined .tab-underlined {
+  color: black;
+  padding: 8px;
+  margin: 8px 16px;
+  opacity: .4;
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: 4px solid transparent;
+}
+
+.tabs-underlined .tab-underlined.active {
+  opacity: 1;
+
+}
+
+.tab {
+  overflow: hidden;
+  background-color: white
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: #F3F4FF;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #6E76A9;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #6E76A9;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border-top: none;
+}
+
 
