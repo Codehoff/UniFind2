@@ -22,7 +22,7 @@
 }
 
 #hidden-search {
-  margin-top: 50px;
+  margin-top: 16px;
   margin-left: 29px;
   margin-right: auto;
   display: none;
@@ -30,14 +30,15 @@
   padding-top: 20px;
   width: 610px;
   position: absolute;
-  padding-bottom: 30px;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-bottom: 16px;
+  padding-left: 32px;
+  padding-right: 32px;
   z-index: 2;
-  border-radius: 3px;
+  border-radius: 4px;
   top: 230px;
   left: -14px;
   opacity: 0.95;
+  font-size:16px;
 }
 
 #close {
@@ -97,8 +98,8 @@
 
 .search-header {
   font-weight: bold;
-  font-size: 12px;
-  margin: 20px 0px 10px 0px;
+  font-size: 16px;
+  margin: 16px 0px 8px 0px;
 }
 .form-control:focus {
   border-color: none;
