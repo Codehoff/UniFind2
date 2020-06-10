@@ -9,7 +9,7 @@
                 <div class = "card-dashboard mt-3 p-3">
                   <% @appdoc = ApplicationsDocument.new %>
                   <%if current_user.id == app.user.id%>
-                    <div class="ml-2 mt-2">
+                    <div class="ml-2 mt-2" style="text-align:left">
                       <h2><%= app.universities_program.program.name %></h2>
                       <h2 style="font-size:20px;"><%= app.university.name %></h2>
                       <h5 class=deadline>Deadline: <%= app.universities_program.start_time.strftime("%A, %d %B %Y") %></h5>
@@ -18,7 +18,7 @@
                         <% uploaded_documents << doc.name %>
                       <%end%>
                     </div>
-                    <h3 class=ml-2>Required Documents:</h3>
+                    <h3 class=ml-2 style=text-align:left>Required Documents:</h3>
                     <div class="required-docs-container ml-2 mb-2">
                       <div class="ml-2 d-flex align-items-center p-2">
                         <% app.universities_program.documents.each do |doc| %>
@@ -55,7 +55,7 @@
                     <div class=delete>
                       <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <i class="fa fa-trash" aria-hidden="true"></i><% end %>
                     </div>
-                    <div class="document-form ml-2">
+                    <div class="document-form ml-2" style="text-align:left">
                       <%= simple_form_for([app, @appdoc]) do |f| %>
                         <h5>Attach a required document</h5>
                         <%= f.association :document, label: false , class: "btn secondary-btn" %>
