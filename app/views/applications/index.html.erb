@@ -1,89 +1,86 @@
-
-  <div class="container-fluid" style="border-top:1px solid gray;">
-    <div class="container p-0">
-      <div class="row">
-        <div class="col-8" style="height: 100vh; border-right:1px solid gray">
+<div class="container-fluid" style="border-top:1px solid gray;">
+  <div class=container>
+    <div class="row">
+      <div class="col-8">
+        <div class="col-12" style="height: 100vh; border-right:1px solid gray">
           <div class="row">
             <div class="col-12">
               <% @applications.each do |app|%>
-              <% app.universities_program.documents - app.documents == []%>
-
-              <% @appdoc = ApplicationsDocument.new %>
-              <%if current_user.id == app.user.id%>
-              <ul>
-                <h2><%= app.universities_program.program.name %></h2>
-                <h3><%= app.university.name %></h3>
-                <h5>Application deadline: <%= app.universities_program.start_time %></h5>
-                <% uploaded_documents = [] %>
-                <% app.documents.each do |doc| %>
-                <% uploaded_documents << doc.name %>
-                <% end %>
-                <ul>
-                  <% app.universities_program.documents.each do |doc| %>
-                  <% if uploaded_documents.include? doc.name %>
-                  <li style="color:green">
-                    <%= doc.name %>
-                  </li>
-                  <% else %>
-                  <li style="color:red">
-
-                    <%=doc.name%>
-                    <%end%>
-                    <%end%>
-                    <%= simple_form_for([app, @appdoc]) do |f| %>
-                    <h5>Attach a required document</h5>
-                    <p class= "desc-text" style="text-align:left;">Your document type:</p>
-                  </li>
-
-                  <%= f.association :document, label: false , class: "btn secondary-btn" %>
-                  <%= f.input :document, as: :file%>
-                  <%= f.button :submit, class: "btn transparent-btn" %>
-                  <div class="col-12">
-
-                    <% docs_count = uploaded_documents.count %>
-                    <% docs_required = app.universities_program.documents.count %>
-                    <% ratio_docs_uploaded = 100 * (docs_count.to_f / docs_required.to_f) %>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%=ratio_docs_uploaded%>%" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+                <div class = "card-dashboard mt-3 p-3" style=height:400px;>
+                  <% app.universities_program.documents - app.documents == []%>
+                  <% @appdoc = ApplicationsDocument.new %>
+                  <%if current_user.id == app.user.id%>
+                    <div class="ml-2 mt-2">
+                      <h2><%= app.universities_program.program.name %></h2>
+                      <h3><%= app.university.name %></h3>
+                      <h5>Application deadline: <%= app.universities_program.start_time.strftime("%A, %d %B %Y") %></h5>
+                      <% uploaded_documents = [] %>
+                      <% app.documents.each do |doc| %>
+                        <% uploaded_documents << doc.name %>
+                      <%end%>
                     </div>
-                  </div>
-                  <!-- <a href="#" onclick="myFunction(); return false;"><i class="fa fa-calendar" aria-hidden="true"></i></a> -->
-                  <% end %>
-                </ul>
-                <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <i class="fa fa-trash" aria-hidden="true"></i><% end %>
-              </ul>
-
+                    <ul class="ml-2">
+                      <% app.universities_program.documents.each do |doc| %>
+                        <% if uploaded_documents.include? doc.name %>
+                          <li style="color:green;">
+                            <%= doc.name %>
+                          </li>
+                        <% else %>
+                          <li style="color:red">
+                            <%=doc.name%>
+                        <%end%>
+                      <%end%>
+                    </ul>
+                      <div class=document-form>
+                        <%= simple_form_for([app, @appdoc]) do |f| %>
+                          <h5>Attach a required document</h5>
+                          <%= f.association :document, label: false , class: "btn secondary-btn" %>
+                          <%= f.input :document, as: :file, label: false%>
+                          <%= f.button :submit, class: "btn transparent-btn" %>
+                          <!-- <a href="#" onclick="myFunction(); return false;"><i class="fa fa-calendar" aria-hidden="true"></i></a> -->
+                        <% end %>
+                      </div>
+                      <div class="col-12">
+                        <% docs_count = uploaded_documents.count %>
+                        <% docs_required = app.universities_program.documents.count %>
+                        <% ratio_docs_uploaded = 100 * (docs_count.to_f / docs_required.to_f) %>
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%=ratio_docs_uploaded%>%" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                      <div class=delete>
+                        <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <i class="fa fa-trash" aria-hidden="true"></i><% end %>
+                      </div>
+                  <%end%>
+                </div>
+              <%end%>
             </div>
-            <%end%>
-            <%end%>
-          </ul>
+          </div>
         </div>
-
-
-
-
-        <div class="col-4" style="height: 100vh; background-color: white;">
-          <div class="calendar-wrapper p-3" >
-            <div class= close>
-              <!-- <a href="#" onclick="myOtherFunction(); return false;"><i class="fa fa-times" style="color:black" aria-hidden="true"></i></a> -->
-            </div>
-            <div id=calendar>
-              <h2>Your calendar:</h2> <%= DateTime.now.strftime('%d %A') %>
-              <%= month_calendar events: @universities_programs do |date, universities_programs| %>
+      </div>
+      <div class="col-4" style="height: 100vh; background-color: white;">
+        <div class="calendar-wrapper p-3" >
+          <div class= close>
+          <!-- <a href="#" onclick="myOtherFunction(); return false;"><i class="fa fa-times" style="color:black" aria-hidden="true"></i></a> -->
+          </div>
+          <div id=calendar>
+            <h2>Your calendar:</h2> <%= DateTime.now.strftime('%d %A') %>
+            <%= month_calendar events: @universities_programs do |date, universities_programs| %>
               <%= date.day %>
               <% universities_programs.each do |program|%>
-              <% if @universities_programs_done.include? program %>
-              <div class=mt-1 style="border: 2px solid green; color:black">
-                <%=program.university.name%>
-                <%=program.program.name%>
-              </div>
-              <% else %>
-              <!-- comment -->
-
+                <% if @universities_programs_done.include? program %>
+                  <div class=mt-1 style="border: 2px solid green; color:black">
+                    <%=program.university.name%>
+                    <%=program.program.name%>
+                  </div>
+                <% else %>
+                  <div class=mt-1 style="border: 2px solid red; color:black">
+                    <%=program.university.name%>
+                    <%=program.program.name%>
+                  </div>
+                <%end%>
               <%end%>
-              <%end%>
-              <% end %>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>

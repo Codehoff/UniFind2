@@ -3,7 +3,7 @@ class ApplicationsController < ApplicationController
   before_action :new_notification, only: [:index]
 
   def index
-    @applications = Application.joins(:universities_program).order("start_time ASC")
+    @applications = Application.joins(:universities_program).order("start_time ASC").where(user_id: current_user.id)
     @universities_programs = []
     @applications.each do |app|
       @universities_programs << app.universities_program if app.user_id == current_user.id 
