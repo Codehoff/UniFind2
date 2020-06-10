@@ -62,9 +62,80 @@ margin: 64px 0 0 0;
 }
 
 .disc-icon {
-  background-color: $secondary;
+  background-color: $tertiary;
   height: 160px;
   margin: 2px;
+}
+.coding {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.archeology{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.medicine{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.engineering{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.architecture{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.law{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.biology{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.maths{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chemistry{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.economics{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.agriculture{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.physics{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .tag-label:hover {

@@ -36,6 +36,9 @@
   color: white;
   background-color: $secondary;
   padding: 2px 8px;
-  border-radius: 4px;
+  border-radius: 25px;
+}
 
+.taglabel:hover {
+  text-decoration: none;
 }

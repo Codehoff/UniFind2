@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   end
 
   resources :notifications, only: [:destroy]
+  resources :applications_documents, only: [:destroy]
 end

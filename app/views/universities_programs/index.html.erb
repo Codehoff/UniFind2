@@ -17,9 +17,6 @@
           <h5 id=num_results class= "mt-2"></h5>
         </div>
         <div class="row mx-2 mb-0">
-
-
-
         </div>
         <div id=all_programs class="row pl-3 pr-3 pt-0">
           <% @universities_programs.each do |program|%>
@@ -31,6 +28,7 @@
               <p style="display:inline"><%=program.university.city%></p>
               <h3><%=program.degree%></h3>
             </div>
+
             <%= link_to "universities_programs/#{program.id}" do %>
             <label style="cursor: pointer;" class="secondary-btn">See details</label>
             <%end%>
@@ -41,6 +39,7 @@
     </div>
   </div>
 </div>
+
 
 <script>
 var results = document.getElementById("num_results");
@@ -55,4 +54,5 @@ results.insertAdjacentHTML("afterbegin", insertion)
 
 
 </script>
+
 

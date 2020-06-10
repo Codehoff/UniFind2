@@ -6,5 +6,5 @@ class Application < ApplicationRecord
     has_one :university, through: :universities_program
     has_one :program, through: :universities_program
     has_many :notifications, dependent: :destroy
-    validates :universities_program_id, uniqueness: true
+    validates :universities_program_id, uniqueness: { scope: :user_id }
 end

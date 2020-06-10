@@ -40,3 +40,46 @@
   width:80px;
   object-fit:fit;
 }
+
+.card-dashboard {
+  margin-top: 16px;
+  background-color: $tertiary;
+  border-radius: 6px;
+  box-shadow: 0 8px 8px #D3D6F5;
+  position: relative;
+  display: block;
+  overflow: auto;
+}
+
+.horizontal-list {
+  display: inline-flex;
+}
+
+.document-form {
+  width: 250px;
+}
+
+.delete {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.deadline {
+  position:absolute;
+  top:20px;
+  right: 50px;
+  font-weight: 600;
+}
+
+.required-docs-container {
+  border:1px solid black;
+  display: block;
+  overflow: auto;
+}
+
+.mark-complete {
+  position:absolute;
+  bottom: 5px;
+  right: 5px;
+}
