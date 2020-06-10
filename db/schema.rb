@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_09_091236) do
+ActiveRecord::Schema.define(version: 2020_06_10_105135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_06_09_091236) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "universities_program_id"
+    t.string "photo_urls", default: [], array: true
     t.index ["universities_program_id"], name: "index_universities_on_universities_program_id"
   end
 
@@ -85,6 +86,9 @@ ActiveRecord::Schema.define(version: 2020_06_09_091236) do
     t.bigint "program_id"
     t.bigint "university_id"
     t.string "picture"
+    t.string "application_url"
+    t.string "university_info"
+    t.string "application_info"
     t.index ["program_id"], name: "index_universities_programs_on_program_id"
     t.index ["university_id"], name: "index_universities_programs_on_university_id"
   end

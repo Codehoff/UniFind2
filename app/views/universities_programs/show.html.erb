@@ -1,39 +1,90 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/donatadietz/image/upload/v1591355034/TUM2_bqy4rd.jpg);">
-  <div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+ <div class="container-all">
+  <div class="container-carousel">
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div id="photo">
+            <%= image_tag(@universities_program.university.photo_urls[0]) %>
+          </div>
+          <div class="carousel-caption d-none d-md-block">
+            <div class="container-text">
+              <h3 style="display: inline"><%= @universities_program.university.name %></h3>, <p style="display: inline"><%=@universities_program.university.city%></p>
+              <br>
+              <br>
+              <h4><%=@universities_program.program.name%></h4>
+              <br>
+              <h5>You can do your <%= @universities_program.degree %> here</h5>
+              <h5>The Bachelor goes on for <%= @universities_program.semesters %> Semesters</h5>
 
-    <h3 style="display: inline"><%=@universities_program.university.name%></h3>, <p style="display: inline"><%=@universities_program.university.city%></p>
-    <br>
-    <br>
-    <h4><%=@universities_program.program.name%></h4>
-    <br>
-    <h5>You can do your <%=@universities_program.degree%> here</h5>
-    <h5>The Bachelor goes on for <%=@universities_program.semesters%> Semesters</h5>
-
-    <% if @universities_program.applications.where(user_id: current_user.id) == []%>
-
-      <%= form_tag applications_path, method: :post do %>
-      <%= hidden_field_tag "application[universities_program_id]", @universities_program.id %>
-      <%= submit_tag "Add to dashboard", class: "btn btn-primary" %>
-      <% end %>
-    <% else %>
-
-    <%= link_to "/applications" do %> <button class="btn btn-primary">See on the dashboard</button> <% end %>
-
-    <% end %>
-
+              <%= form_tag applications_path, method: :post do %>
+              <%= hidden_field_tag "application[universities_program_id]", @universities_program.id %>
+              <%= submit_tag "Add to dashboard", class: "btn btn-primary" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div id="photo">
+            <%= image_tag(@universities_program.university.photo_urls[1]) %>
+          </div>
+          <div class="carousel-caption d-none d-md-block">
+            <div class="container-text">
+              <h3 style="display: inline"><%= @universities_program.university.name %></h3>, <p style="display: inline"><%=@universities_program.university.city%></p>
+              <br>
+              <br>
+              <h4><%=@universities_program.program.name%></h4>
+              <br>
+              <h5>You can do your <%= @universities_program.degree %> here</h5>
+              <h5>The Bachelor goes on for <%= @universities_program.semesters %> Semesters</h5>                   
+              <% if @universities_program.applications.where(user_id: current_user.id) == []%>
+                <%= form_tag applications_path, method: :post do %>
+                  <%= hidden_field_tag "application[universities_program_id]", @universities_program.id %>
+                  <%= submit_tag "Add to dashboard", class: "btn btn-primary" %>
+                <% end %>
+              <% else %>
+                <%= link_to "/applications" do %> <button class="btn btn-primary">See on the dashboard</button> <% end %>
+              <% end %> 
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
   </div>
 </div>
-<div class="container" style="min-width: 100vh; margin-top: 40px; ">
-  <div class="uni-info" width="200">
-    <h3 style="font-size: 24px;">Learn more about us</h3>
-    <p style="font-size: 16px;">The Technical University of Munich (TUM) is one of the best universities in Europe. They are characterized by excellence in research and teaching, interdisciplinarity and talent promotion. There are also strong alliances with companies and scientific institutions around the world. The TUM is one of the first three universities of excellence in Germany. It regularly performs excellently in international and national rankings....</p>
-    <a href="https://www.tum.de/studium/studienangebot/detail/architektur-bachelor-of-arts-ba/" target="_blank"><label class="secondary-btn">Official Page</label></a>
-    <br>
-    <br>
-    <h3 style="font-size: 24px;" >What it's like to study architecture at TU Munich</h3>
-    <p style="font-size: 16px;"> The first four semesters teach the basics of perception and design, the methodology of architectural design, as well as the basics of science, technology, and the humanities and social sciences in architecture. They are therefore predominantly characterized by compulsory subjects.
-    In the 5th and 6th semester, the study takes place at a foreign partner university. The learning content will continue to be closely coordinated with the Faculty of Architecture at the TU Munich.....</p>
-    <a style="margin-bottom: 40px;" href="https://www.tum.de/studium/bewerbung/onlinebewerbung/" target="_blank"><label class="secondary-btn">Application Site</label></a>
+
+  <div class="container-info" style="margin-top: 40px; ">
+    <div class="uni-info" width="200">
+      <h3 style="font-size: 22px;">Learn more about the faculty</h3>
+      <p style="font-size: 14px;"><%= @universities_program.university_info %></p>
+      <a href= "<%= @universities_program.webpage_url %>" target="_blank"><label class="secondary-btn">Official Page</label></a>
+      <br>
+      <br>
+      <h3 style="font-size: 22px;" >What it's like to study architecture at our university</h3>
+      <p style="font-size: 14px;"> <%=  @universities_program.application_info %> </p>
+      <a style="margin-bottom: 40px;" href="<%= @universities_program.application_url %>" target="_blank"><label class="secondary-btn">Application Site</label></a>
+    </div>
   </div>
-</div>
+
+
+</body>
+</html>
 

@@ -11,8 +11,9 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "pages/show";
 @import "components/banner";
-
+@import "components/carousel";
 
 .transition1 {
   animation: transitionIn ease-in-out 0.5s;
