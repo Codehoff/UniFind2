@@ -2,28 +2,40 @@
 <html>
 <head>
   <title>Sorry, the page you are searching for doesn't exist (404)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-    .bg {
-  background-image: url(assets/searching.png);
-  background-repeat:  no-repeat;
-  background-size: 280px;
-  background-position: right 32px bottom -20px;
+    .container {
+      width: 980px;
+      margin: 0 auto;
+      min-height: 100vh;
+    }
+    .err {
+      background-image: url(assets/404.jpg);
+      background-repeat:  no-repeat;
+      background-size: 600px;
+      background-position: center;
+      height: 600px;
+
+    }
+    .fill {
+  margin-top: 16px;
+  background-color: #F3F4FF;
+  border-radius: 6px;
+  box-shadow: 0 8px 8px #D3D6F5;
 }
   </style>
 </head>
 
 <body>
-  <div class="container-fluid">
-    <div class="container fill bg">
-      <div class="row">
-        <div class="col-md-8 offset-md-1">
-          <h1 class="mt-0">Something has gone wrong.</h1>
-          <p>the page you are looking for doesn't exist.<br>
-          Just go back to UniFind.me to manage your university applications and never miss a deadline again!</p>
-        </div>
+  <div class="container ">
+    <div class="row err">
+      <div class="col-md-8 offset-md-1">
+        <h1 class="mt-0" style="font-family: 'Permanent Marker', cursive; color: #8992FF; text-align: center; font-size:64px;">Ooops!</h1>
       </div>
     </div>
+    <p style="font-family: 'Questrial', sans-serif; color: #121E72; font-size:24px; text-align: center;">We can't seem to find the page you're looking for.</p>
   </div>
 </body>
 </html>
