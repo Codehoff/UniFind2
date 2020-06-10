@@ -42,14 +42,17 @@
 }
 
 .card-dashboard {
-  height: 90px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-top: 16px;
+  background-color: $tertiary;
+  border-radius: 6px;
+  box-shadow: 0 8px 8px #D3D6F5;
   position: relative;
+  display: block;
+  overflow: auto;
 }
 
-.horizontal {
-  display: inline;
+.horizontal-list {
+  display: inline-flex;
 }
 
 .document-form {
@@ -60,4 +63,23 @@
   position: absolute;
   top: 20px;
   right: 20px;
+}
+
+.deadline {
+  position:absolute;
+  top:20px;
+  right: 50px;
+  font-weight: 600;
+}
+
+.required-docs-container {
+  border:1px solid black;
+  display: block;
+  overflow: auto;
+}
+
+.mark-complete {
+  position:absolute;
+  bottom: 5px;
+  right: 5px;
 }
