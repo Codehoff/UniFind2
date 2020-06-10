@@ -26,11 +26,14 @@
               <br>
               <h5>You can do your <%= @universities_program.degree %> here</h5>
               <h5>The Bachelor goes on for <%= @universities_program.semesters %> Semesters</h5>
-
-              <%= form_tag applications_path, method: :post do %>
-              <%= hidden_field_tag "application[universities_program_id]", @universities_program.id %>
-              <%= submit_tag "Add to dashboard", class: "btn btn-primary" %>
-              <% end %>
+              <% if @universities_program.applications.where(user_id: current_user.id) == []%>
+                <%= form_tag applications_path, method: :post do %>
+                  <%= hidden_field_tag "application[universities_program_id]", @universities_program.id %>
+                  <%= submit_tag "Add to dashboard", class: "btn btn-primary" %>
+                <% end %>
+              <% else %>
+                <%= link_to "/applications" do %> <button class="btn btn-primary">See on the dashboard</button> <% end %>
+              <% end %> 
             </div>
           </div>
         </div>
