@@ -40,3 +40,24 @@
   width:80px;
   object-fit:fit;
 }
+
+.card-dashboard {
+  height: 90px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.horizontal {
+  display: inline;
+}
+
+.document-form {
+  width: 250px;
+}
+
+.delete {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
