@@ -46,3 +46,8 @@
     transform: translateX(0);
   }
 }
+
+a:-webkit-any-link {
+    text-decoration: none;
+    cursor: pointer;
+}
