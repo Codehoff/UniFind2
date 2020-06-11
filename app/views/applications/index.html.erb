@@ -97,9 +97,12 @@
                         <% end %>
                       </div>
                       <% if app.universities_program.documents - app.documents == []%>
-                        <div class="mark-complete m-2" >
+                        <div class="mark-complete m-2">
                           <%= simple_form_for(app) do |f|%>
-                            <%= f.button :submit, "Your application is ready to be submitted 🎉", class: "btn btn-light", onsubmit: "return false" %>
+
+                            <%= hidden_field_tag "application_url", app.universities_program.application_url, id: "hidden-field" %>
+                            <%= f.button :submit, "Apply now", class: "btn btn-primary", id:"send-button", onsubmit: "return false" %>
+
                           <%end%>
                         </div>
                       <% end %>
@@ -158,14 +161,11 @@
                       </div>
                       <div class=delete>
                         <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <i class="fa fa-trash" aria-hidden="true"></i><% end %>
-                      </div>                                            </div>
+                      </div>                                            
                   <%end%>
                 </div>
               <% end %>
             </div>
-
-
-
           </div>
         </div>
       </div>
@@ -174,6 +174,15 @@
 </div>
 
 
+
+<script> 
+var button1 = document.getElementById("send-button");
+var hiddenField = document.getElementById("hidden-field");
+                            
+button1.addEventListener("click", function() {
+window.open(hiddenField.value, "_blank")
+});
+</script>
 
 
 
