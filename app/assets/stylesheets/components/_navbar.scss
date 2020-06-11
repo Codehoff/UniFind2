@@ -25,6 +25,15 @@
   z-index: 1;
 }
 
+.notifications-content a {
+  color:black;
+}
+
+.notifications-content a:hover {
+  color:black;
+  text-decoration: none;
+}
+
 .diese-hier {
   position:absolute;
   right: 5%;
@@ -58,4 +67,13 @@
   border: 1px solid rgb(197, 195, 195);
   margin-top: 3px;
   padding: 3px;
+}
+
+.notifications-content img {
+  height: 100%;
+  display: flex;
+  
+  object-fit: cover;
+  max-width: 100%;
+  padding-left: 8px;
 }

@@ -34,8 +34,13 @@
               <% else %>
                 <% @notifications.each do |notification|%>
                   <%if notification.application.user_id == current_user.id%>
-                    <div class = "notifications-content p-2 m-2" >
+                    <div class = "notifications-content p-2 m-2" style="color:black;" >
+                      <div class="logo">
+                        <%= image_tag(notification.application.universities_program.picture, class:"ml-3") %>
+                      </div>
                       <%= notification.content%>
+                      <%= link_to "/applications", method: :get do %><i class="fas fa-search ml-1 ml-3" style=color:$primary></i>
+                      <% end %>
                       <%= link_to notification_path(notification), method: :delete do %><i class="fa fa-times" style="color:red"aria-hidden="true"></i><% end %>
                     </div>
                   <% end %>
