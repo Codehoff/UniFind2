@@ -100,3 +100,20 @@
 }
 .grow { transition: all .3s ease-in-out; }
 .grow:hover { transform: scale(1.02); }
+
+.border-top {
+      box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
+  border-top: 4px solid #FE7C76 !important;
+}
+
+.border-primary {
+ border-top: 4px solid $secondary !important;
+}
+
+.overlay {
+   background-color:rgba(246, 143, 90, 0.1);
+   height: 100%;
+   width: 100%;
+}
