@@ -42,7 +42,7 @@ class ApplicationsController < ApplicationController
   def update
     @application.completed = true
     @application.save
-    redirect_to "#{@application.universities_program.application_url}", notice: 'Application was sent to your archive!'
+    redirect_to "/applications", notice: 'Application was sent to your archive!'
   end
 
   def destroy
