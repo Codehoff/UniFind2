@@ -34,9 +34,9 @@
               <% else %>
                 <% @notifications.each do |notification|%>
                   <%if notification.application.user_id == current_user.id%>
-                    <div class = notifications-content>
+                    <div class = "notifications-content p-2 m-2" >
                       <%= notification.content%>
-                      <%= link_to notification_path(notification), method: :delete do %><i class="fa fa-times" aria-hidden="true"></i><% end %>
+                      <%= link_to notification_path(notification), method: :delete do %><i class="fa fa-times" style="color:red"aria-hidden="true"></i><% end %>
                     </div>
                   <% end %>
                 <% end %>
@@ -48,7 +48,7 @@
           <%= image_tag "https://res.cloudinary.com/donatadietz/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1591834465/IMG_5184_zhmz8z.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Profile", "#", class: "dropdown-item" %>
-            <%= link_to "Dashboard", "/applications", class: "dropdown-item" %>
+            <%= link_to "My applications", "/applications", class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
