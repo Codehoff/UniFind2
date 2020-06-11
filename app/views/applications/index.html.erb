@@ -14,7 +14,7 @@
               <div class= close>
                 </div>
                 <div id="events_calendar">
-            
+
                   <%= render "simple_calendar/calendar"%>
                 </div>
               </div>
@@ -22,7 +22,7 @@
           </div>
             <div id= cards-tab class="tabcontent col-12 ml-0">
               <% @applications.each do |app|%>
-                <div class = "card-dashboard mt-3 p-3 mb-3">
+                <div class = "card-dashboard mt-3 p-3 mb-3 border-top border-primary">
                   <% @appdoc = ApplicationsDocument.new %>
                   <%if current_user.id == app.user.id%>
                       <div class="ml-2 mt-1" style="text-align:left">
@@ -33,7 +33,7 @@
                         <h5 style="text-align:right"><%=((app.universities_program.start_time - Time.now)/86400).ceil%> days left</h5>
                         </div>
 
-                        
+
 
                         <% uploaded_documents = [] %>
                         <% app.documents.each do |doc| %>
@@ -87,7 +87,7 @@
                           <br>
                           <%= f.button :submit, "Add document", class: "btn transparent-btn",onsubmit: "return false" %>
                         <% end %>
-                        
+
                       </div>
                       <div class=delete>
                         <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <button class="btn btn-info">Delete application</button> <% end %>
@@ -107,7 +107,8 @@
               <% end %>
             </div>
             </div>
-                      <div id= finished-apps-tab class="tabcontent col-12 ml-0">
+
+                      <div id= finished-apps-tab class="tabcontent col-12 ml-0 border-top border-primary">
                         <% @applications_complete.each do |app|%>
                           <div class = "card-dashboard-done mt-3 p-3 mb-3">
                             <% @appdoc = ApplicationsDocument.new %>
@@ -120,6 +121,7 @@
                                 <% app.documents.each do |doc| %>
                                   <% uploaded_documents << doc.name %>
                                 <%end%>
+
                               </div>
                               <h3 class="ml-2 my-2" style=text-align:left>Required Documents:</h3>
                               <div class="required-docs-container ml-2 mb-2"style="background:white;border:1px solid gray,border-radius:8px;">
