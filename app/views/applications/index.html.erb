@@ -103,12 +103,11 @@
                           <h5>Attach a required document</h5>
                           <%= f.association :document, label: false , class: "btn secondary-btn" %>
                           <%= f.input :document, as: :file, label: false %>
-                          <%= f.button :submit, "Add document", class: "btn transparent-btn",onsubmit: "return false" %>
+                          <%= f.button :submit, "Add document",  class: "btn transparent-btn",onsubmit: "return false" %>
                           <!-- <a href="#" onclick="myFunction(); return false;"><i class="fa fa-calendar" aria-hidden="true"></i></a> -->
                         <% end %>
                       </div>
                     <% end %>
-
           </div>
         </div>
       </div>
