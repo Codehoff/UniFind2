@@ -24,7 +24,7 @@
 .text-left {
   color: #121E72;
   margin-top: 8px;
-  margin-left: 130px;
+  margin-left: 16px;
 }
 
 .text-left h3 {
@@ -36,9 +36,18 @@
 }
 
 .logo {
-  margin-left: 40px;
-
+  margin-left: 16px;
+  background-color: white;
+  opacity: 0.9;
+  margin: 16px 0;
+  padding: 8px;
 }
+
+.color-add {
+  background-color: #DEEBFF;
+  border-right: 1px solid rgba(151,151,151,0.1);
+}
+
 
 .mt-2, .my-2 {
   margin-top: 16px !important;
