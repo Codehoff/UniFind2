@@ -30,10 +30,10 @@
         <% if @universities_program.applications.where(user_id: current_user.id) == []%>
         <%= form_tag applications_path, method: :post do %>
         <%= hidden_field_tag "application[universities_program_id]", @universities_program.id %>
-        <%= submit_tag "Add to dashboard", class: "btn btn-primary" %>
+        <%= submit_tag "Apply now!", class: "btn btn-primary" %>
         <% end %>
         <% else %>
-        <%= link_to "/applications" do %> <button class="btn btn-primary">Go to application</button> <% end %>
+        <%= link_to "/applications" do %> <button class="btn btn-primary">Apply now!</button> <% end %>
         <% end %>
       </div>
     </div>
