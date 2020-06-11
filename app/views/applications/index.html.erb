@@ -108,9 +108,9 @@
             </div>
             </div>
 
-                      <div id= finished-apps-tab class="tabcontent col-12 ml-0 border-top border-primary">
+                      <div id= finished-apps-tab class="tabcontent col-12 ml-0 ">
                         <% @applications_complete.each do |app|%>
-                          <div class = "card-dashboard-done mt-3 p-3 mb-3">
+                          <div class = "card-dashboard-done mt-3 p-3 mb-3 border-top border-primary">
                             <% @appdoc = ApplicationsDocument.new %>
                             <%if current_user.id == app.user.id%>
                               <div class="ml-2 mt-2" style="text-align:left">
@@ -163,7 +163,7 @@
                             <% end %>
                           </div>
                         <% end %>
-                      </div>                          
+                      </div>
                   </div>
               </div>
           </div>
