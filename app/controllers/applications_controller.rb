@@ -50,6 +50,7 @@ class ApplicationsController < ApplicationController
     redirect_to "/applications"
   end
 
+
   private
 
   def set_application
