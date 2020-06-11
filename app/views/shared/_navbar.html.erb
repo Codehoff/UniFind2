@@ -34,9 +34,9 @@
               <% else %>
                 <% @notifications.each do |notification|%>
                   <%if notification.application.user_id == current_user.id%>
-                    <div class = notifications-content>
+                    <div class = "notifications-content p-2 m-2" >
                       <%= notification.content%>
-                      <%= link_to notification_path(notification), method: :delete do %><i class="fa fa-times" aria-hidden="true"></i><% end %>
+                      <%= link_to notification_path(notification), method: :delete do %><i class="fa fa-times" style="color:red"aria-hidden="true"></i><% end %>
                     </div>
                   <% end %>
                 <% end %>

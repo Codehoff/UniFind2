@@ -7,6 +7,7 @@ class PagesController < ApplicationController
 
   def new_notification
     if user_signed_in?
+      Notification.destroy_all
       @user_apps = Application.joins(:universities_program).order("start_time ASC").where(user_id: current_user.id)
       @user_programs = [] 
       @user_apps.each do |app|
