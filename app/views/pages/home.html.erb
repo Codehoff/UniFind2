@@ -14,7 +14,11 @@
         <div class="col-md-8 offset-md-1">
           <br>
           <br>
-          <h1 class="mt-0">Start organizing your university applications</h1>
+          <% if user_signed_in? %>
+            <h1 class="mt-0">Hi <%=current_user.first_name.capitalize%>, start organizing your university applications</h1>
+          <% else %>
+            <h1 class="mt-0">Start organizing your university applications</h1>
+          <% end %>
           <p>Tired of spending hours on finding universities and manually gathering all the important information you have to keep in mind in order to apply?</p>
           <p>Start using <strong>UNIFind today!</strong></p>
           <br>
