@@ -95,7 +95,10 @@
                       </div>
 
                       <div class=delete>
+
+
                         <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <button class="btn btn-info">Delete application</button> <% end %>
+
                       </div>
 
                       <% if app.universities_program.documents - app.documents == []%>
