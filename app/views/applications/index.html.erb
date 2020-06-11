@@ -36,7 +36,6 @@
             </div>
           </div>
             <div id= cards-tab class="tabcontent col-12 ml-0">
-            <% @applications = Application.where(completed: false)%>
               <% @applications.each do |app|%>
                 <div class = "card-dashboard mt-3 p-3 mb-3">
                   <% @appdoc = ApplicationsDocument.new %>

@@ -3,8 +3,8 @@ class ApplicationsController < ApplicationController
 
 
   def index
-    @applications_complete = Application.where(completed: true)
-    @applications = Application.joins(:universities_program).order("start_time ASC").where(user_id: current_user.id)
+    @applications_complete = Application.where(completed: true, user_id: current_user.id)
+    @applications = Application.joins(:universities_program).order("start_time ASC").where(user_id: current_user.id, completed: false)
     @universities_programs = []
     @applications.each do |app|
       @universities_programs << app.universities_program if app.user_id == current_user.id
