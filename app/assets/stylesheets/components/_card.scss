@@ -8,6 +8,10 @@
    border-radius: 6px;
 }
 
+.card-product .text-left h3:hover {
+  text-decoration: none;
+}
+
 .card-product img {
   height: 100%;
   object-fit: cover;
@@ -75,7 +79,11 @@
 .deadline {
   position:absolute;
   top:20px;
-  right: 50px;
+  right: 10px;
+  font-weight: 600;
+}
+
+.deadline h5 {
   font-weight: 600;
 }
 
