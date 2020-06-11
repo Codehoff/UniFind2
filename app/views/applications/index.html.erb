@@ -129,7 +129,7 @@
                         <div class="ml-2 d-flex align-items-center p-2">
                           <% app.universities_program.documents.each do |doc| %>
                             <% if uploaded_documents.include? doc.name %>
-                              <div class=mx-3 style="color:#86EA9F">
+                              <div class=mx-3 style="color:#84a98c">
                                 <%= doc.name %>
                               </div>
                             <% else %>
@@ -154,7 +154,7 @@
                           </div>
                         <% else %>
                           <div class="progress mt-2 ml-0 mr-0" style="height:25px;">
-                            <div class="progress-bar" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#CAFFBF;" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#84a98c;" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
                           </div>
                         <% end %>
                       </div>
