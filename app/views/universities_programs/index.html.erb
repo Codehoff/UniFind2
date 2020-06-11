@@ -3,27 +3,26 @@
     <div class="col-3 left-frame">
       <div class="w-100">
         <h5>Search</h5>
-        <%= form_tag universities_programs_path, method: :get do %>
-        <%= text_field_tag :query,
-        params[:query], :class => "home-search-input w-100 mb-2", placeholder: "Program Name"%>
-        <%= submit_tag "Search", class: "btn btn-block primary-btn " %>
-        <% end %>
+        <div>
+          <%= form_tag universities_programs_path, method: :get do %>
+          <%= text_field_tag :query,
+          params[:query], :class => "home-search-input w-100 mb-2", placeholder: "Program Name"%>
+          <%= submit_tag "Search", class: "btn btn-block primary-btn " %>
+          <% end %>
+        </div>
       </div>
-      <h6 class=>Most searched programs:</h6>
-      <div class="row clearfix">
 
-      <a href= "/universities_programs?query=medicine" class="tag-label" id="med">Medicine</a>
+      <div class="w-100">
+        <h6 class=>Most searched programs:</h6>
+        <label class="tag-label"><a href= "/universities_programs?query=medicine"  >Medicine</a></label>
+        <label class="tag-label"><a href= "/universities_programs?query=engineering"  >Engineering</a></label>
+        <label class="tag-label"><a href= "/universities_programs?query=archeology" >Archeology</a></label>
+        <label class="tag-label"><a href= "/universities_programs?query=product+design" >Product Design</a></label>
+        <label class="tag-label"><a href= "/universities_programs?query=literature"  >Literature</a></label>
+        <label class="tag-label"><a href= "/universities_programs?query=pteaching"  >Teaching</a></label>
+        <label class="tag-label"><a href= "/universities_programs?query=architecture"  >Architecture</a></label>
+        <label class="tag-label"><a href= "/universities_programs?query=economics" >Economics</a></label>
       </div>
-      <div class="row">
-
-      <a href= "/universities_programs?query=engineering" class="tag-label" id="eng">Engineering</a>
-      </div>
-      <a href= "/universities_programs?query=archeology" class="tag-label" id="archeology">Archeology</a>
-      <a href= "/universities_programs?query=product+design" class="tag-label" id="prodgn">Product Design</a>
-      <a href= "/universities_programs?query=literature" class="tag-label" id="lit">Literature</a>
-      <a href= "/universities_programs?query=pteaching" class="tag-label" id="preteach">Teaching</a>
-      <a href= "/universities_programs?query=architecture" class="tag-label" id="arch">Architecture</a>
-      <a href= "/universities_programs?query=economics" class="tag-label" id="eco">Economics</a>
     </div>
 
     <div class="col-9 pl-3 mb-5 pr-0 ">
@@ -45,8 +44,8 @@
               <h3 style="display:inline"><%= program.university.name %></h3>
               <br>
               <br>
-              <h2><%= program.program.name%></h2>
-              <h3 id="degree"><%=program.degree%></h3>
+              <label class="tag-label"><%= program.program.name%></label>
+              <h3 id="degree" style="font-size: 14px;"><%=program.degree%></h3>
             </div>
           </div>
           <%end%>
