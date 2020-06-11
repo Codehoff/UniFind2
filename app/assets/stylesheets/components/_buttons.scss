@@ -42,3 +42,32 @@
 .taglabel:hover {
   text-decoration: none;
 }
+
+.btn-light {
+  background-color: #8993FF;
+  color: white;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.btn-light:hover {
+  background-color: #5866FF;
+  color: white;
+}
+
+.btn-info {
+  font-size: 14px;
+  color: white;
+  background-color: $secondary;
+  opacity: 0.5;
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right: 16px;
+  border: none;
+}
+
+.btn-info:hover {
+  color: white;
+  background-color: #5865FF;
+  opacity: 0.5;
+}

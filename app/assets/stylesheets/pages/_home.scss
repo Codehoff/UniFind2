@@ -23,6 +23,7 @@ margin: 64px 0 0 0;
   background-repeat:  no-repeat;
   background-size: 280px;
   background-position: right 32px bottom -20px;
+  height: 530px;
 }
 
 .explore {
@@ -39,6 +40,10 @@ margin: 64px 0 0 0;
   background-size: 33%;
   height: 180px;
   background-position: center;
+}
+
+.col-md-auto {
+  text-align: center;
 }
 
 .follow {
@@ -66,10 +71,16 @@ margin: 64px 0 0 0;
   height: 160px;
   margin: 2px;
 }
+
 .coding {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.coding img {
+  height: 60px;
+  margin-top: 20px;
 }
 
 .archeology{
@@ -78,10 +89,20 @@ margin: 64px 0 0 0;
   align-items: center;
 }
 
+.archeology img {
+  height: 60px;
+  margin-top: 20px;
+}
+
 .medicine{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.medicine img {
+  height: 60px;
+  margin-top: 20px;
 }
 
 .engineering{
@@ -90,10 +111,20 @@ margin: 64px 0 0 0;
   align-items: center;
 }
 
+.engineering img {
+  height: 60px;
+  margin-top: 20px;
+}
+
 .architecture{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.architecture img {
+  height: 60px;
+  margin-top: 20px;
 }
 
 .law{
@@ -102,10 +133,20 @@ margin: 64px 0 0 0;
   align-items: center;
 }
 
+.law img {
+  height: 60px;
+  margin-top: 20px;
+}
+
 .biology{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.biology img {
+  height: 60px;
+  margin-top: 20px;
 }
 
 .maths{
@@ -114,10 +155,20 @@ margin: 64px 0 0 0;
   align-items: center;
 }
 
+.maths img {
+  height: 60px;
+  margin-top: 20px;
+}
+
 .chemistry{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.chemistry img {
+  height: 60px;
+  margin-top: 20px;
 }
 
 .economics{
@@ -126,16 +177,31 @@ margin: 64px 0 0 0;
   align-items: center;
 }
 
+.economics img {
+  height: 60px;
+  margin-top: 20px;
+}
+
 .agriculture{
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.agriculture img {
+  height: 60px;
+  margin-top: 20px;
+}
+
 .physics{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.physics img {
+  height: 60px;
+  margin-top: 20px;
 }
 
 .tag-label:hover {
