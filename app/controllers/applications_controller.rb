@@ -3,6 +3,7 @@ class ApplicationsController < ApplicationController
 
 
   def index
+    @applications_complete = Application.where(completed: true)
     @applications = Application.joins(:universities_program).order("start_time ASC").where(user_id: current_user.id)
     @universities_programs = []
     @applications.each do |app|
@@ -39,8 +40,9 @@ class ApplicationsController < ApplicationController
   end
 
   def update
-    @application.update(application_params)
-    redirect_to "/applications", notice: 'Your application was successfully updated.'
+    @application.completed = true
+    @application.save
+    redirect_to "#{@application.universities_program.application_url}", notice: 'Application was sent to your archive!'
   end
 
   def destroy
