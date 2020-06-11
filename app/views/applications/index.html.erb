@@ -55,11 +55,11 @@
                         <div class="ml-2 d-flex align-items-center p-2">
                           <% app.universities_program.documents.each do |doc| %>
                             <% if uploaded_documents.include? doc.name %>
-                              <div class=mx-3 style="color:#64B458;">
+                              <div class=mx-3 style="color:#98CB8D;">
                                 <%= doc.name %>
                               </div>
                             <% else %>
-                              <div class=mx-3 style="color:#f17e84">
+                              <div class=mx-3 style="color:#FFADAD">
                                 <%=doc.name%>
                               </div>
                             <%end%>
@@ -72,7 +72,7 @@
                         <% ratio_docs_uploaded = 100 * (docs_count.to_f / docs_required.to_f) %>
                         <%if ratio_docs_uploaded < 34%>
                           <div class="progress mt-2 ml-0 mr-0"  style="height:25px;">
-                            <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#f17e84" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+                            <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#ffcaaf" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
                           </div>
                         <%elsif ratio_docs_uploaded <= 99 %>
                           <div class="progress mt-2 ml-0 mr-0"  style="height:25px;">
@@ -130,11 +130,11 @@
                         <div class="ml-2 d-flex align-items-center p-2">
                           <% app.universities_program.documents.each do |doc| %>
                             <% if uploaded_documents.include? doc.name %>
-                              <div class=mx-3 style="color:green">
+                              <div class=mx-3 style="color:#86EA9F">
                                 <%= doc.name %>
                               </div>
                             <% else %>
-                              <div class=mx-3 style="color:#C23B22">
+                              <div class=mx-3 style="color:#F9A87E">
                                 <%=doc.name%>
                               </div>
                             <%end%>
@@ -147,15 +147,15 @@
                         <% ratio_docs_uploaded = 100 * (docs_count.to_f / docs_required.to_f) %>
                         <%if ratio_docs_uploaded < 34%>
                           <div class="progress mt-2 ml-0 mr-0"  style="height:25px;">
-                            <div class="progress-bar" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#C23B22" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#FFADAD" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
                           </div>
                         <%elsif ratio_docs_uploaded <= 99 %>
                           <div class="progress mt-2 ml-0 mr-0"  style="height:25px;">
-                            <div class="progress-bar" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#F99F80" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#FDFFB6" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
                           </div>
                         <% else %>
                           <div class="progress mt-2 ml-0 mr-0" style="height:25px;">
-                            <div class="progress-bar" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#86EA9F;" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#CAFFBF;" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
                           </div>
                         <% end %>
                       </div>
