@@ -9,8 +9,16 @@
         <%= submit_tag "Search", class: "btn btn-block primary-btn " %>
         <% end %>
       </div>
+      <h6 class=>Most searched programs:</h6>
+      <a href= "/universities_programs?query=medicine" class="tag-label" id="med">Medicine</a>
+      <a href= "/universities_programs?query=engineering" class="tag-label" id="eng">Engineering</a>
+      <a href= "/universities_programs?query=archeology" class="tag-label" id="archeology">Archeology</a>
+      <a href= "/universities_programs?query=product+design" class="tag-label" id="prodgn">Product Design</a>
+      <a href= "/universities_programs?query=literature" class="tag-label" id="lit">Literature</a>
+      <a href= "/universities_programs?query=pteaching" class="tag-label" id="preteach">Teaching</a>
+      <a href= "/universities_programs?query=architecture" class="tag-label" id="arch">Architecture</a>
+      <a href= "/universities_programs?query=economics" class="tag-label" id="eco">Economics</a>
     </div>
-
     <div class="col-9 pl-3 mb-5 pr-0 ">
       <div class="col-12" style="background-color: #F3F4FF; border-radius: 6px; padding-bottom: 32px;">
         <div class="row mx-2">
@@ -27,14 +35,15 @@
             <%= image_tag(program.picture, class:"ml-3", style: "width: 150px;height:120px;object-fit:contain;") %>
             </div>
             <div class="col-7 text-left" style="line-height: 150%">
-              <h2><%= program.program.name%></h2>
               <h3 style="display:inline"><%= program.university.name %></h3>
-              <p style="display:inline"><%=program.university.city%></p>
-              <h3><%=program.degree%></h3>
+              <br>
+              <br>
+              <h2><%= program.program.name%></h2>
+              <h3 id="degree"><%=program.degree%></h3>
             </div>
 
-        
-            
+
+
 
           </div>
           <%end%>
