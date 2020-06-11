@@ -158,17 +158,7 @@
                       </div>
                       <div class=delete>
                         <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <i class="fa fa-trash" aria-hidden="true"></i><% end %>
-                      </div>                      
-                      <div class="document-form ml-2" style="text-align:left">
-                        <%= simple_form_for([app, @appdoc]) do |f| %>
-                          <h5>Attach a required document</h5>
-                          <%= f.association :document, label: false , class: "btn secondary-btn" %>
-                          <%= f.input :document, as: :file, label: false %>
-                          <%= f.button :submit, "Add document", class: "btn transparent-btn",onsubmit: "return false" %>
-                          <!-- <a href="#" onclick="myFunction(); return false;"><i class="fa fa-calendar" aria-hidden="true"></i></a> -->
-                        <% end %>
-                        <a style="margin-bottom: 40px;" href="#" target="_blank"><label class="btn btn-info">Your aplication is ready to be submitted 🎉</label></a>
-                      </div>
+                      </div>                                            </div>
                   <%end%>
                 </div>             
               <% end %>
