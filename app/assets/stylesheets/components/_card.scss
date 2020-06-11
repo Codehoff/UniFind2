@@ -2,9 +2,10 @@
   overflow: hidden;
   height: 120px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 8px #D3D6F5;
   display: flex;
   align-items: center;
+   border-radius: 6px;
 }
 
 .card-product img {
@@ -89,3 +90,5 @@
   bottom: 5px;
   right: 5px;
 }
+.grow { transition: all .3s ease-in-out; }
+.grow:hover { transform: scale(1.02); }
