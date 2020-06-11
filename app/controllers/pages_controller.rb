@@ -14,7 +14,7 @@ class PagesController < ApplicationController
         @user_programs << app.universities_program
       end    
       @user_apps.each do |app|
-        if (Time.now - current_user.current_sign_in_at).floor <= 20
+        if (Time.now - current_user.current_sign_in_at).floor <= 10
           if (app.universities_program.documents - app.documents) != [] 
             if ((app.universities_program.start_time - Time.now)/86400) <= 30
               if app.notifications == []
