@@ -55,11 +55,11 @@
                         <div class="ml-2 d-flex align-items-center p-2">
                           <% app.universities_program.documents.each do |doc| %>
                             <% if uploaded_documents.include? doc.name %>
-                              <div class=mx-3 style="color:#20371B;">
+                              <div class=mx-3 style="color:#64B458;">
                                 <%= doc.name %>
                               </div>
                             <% else %>
-                              <div class=mx-3 style="color:#C23B22">
+                              <div class=mx-3 style="color:#f17e84">
                                 <%=doc.name%>
                               </div>
                             <%end%>
