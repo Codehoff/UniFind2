@@ -1,0 +1,1 @@
+document.querySelector("#events_calendar").innerHTML = "<%= escape_javascript render(partial: "/simple_calendar/calendar", locals: {events: @universities_programs}) %>";
