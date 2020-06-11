@@ -2,9 +2,10 @@
   <div class=container>
     <div class="row">
       <div class="col-12">
+      <h1>Your Applications</h1>
         <div class="tab">
-          <button class="tablinks" id=defaultOpen onclick="openTab(event, 'cards-tab')">Applications</button>
-          <button class="tablinks"  onclick="openTab(event, 'finished-apps-tab')">Archive</button>
+          <button class="tablinks" id=defaultOpen onclick="openTab(event, 'cards-tab')">In progress</button>
+          <button class="tablinks"  onclick="openTab(event, 'finished-apps-tab')">Completed</button>
           <button class="tablinks" id=calendarbutton  onclick="openTab(event, 'calendar-tab')">Calendar</button>
         </div>
         <div id= calendar-tab class="tabcontent col-12">
@@ -98,9 +99,8 @@
                       <% if app.universities_program.documents - app.documents == []%>
                         <div class="mark-complete m-2" >
                           <%= simple_form_for(app) do |f|%>
-                            <%= f.button :submit, "Mark as completed", class: "btn btn-primary", onsubmit: "return false" %>
+                            <%= f.button :submit, "Your application is ready to be submitted 🎉", class: "btn btn-primary", onsubmit: "return false" %>
                           <%end%>
-                        <a style="margin-bottom: 40px;" href="#" target="_blank"><label class="btn btn-info">Your aplication is ready to be submitted 🎉</label></a>
                         </div>
                       <% end %>
                   <%end%>
