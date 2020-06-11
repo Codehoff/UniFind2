@@ -21,24 +21,22 @@
         <div id=all_programs class="row pl-3 pr-3 pt-0">
           <% @universities_programs.each do |program|%>
 
-
+          <%= link_to "universities_programs/#{program.id}" do %>
           <div class="card-product mt-3 col-12 pl-0 d-flex justify-content-between text-center transition1" style="border-radius: 4px;" >
             <div class="logo">
             <%= image_tag(program.picture, class: "col-3 pl-0") %>
             </div>
             <div class="col-7 text-left" style="line-height: 150%">
-              <h2><%= program.program.name%></h2>
               <h3 style="display:inline"><%= program.university.name %></h3>
-              <p style="display:inline"><%=program.university.city%></p>
+              <br>
+              <br>
+              <h2> <%= program.program.name%> </h2>
               <h3><%=program.degree%></h3>
             </div>
-
-            <%= link_to "universities_programs/#{program.id}" do %>
-            <label style="cursor: pointer;" class="secondary-btn">See details</label>
-            <%end%>
-
           </div>
+           <%end%>
           <%end%>
+
         </div>
       </div>
     </div>

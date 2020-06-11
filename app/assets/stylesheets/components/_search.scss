@@ -9,6 +9,7 @@
   position: relative;
   margin-bottom: 16px;
   width:100%;
+  margin-left: -50px;
 }
 .my-container {
   height: 50px;
@@ -24,7 +25,7 @@
 #hidden-search {
   display: block;
   overflow: auto;
-  margin-top: 16px;
+  margin-top: 35px;
   margin-left: 29px;
   margin-right: auto;
   display: none;
@@ -40,6 +41,7 @@
   left: -14px;
   opacity: 0.95;
   font-size:16px;
+  width: 420px;
 }
 
 #close {
@@ -50,6 +52,7 @@
   right: 30px;
   margin-bottom: -10px !important;
 }
+
 .secondary-btn {
   color: $primary;
   color: white;

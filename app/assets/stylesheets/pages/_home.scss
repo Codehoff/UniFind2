@@ -23,6 +23,7 @@ margin: 64px 0 0 0;
   background-repeat:  no-repeat;
   background-size: 280px;
   background-position: right 32px bottom -20px;
+  height: 530px;
 }
 
 .explore {
@@ -39,6 +40,10 @@ margin: 64px 0 0 0;
   background-size: 33%;
   height: 180px;
   background-position: center;
+}
+
+.col-md-auto {
+  text-align: center;
 }
 
 .follow {
@@ -72,10 +77,20 @@ margin: 64px 0 0 0;
   align-items: center;
 }
 
+.coding img {
+  height: 60px;
+  margin-top: 20px;
+}
+
 .archeology{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.archeology img {
+  height: 60px;
+  margin-top: 20px;
 }
 
 .medicine{
@@ -84,10 +99,20 @@ margin: 64px 0 0 0;
   align-items: center;
 }
 
+.medicine img {
+  height: 60px;
+  margin-top: 20px;
+}
+
 .engineering{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.engineering img {
+  height: 60px;
+  margin-top: 20px;
 }
 
 .architecture{
@@ -96,10 +121,20 @@ margin: 64px 0 0 0;
   align-items: center;
 }
 
+.architecture img {
+  height: 60px;
+  margin-top: 20px;
+}
+
 .law{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.law img {
+  height: 60px;
+  margin-top: 20px;
 }
 
 .biology{
@@ -108,10 +143,20 @@ margin: 64px 0 0 0;
   align-items: center;
 }
 
+.biology img {
+  height: 60px;
+  margin-top: 20px;
+}
+
 .maths{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.maths img {
+  height: 60px;
+  margin-top: 20px;
 }
 
 .chemistry{
@@ -120,10 +165,20 @@ margin: 64px 0 0 0;
   align-items: center;
 }
 
+.chemistry img {
+  height: 60px;
+  margin-top: 20px;
+}
+
 .economics{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.economics img {
+  height: 60px;
+  margin-top: 20px;
 }
 
 .agriculture{
@@ -132,10 +187,20 @@ margin: 64px 0 0 0;
   align-items: center;
 }
 
+.agriculture img {
+  height: 60px;
+  margin-top: 20px;
+}
+
 .physics{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.physics img {
+  height: 60px;
+  margin-top: 20px;
 }
 
 .tag-label:hover {

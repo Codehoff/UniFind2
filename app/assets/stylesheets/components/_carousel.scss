@@ -1,40 +1,56 @@
-// .carousel-item {
-//   width: 1280px;
-//   height: 540px;
-//   background-size: cover;
-//   opacity: 0.85;
-// }
-.container-all {
-  text-align: center;
+.carousel-item {
+  border-radius: 6px;
 }
 
-.container-carousel {
-  display: inline-block;
-  width: 800px;
+.carousel-item img {
   height: 450px;
-  text-align: center;
-  position: relative;
-  }
+  width: 730px;
+  border-radius: 6px;
+}
 
-.carousel-item {
-  margin-top: 16px;
+.carousel-inner {
   border-radius: 6px;
   box-shadow: 0 8px 8px #D3D6F5;
 }
 
-.carousel-item img {
-  width: 800px;
-  height: 450px;
-  background-size: auto;
-  border-radius: 8px;
+img {
+  border-radius: 6px;
 }
 
-.container-text {
-  background-color: white;
-  color: #121e72;
+#show-row {
+  margin-top: 40px;
+}
+
+#application-info {
+  // margin-left: -3px;
+  background-color: #F3F4FF;
+  border-radius: 6px;
+  box-shadow: 0 8px 8px #D3D6F5;
+}
+
+#carousel {
+  // margin-right: -3px;
+}
+
+.card-application h2 {
+  font-size: 23px;
+}
+
+.card-application {
   padding: 16px;
-  margin-right: 70px;
-  margin-left: 70px;
+}
+
+.card-application h4 {
+  font-size: 18px;
+}
+
+#uniinfo {
+  padding: 30px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  background-color: #F3F4FF;
+  border-radius: 6px;
+  box-shadow: 0 8px 8px #D3D6F5;
+  width: 100%;
   opacity: 0.8;
-  border-radius: 8px;
 }

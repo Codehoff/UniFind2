@@ -6,11 +6,11 @@ class ApplicationsController < ApplicationController
     @applications = Application.joins(:universities_program).order("start_time ASC").where(user_id: current_user.id)
     @universities_programs = []
     @applications.each do |app|
-      @universities_programs << app.universities_program if app.user_id == current_user.id 
+      @universities_programs << app.universities_program if app.user_id == current_user.id
     end
     @universities_programs_done = []
     @applications.each do |app|
-      if app.universities_program.documents - app.documents == [] 
+      if app.universities_program.documents - app.documents == []
         @universities_programs_done << app.universities_program if app.user_id == current_user.id
       end
     end
