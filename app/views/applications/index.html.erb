@@ -83,9 +83,7 @@
                           </div>
                         <% end %>
                       </div>
-                      <div class=delete>
-                        <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <i class="fa fa-trash" aria-hidden="true"></i><% end %>
-                      </div>
+
                       <div class="document-form ml-2" style="text-align:left">
                         <%= simple_form_for([app, @appdoc]) do |f| %>
                           <h5>Attach a required document</h5>
@@ -95,12 +93,17 @@
                           <!-- <a href="#" onclick="myFunction(); return false;"><i class="fa fa-calendar" aria-hidden="true"></i></a> -->
                         <% end %>
                       </div>
+
+                      <div class=delete>
+                        <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <button class="btn btn-info">Delete applicat</button> <% end %>
+                      </div>
+
                       <% if app.universities_program.documents - app.documents == []%>
                         <div class="mark-complete m-2">
                           <%= simple_form_for(app) do |f|%>
 
                             <%= hidden_field_tag "application_url", app.universities_program.application_url, id: "hidden-field" %>
-                            <%= f.button :submit, "Apply now", class: "btn btn-primary", id:"send-button", onsubmit: "return false" %>
+                            <%= f.button :submit, "Submit application", class: "btn btn-light", id:"send-button", onsubmit: "return false" %>
 
                           <%end%>
                         </div>
@@ -133,7 +136,7 @@
                                 <%= doc.name %>
                               </div>
                             <% else %>
-                              <div class=mx-3 style="color:#F9A87E">
+                              <div class=mx-3 style="color:#84a98c">
                                 <%=doc.name%>
                               </div>
                             <%end%>
