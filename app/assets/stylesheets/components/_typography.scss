@@ -14,3 +14,14 @@ h3 {
 .note {
   color: $text3;
 }
+
+a {
+  text-decoration: none;
+  color:white;
+}
+
+a:-webkit-any-link {
+    text-decoration: none;
+    cursor: pointer;
+      color:white;
+}
