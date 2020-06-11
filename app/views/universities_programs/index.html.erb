@@ -1,6 +1,6 @@
 <div class="container" style="min-height:100vh;">
   <div class="row">
-    <div class="col-3 left-frame ">
+    <div class="col-3 left-frame border-top border-primary ">
       <div class="w-100">
         <h5>Search</h5>
         <div>
@@ -26,7 +26,7 @@
     </div>
 
     <div class="col-9 pl-3 mb-5 pr-0 ">
-      <div class="col-12" style="background-color: #F3F4FF; border-radius: 6px; padding-bottom: 32px;">
+      <div class="col-12 border-top " style="background-color: #F3F4FF; border-radius: 6px; padding-bottom: 32px;">
         <div class="row mx-2">
           <h5 id=num_results class= "mt-2"></h5>
         </div>
@@ -36,8 +36,9 @@
           <% @universities_programs.each do |program|%>
 
           <%= link_to "universities_programs/#{program.id}" do %>
-          <div class="card-product mt-3 col-12 pl-0 d-flex flex-row text-center transition1 grow" style="border-radius: 4px" >
+          <div class="card-product  mt-3 col-12 pl-0 d-flex flex-row text-center transition1 grow" style="border-radius: 4px" >
             <div class="logo">
+
               <%= image_tag(program.picture, class:"ml-3", style: "width: 150px;height:120px;object-fit:contain;") %>
             </div>
             <div class="col-7 text-left " style="line-height: 150%;">
