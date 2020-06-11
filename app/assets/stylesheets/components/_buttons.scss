@@ -39,21 +39,27 @@
   border-radius: 25px;
 }
 
+.tag-label a {
+  text-decoration: none;
+  color:white;
+}
+
 .taglabel:hover {
   text-decoration: none;
 }
 
 .btn-light {
-  background-color: #8993FF;
+  background-color: #6E76A9;
   color: white;
   font-size: 14px;
   border-radius: 4px;
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .btn-light:hover {
-  background-color: #5866FF;
+  background-color: #6E76A9;
   color: white;
+  opacity: 1;
 }
 
 .btn-info {

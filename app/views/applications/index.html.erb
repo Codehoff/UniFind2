@@ -13,24 +13,9 @@
             <div class="calendar-wrapper col-12">
               <div class= close>
                 </div>
-                <div id=calendar>
-                  <h2>Your calendar:</h2> <%= DateTime.now.strftime('%d %A') %>
-                  <%= month_calendar events: @universities_programs do |date, universities_programs| %>
-                    <%= date.day %>
-                    <% universities_programs.each do |program|%>
-                      <% if @universities_programs_done.include? program %>
-                        <div class="program-done mt-2">
-                         <h5><%=program.program.name%></h5>
-                         <h5><%=program.university.name%></h5>
-                        </div>
-                      <% else %>
-                        <div class="program-todo mt-2">
-                         <h5><%=program.program.name%></h5>
-                         <h5><%=program.university.name%></h5>
-                        </div>
-                      <%end%>
-                    <%end%>
-                  <%end%>
+                <div id="events_calendar">
+            
+                  <%= render "simple_calendar/calendar"%>
                 </div>
               </div>
             </div>
@@ -43,7 +28,13 @@
                       <div class="ml-2 mt-2" style="text-align:left">
                         <h2><%= app.universities_program.program.name %></h2>
                         <h2 style="font-size:20px;"><%= app.university.name %></h2>
-                        <h5 class=deadline>Deadline: <%= app.universities_program.start_time.strftime("%d %B %Y") %></h5>
+                        <div class=deadline>
+                        <h5 >Deadline: <%= app.universities_program.start_time.strftime("%d %B %Y") %></h5>
+                        <h5 style="text-align:right"><%=((app.universities_program.start_time - Time.now)/86400).ceil%> days left</h5>
+                        </div>
+
+                        
+
                         <% uploaded_documents = [] %>
                         <% app.documents.each do |doc| %>
                           <% uploaded_documents << doc.name %>
@@ -70,37 +61,43 @@
                         <% docs_required = app.universities_program.documents.count %>
                         <% ratio_docs_uploaded = 100 * (docs_count.to_f / docs_required.to_f) %>
                         <%if ratio_docs_uploaded < 34%>
-                          <div class="progress mt-2 ml-0 mr-0"  style="height:25px;">
+                          <div class="progress mt-2 ml-0 mr-0"  style="height:25px;border-radius: 8px;">
                             <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#720026" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
                           </div>
                         <%elsif ratio_docs_uploaded <= 99 %>
-                          <div class="progress mt-2 ml-0 mr-0"  style="height:25px;">
+                          <div class="progress mt-2 ml-0 mr-0"  style="height:25px;border-radius: 8px;">
                             <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#fe7f2d" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
                           </div>
                         <% else %>
-                          <div class="progress mt-2 ml-0 mr-0" style="height:25px;">
+                          <div class="progress mt-2 ml-0 mr-0" style="height:25px;border-radius: 8px;">
                             <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#84a98c;" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
                           </div>
                         <% end %>
-                      </div>
-                      <div class=delete>
-                        <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <i class="fa fa-trash" aria-hidden="true"></i><% end %>
                       </div>
                       <div class="document-form ml-2" style="text-align:left">
                         <%= simple_form_for([app, @appdoc]) do |f| %>
                           <h5>Attach a required document</h5>
                           <%= f.association :document, label: false , class: "btn secondary-btn" %>
-                          <%= f.input :document, as: :file, label: false %>
+                         <label class="btn btn-primary" style="border-radius:8px;">
+                          Add a file!
+                          <span style="display:none;">
+                            <%= f.file_field :image, required: true, multiple: true, name: 'picture' %>
+                          </span>
+                          </label>
+                          <br>
                           <%= f.button :submit, "Add document", class: "btn transparent-btn",onsubmit: "return false" %>
-                          <!-- <a href="#" onclick="myFunction(); return false;"><i class="fa fa-calendar" aria-hidden="true"></i></a> -->
                         <% end %>
+                        
+                      </div>
+                      <div class=delete>
+                        <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <button class="btn btn-info">Delete application</button> <% end %>
                       </div>
                       <% if app.universities_program.documents - app.documents == []%>
                         <div class="mark-complete m-2">
                           <%= simple_form_for(app) do |f|%>
 
                             <%= hidden_field_tag "application_url", app.universities_program.application_url, id: "hidden-field" %>
-                            <%= f.button :submit, "Apply now", class: "btn btn-primary", id:"send-button", onsubmit: "return false" %>
+                            <%= f.button :submit, "Submit application", class: "btn btn-light", id:"send-button", onsubmit: "return false" %>
 
                           <%end%>
                         </div>
@@ -133,7 +130,7 @@
                                 <%= doc.name %>
                               </div>
                             <% else %>
-                              <div class=mx-3 style="color:#F9A87E">
+                              <div class=mx-3 style="color:#84a98c">
                                 <%=doc.name%>
                               </div>
                             <%end%>
@@ -145,16 +142,16 @@
                         <% docs_required = app.universities_program.documents.count %>
                         <% ratio_docs_uploaded = 100 * (docs_count.to_f / docs_required.to_f) %>
                         <%if ratio_docs_uploaded < 34%>
-                          <div class="progress mt-2 ml-0 mr-0"  style="height:25px;">
-                            <div class="progress-bar" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#FFADAD" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+                          <div class="progress mt-2 ml-0 mr-0"  style="height:25px;border-radius: 8px;">
+                            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#FFADAD" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
                           </div>
                         <%elsif ratio_docs_uploaded <= 99 %>
-                          <div class="progress mt-2 ml-0 mr-0"  style="height:25px;">
-                            <div class="progress-bar" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#FDFFB6" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+                          <div class="progress mt-2 ml-0 mr-0"  style="height:25px;border-radius: 8px;">
+                            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#FDFFB6" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
                           </div>
                         <% else %>
-                          <div class="progress mt-2 ml-0 mr-0" style="height:25px;">
-                            <div class="progress-bar" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#84a98c;" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+                          <div class="progress mt-2 ml-0 mr-0" style="height:25px;border-radius: 8px;">
+                            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#84a98c;" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
                           </div>
                         <% end %>
                       </div>
@@ -171,8 +168,6 @@
     </div>
   </div>
 </div>
-
-
 
 <script>
 var button1 = document.getElementById("send-button");
