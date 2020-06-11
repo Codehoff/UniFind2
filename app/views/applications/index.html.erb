@@ -11,28 +11,80 @@
           <div class="row">
             <div class="calendar-wrapper col-12">
               <div class= close>
-                </div>
-                <div id=calendar>
-                  <h2>Your calendar:</h2> <%= DateTime.now.strftime('%d %A') %>
-                  <%= month_calendar events: @universities_programs do |date, universities_programs| %>
-                    <%= date.day %>
-                    <% universities_programs.each do |program|%>
-                      <% if @universities_programs_done.include? program %>
-                        <div class="program-done mt-2">
-                         <h5><%=program.program.name%></h5> 
-                         <h5><%=program.university.name%></h5>
-                        </div>
-                      <% else %>
-                        <div class="program-todo mt-2">
-                         <h5><%=program.program.name%></h5> 
-                         <h5><%=program.university.name%></h5>
-                        </div>
-                      <%end%>
-                    <%end%>
-                  <%end%>
-                </div>
               </div>
+              <div id=calendar>
+                <h2>Your calendar:</h2> <%= DateTime.now.strftime('%d %A') %>
+                <%= month_calendar events: @universities_programs do |date, universities_programs| %>
+                <%= date.day %>
+                <% universities_programs.each do |program|%>
+                <% if @universities_programs_done.include? program %>
+                <div class="program-done mt-2">
+                 <h5><%=program.program.name%></h5>
+                 <h5><%=program.university.name%></h5>
+               </div>
+               <% else %>
+               <div class="program-todo mt-2">
+                 <h5><%=program.program.name%></h5>
+                 <h5><%=program.university.name%></h5>
+               </div>
+               <%end%>
+               <%end%>
+               <%end%>
+             </div>
+           </div>
+         </div>
+       </div>
+       <div id= cards-tab class="tabcontent col-12 ml-0">
+        <% @applications = Application.where(completed: false)%>
+        <% @applications.each do |app|%>
+        <div class = "card-dashboard mt-3 p-3 mb-3">
+          <% @appdoc = ApplicationsDocument.new %>
+          <%if current_user.id == app.user.id%>
+          <div class="ml-2 mt-2" style="text-align:left">
+            <h2><%= app.universities_program.program.name %></h2>
+            <h2 style="font-size:20px;"><%= app.university.name %></h2>
+            <h5 class=deadline>Deadline: <%= app.universities_program.start_time.strftime("%A, %d %B %Y") %></h5>
+            <% uploaded_documents = [] %>
+            <% app.documents.each do |doc| %>
+            <% uploaded_documents << doc.name %>
+            <%end%>
+          </div>
+          <h3 class=ml-2 style=text-align:left>Required Documents:</h3>
+          <div class="required-docs-container ml-2 mb-2"style="background:white;border:1px solid gray">
+            <div class="ml-2 d-flex align-items-center p-2">
+              <% app.universities_program.documents.each do |doc| %>
+              <% if uploaded_documents.include? doc.name %>
+              <div class=mx-3 style="color:#6CAB6F;">
+                <%= doc.name %>
+              </div>
+              <% else %>
+              <div class=mx-3 style="color:#e69597">
+                <%=doc.name%>
+              </div>
+              <%end%>
+              <%end%>
             </div>
+          </div>
+          <div class="progress-container ml-2 mb-2">
+            <% docs_count = uploaded_documents.count %>
+            <% docs_required = app.universities_program.documents.count %>
+            <% ratio_docs_uploaded = 100 * (docs_count.to_f / docs_required.to_f) %>
+            <%if ratio_docs_uploaded <= 33%>
+            <div class="progress mt-2 ml-0 mr-0"  style="height:25px;">
+              <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: <%=ratio_docs_uploaded%>%" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+            </div>
+            <%elsif ratio_docs_uploaded <= 99 %>
+            <div class="progress mt-2 ml-0 mr-0"  style="height:25px;">
+              <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: <%=ratio_docs_uploaded%>%" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+            </div>
+            <% else %>
+            <div class="progress mt-2 ml-0 mr-0" style="height:25px;">
+              <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <%=ratio_docs_uploaded%>%" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+            </div>
+            <% end %>
+          </div>
+          <div class=delete>
+            <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <i class="fa fa-trash" aria-hidden="true"></i><% end %>
           </div>
             <div id= cards-tab class="tabcontent col-12 ml-0">
             <% @applications = Application.where(completed: false)%>
@@ -121,7 +173,7 @@
 
 <script>
 <%# var form = document.getElementById("new_applications_document");
-function handleForm(event) { event.preventDefault(); } 
+function handleForm(event) { event.preventDefault(); }
 form.addEventListener('submit', handleForm); %>
 
  function openTab(evt, tabName) {
