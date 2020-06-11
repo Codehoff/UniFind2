@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  
   before_action :new_notification, only: [:home]
   skip_before_action :authenticate_user!, only: [ :home ]
 
