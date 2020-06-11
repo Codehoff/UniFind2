@@ -6,7 +6,6 @@ class NotificationsController < ApplicationController
     redirect_to request.referrer
   end
 
-
   private
 
   def set_notification
