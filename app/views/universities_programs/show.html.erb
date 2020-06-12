@@ -31,11 +31,13 @@
         <% if @universities_program.applications.where(user_id: current_user.id) == []%>
         <%= form_tag applications_path, method: :post do %>
         <%= hidden_field_tag "application[universities_program_id]", @universities_program.id %>
-        <%= submit_tag "Apply now!", class: "btn primary-btn" %>
+        <%= button_tag class: "btn primary-btn" do %>
+        Apply now <i class="fad fa-layer-plus ml-2"></i>
+        <%end%>
         <% end %>
         <% else %>
 
-        <%= link_to "/applications" do %> <button class="btn primary-btn">Apply now<i class="fad fa-layer-plus ml-2"></i></i></button> <% end %>
+        <%= link_to "/applications" do %> <button class="btn primary-btn">See on Dashboard</button> <% end %>
 
         <% end %>
       </div>
