@@ -1,6 +1,6 @@
 <div class="container-fluid">
-  <div class="container push-footer">
-    <div class="row mt-4">
+  <div class="container push-footer p-0">
+    <div class="row mt-4 p-0">
       <div class="col-12">
         <div class="row justify-content-between"></div>
         <h1 style="display: inline;" class="mt-4">Your Applications</h1>
@@ -11,15 +11,15 @@
         </div>
         <div id= calendar-tab class="tabcontent col-12">
           <div class="row w-100 pl-0 pr-0">
-            <div class="border-top border-primary mt-4" style="border-radius: 16px;">
-            <div class="calendar-wrapper col-12 mt-0 w-100">
-              <div class= close>
-              </div>
-              <div id="events_calendar">
+            <div class="border-top border-primary mt-4 col-12 p-0" style="border-radius: 16px; margin: 0 auto;">
+              <div class="calendar-wrapper col-12 mt-0 w-100">
+                <div class= close>
+                </div>
+                <div id="events_calendar" class="w-100 col-12">
 
-                <%= render "simple_calendar/calendar"%>
+                  <%= render "simple_calendar/calendar"%>
+                </div>
               </div>
-            </div>
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@
             </div>
             <% else %>
             <div class="progress mt-2 ml-0 mr-0" style="height:25px;border-radius: 8px;">
-              <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#84a98c;" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+              <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#28a745 !important;" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
             </div>
             <% end %>
           </div>
