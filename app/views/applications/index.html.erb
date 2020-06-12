@@ -14,7 +14,7 @@
               <div class= close>
                 </div>
                 <div id="events_calendar">
-            
+
                   <%= render "simple_calendar/calendar"%>
                 </div>
               </div>
@@ -22,7 +22,7 @@
           </div>
             <div id= cards-tab class="tabcontent col-12 ml-0">
               <% @applications.each do |app|%>
-                <div class = "card-dashboard mt-3 p-3 mb-3">
+                <div class = "card-dashboard mt-3 p-3 mb-3 border-top border-primary">
                   <% @appdoc = ApplicationsDocument.new %>
                   <%if current_user.id == app.user.id%>
                       <div class="ml-2 mt-1" style="text-align:left">
@@ -33,23 +33,23 @@
                         <h5 style="text-align:right"><%=((app.universities_program.start_time - Time.now)/86400).ceil%> days left</h5>
                         </div>
 
-                        
+
 
                         <% uploaded_documents = [] %>
                         <% app.documents.each do |doc| %>
                           <% uploaded_documents << doc.name %>
                         <%end%>
                       </div>
-                      <h3 class="ml-2 mt-2 mb-2" style=text-align:left>Required Documents:</h3>
+                      <h3 class="ml-2 mt-2 mb-2" style="text-align:left;">Required Documents:</h3>
                       <div class="required-docs-container ml-2 mb-2"style="background:white;border:1px solid gray;border-radius:8px;">
                         <div class="ml-2 d-flex justify-content-around p-2">
                           <% app.universities_program.documents.each do |doc| %>
                             <% if uploaded_documents.include? doc.name %>
-                              <div class=mx-3 style="color:#84a98c;">
-                                <%= doc.name %>
+                              <div class=mx-3 style="color:#00A76A;">
+                                 <%= doc.name %>
                               </div>
                             <% else %>
-                              <div class=mx-3 style="color:#720026">
+                              <div class=mx-3 style="color:#FF6760">
                                 <%=doc.name%>
                               </div>
                             <%end%>
@@ -87,7 +87,7 @@
                           <br>
                           <%= f.button :submit, "Add document", class: "btn transparent-btn",onsubmit: "return false" %>
                         <% end %>
-                        
+
                       </div>
                       <div class=delete>
                         <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <button class="btn btn-info">Delete application</button> <% end %>
@@ -107,9 +107,10 @@
               <% end %>
             </div>
             </div>
-                      <div id= finished-apps-tab class="tabcontent col-12 ml-0">
+
+                      <div id= finished-apps-tab class="tabcontent col-12 ml-0 ">
                         <% @applications_complete.each do |app|%>
-                          <div class = "card-dashboard-done mt-3 p-3 mb-3">
+                          <div class = "card-dashboard-done mt-3 p-3 mb-3 border-top border-primary">
                             <% @appdoc = ApplicationsDocument.new %>
                             <%if current_user.id == app.user.id%>
                               <div class="ml-2 mt-2" style="text-align:left">
@@ -120,17 +121,18 @@
                                 <% app.documents.each do |doc| %>
                                   <% uploaded_documents << doc.name %>
                                 <%end%>
+
                               </div>
                               <h3 class="ml-2 my-2" style=text-align:left>Required Documents:</h3>
                               <div class="required-docs-container ml-2 mb-2"style="background:white;border:1px solid gray,border-radius:8px;">
                                 <div class="ml-2 d-flex justify-content-around p-2">
                                   <% app.universities_program.documents.each do |doc| %>
                                     <% if uploaded_documents.include? doc.name %>
-                                      <div class=mx-3 style="color:#84a98c">
+                                      <div class=mx-3 style="color:#00A76A">
                                         <%= doc.name %>
                                       </div>
                                     <% else %>
-                                      <div class=mx-3 style="color:#84a98c">
+                                      <div class=mx-3 style="color:#00A76A">
                                         <%=doc.name%>
                                       </div>
                                     <%end%>
@@ -151,7 +153,7 @@
                                   </div>
                                 <% else %>
                                   <div class="progress mt-2 ml-0 mr-0" style="height:25px;border-radius: 8px;">
-                                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#84a98c;" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+                                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#00A76A;" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
                                   </div>
                                 <% end %>
                                 <div class=delete-icon>
@@ -161,7 +163,7 @@
                             <% end %>
                           </div>
                         <% end %>
-                      </div>                          
+                      </div>
                   </div>
               </div>
           </div>
