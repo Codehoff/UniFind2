@@ -89,11 +89,11 @@
                         <% end %>
 
                       </div>
-                      <div class=delete>
-                        <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <button class="btn btn-info">Delete application</button> <% end %>
+                      <div class="delete mb-0">
+                        <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <button class="btn btn-info" style="height:34px;">Delete application</button> <% end %>
                       </div>
                       <% if app.universities_program.documents - app.documents == []%>
-                        <div class="mark-complete m-2">
+                        <div class="mark-complete mt-0 mx-2 mb-2">
                           <%= simple_form_for(app) do |f|%>
 
                             <%= hidden_field_tag "application_url", app.universities_program.application_url, id: "hidden-field" %>
