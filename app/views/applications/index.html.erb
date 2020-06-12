@@ -78,8 +78,8 @@
                         <%= simple_form_for([app, @appdoc]) do |f| %>
                           <h5>Attach a required document</h5>
                           <%= f.association :document, label: false , class: "btn secondary-btn" %>
-                         <label class="btn btn-primary" style="border-radius:8px;">
-                          Add a file!
+                         <label class="btn btn-primary" style="border-radius:8px;width:124px;">
+                          Choose a file!
                           <span style="display:none;">
                             <%= f.file_field :image, required: true, multiple: true, name: 'picture' %>
                           </span>
@@ -124,7 +124,7 @@
 
                               </div>
                               <h3 class="ml-2 my-2" style=text-align:left>Required Documents:</h3>
-                              <div class="required-docs-container ml-2 mb-2"style="background:white;border:1px solid gray,border-radius:8px;">
+                              <div class="required-docs-container ml-2 mb-2"style="background:white;border:1px solid gray;border-radius:8px;">
                                 <div class="ml-2 d-flex justify-content-around p-2">
                                   <% app.universities_program.documents.each do |doc| %>
                                     <% if uploaded_documents.include? doc.name %>
