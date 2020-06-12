@@ -2,7 +2,7 @@
   <div class="container push-footer">
     <div class="row">
       <div class="col-12">
-      <h1 class=mt-3>Your Applications</h1>
+      <h1 class=mt-4>Your Applications</h1>
         <div class="tab">
           <button class="tablinks" id=defaultOpen onclick="openTab(event, 'cards-tab')">In progress</button>
           <button class="tablinks"  onclick="openTab(event, 'finished-apps-tab')">Completed</button>
@@ -20,7 +20,7 @@
               </div>
             </div>
           </div>
-            <div id= cards-tab class="tabcontent col-12 ml-0">
+            <div id= cards-tab class="tabcontent col-12 ml-0 p-0">
               <% @applications.each do |app|%>
                 <div class = "card-dashboard mt-3 p-3 mb-3 border-top border-primary">
                   <% @appdoc = ApplicationsDocument.new %>
@@ -32,9 +32,6 @@
                         <h5 >Deadline: <%= app.universities_program.start_time.strftime("%d %B %Y") %></h5>
                         <h5 style="text-align:right"><%=((app.universities_program.start_time - Time.now)/86400).ceil%> days left</h5>
                         </div>
-
-
-
                         <% uploaded_documents = [] %>
                         <% app.documents.each do |doc| %>
                           <% uploaded_documents << doc.name %>
@@ -74,7 +71,7 @@
                           </div>
                         <% end %>
                       </div>
-                      <div class="document-form ml-2" style="text-align:left">
+                      <div class="document-form ml-0" style="text-align:left">
                         <%= simple_form_for([app, @appdoc]) do |f| %>
                           <h5>Attach a required document</h5>
                           <%= f.association :document, label: false , class: "btn secondary-btn" %>
@@ -89,11 +86,11 @@
                         <% end %>
 
                       </div>
-                      <div class=delete>
-                        <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <button class="btn btn-info">Delete application</button> <% end %>
+                      <div class="delete mb-0">
+                        <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <button class="btn btn-info" style="height:34px;">Delete application</button> <% end %>
                       </div>
                       <% if app.universities_program.documents - app.documents == []%>
-                        <div class="mark-complete m-2">
+                        <div class="mark-complete mt-0 mx-2 mb-2">
                           <%= simple_form_for(app) do |f|%>
 
                             <%= hidden_field_tag "application_url", app.universities_program.application_url, id: "hidden-field" %>

@@ -8,9 +8,9 @@
 <body>
 
 
-  <div class="container" id="showpage">
-    <div class="row" id="show-row">
-      <div class="col-4 border-top border-primary" id="application-info">
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-4 border-top border-primary pr-0 mr-0" id="application-info">
 
        <div class="card-application">
         <br>
@@ -41,7 +41,7 @@
       </div>
     </div>
 
-    <div class="col-8" id="carousel">
+    <div class="col-8 pr-0 ml-0" id="carousel">
       <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active" data-interval="3000">
@@ -66,12 +66,12 @@
 <div class="row" id="show-row">
   <div class="col-12 border-top" id="uniinfo">
     <h3 style="font-size: 22px;">Learn more about the faculty</h3>
-    <p style="font-size: 14px;"><%= @universities_program.university_info %></p>
+    <p style="font-size: 16px;"><%= @universities_program.university_info %></p>
     <a href= "<%= @universities_program.webpage_url %>" target="_blank"><label class="btn secondary-btn">Official Page</label></a>
     <br>
     <br>
     <h3 style="font-size: 22px;" >What it's like to study architecture at our university</h3>
-    <p style="font-size: 14px;"> <%=  @universities_program.application_info %> </p>
+    <p style="font-size: 16px;"> <%=  @universities_program.application_info %> </p>
 
     <label class="secondary-btn"><a style="margin-bottom: 40px;" href="<%= @universities_program.application_url %>" target="_blank">Application Site</label></a>
 
