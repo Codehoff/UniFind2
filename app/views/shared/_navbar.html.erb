@@ -36,7 +36,7 @@
                   <%if notification.application.user_id == current_user.id%>
                     <div class = "notifications-content d-flex flex-row align-items-center p-2 m-2" style="border-radius:8px;color:#121E72;background:#F3F4FF" >
                       <div>
-                        <%= image_tag(notification.application.universities_program.picture, style: "border-radius:8px;width:100px;height:63px;object-fit:fill;") %>
+                        <%= image_tag(notification.application.universities_program.picture, style: "border-radius:8px;width:100px;height:63px;object-fit:fill;margin-right:8px;") %>
                       </div>
                       <%= notification.content%>
                       <%= link_to "/applications", method: :get do %><i class="fas fa-search mx-2" style="color:#6C77FF"></i></i><% end %>
