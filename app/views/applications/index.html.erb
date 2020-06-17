@@ -1,185 +1,186 @@
 <div class="container-fluid">
-  <div class="container push-footer">
-    <div class="row">
+  <div class="container push-footer p-0">
+    <div class="row mt-4 p-0">
       <div class="col-12">
-      <h1 class=mt-3>Your Applications</h1>
-        <div class="tab">
+        <div class="row justify-content-between"></div>
+        <h1 style="display: inline;" class="mt-4">Your Applications</h1>
+        <div class="tab" style="display: inline; float: right;">
           <button class="tablinks" id=defaultOpen onclick="openTab(event, 'cards-tab')">In progress</button>
           <button class="tablinks"  onclick="openTab(event, 'finished-apps-tab')">Completed</button>
           <button class="tablinks" id=calendarbutton  onclick="openTab(event, 'calendar-tab')">Calendar</button>
         </div>
         <div id= calendar-tab class="tabcontent col-12">
-          <div class="row">
-            <div class="calendar-wrapper col-12">
-              <div class= close>
+          <div class="row w-100 pl-0 pr-0">
+            <div class="border-top border-primary mt-4 col-12 p-0" style="border-radius: 16px; margin: 0 auto;">
+              <div class="calendar-wrapper col-12 mt-0 w-100">
+                <div class= close>
                 </div>
-                <div id="events_calendar">
+                <div id="events_calendar" class="w-100 col-12">
 
                   <%= render "simple_calendar/calendar"%>
                 </div>
               </div>
             </div>
           </div>
-            <div id= cards-tab class="tabcontent col-12 ml-0">
-              <% @applications.each do |app|%>
-                <div class = "card-dashboard mt-3 p-3 mb-3 border-top border-primary">
-                  <% @appdoc = ApplicationsDocument.new %>
-                  <%if current_user.id == app.user.id%>
-                      <div class="ml-2 mt-1" style="text-align:left">
-                        <h2><%= app.universities_program.program.name %></h2>
-                        <h2 style="font-size:20px;"><%= app.university.name %></h2>
-                        <div class=deadline>
-                        <h5 >Deadline: <%= app.universities_program.start_time.strftime("%d %B %Y") %></h5>
-                        <h5 style="text-align:right"><%=((app.universities_program.start_time - Time.now)/86400).ceil%> days left</h5>
-                        </div>
+        </div>
+        <div id= "cards-tab" class="tabcontent col-12 ml-0 pl-0 pr-0">
 
-
-
-                        <% uploaded_documents = [] %>
-                        <% app.documents.each do |doc| %>
-                          <% uploaded_documents << doc.name %>
-                        <%end%>
-                      </div>
-                      <h3 class="ml-2 mt-2 mb-2" style=text-align:left>Required Documents:</h3>
-                      <div class="required-docs-container ml-2 mb-2"style="background:white;border:1px solid gray;border-radius:8px;">
-                        <div class="ml-2 d-flex justify-content-around p-2">
-                          <% app.universities_program.documents.each do |doc| %>
-                            <% if uploaded_documents.include? doc.name %>
-                              <div class=mx-3 style="color:#84a98c;">
-                                <%= doc.name %>
-                              </div>
-                            <% else %>
-                              <div class=mx-3 style="color:#720026">
-                                <%=doc.name%>
-                              </div>
-                            <%end%>
-                          <%end%>
-                        </div>
-                      </div>
-                      <div class="progress-container ml-2 mb-3">
-                        <% docs_count = uploaded_documents.count %>
-                        <% docs_required = app.universities_program.documents.count %>
-                        <% ratio_docs_uploaded = 100 * (docs_count.to_f / docs_required.to_f) %>
-                        <%if ratio_docs_uploaded < 34%>
-                          <div class="progress mt-2 ml-0 mr-0"  style="height:25px;border-radius: 8px;">
-                            <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#720026" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
-                          </div>
-                        <%elsif ratio_docs_uploaded <= 99 %>
-                          <div class="progress mt-2 ml-0 mr-0"  style="height:25px;border-radius: 8px;">
-                            <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#fe7f2d" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
-                          </div>
-                        <% else %>
-                          <div class="progress mt-2 ml-0 mr-0" style="height:25px;border-radius: 8px;">
-                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#84a98c;" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
-                          </div>
-                        <% end %>
-                      </div>
-                      <div class="document-form ml-2" style="text-align:left">
-                        <%= simple_form_for([app, @appdoc]) do |f| %>
-                          <h5>Attach a required document</h5>
-                          <%= f.association :document, label: false , class: "btn secondary-btn" %>
-                         <label class="btn btn-primary" style="border-radius:8px;">
-                          Add a file!
-                          <span style="display:none;">
-                            <%= f.file_field :image, required: true, multiple: true, name: 'picture' %>
-                          </span>
-                          </label>
-                          <br>
-                          <%= f.button :submit, "Add document", class: "btn transparent-btn",onsubmit: "return false" %>
-                        <% end %>
-
-                      </div>
-                      <div class=delete>
-                        <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <button class="btn btn-info">Delete application</button> <% end %>
-                      </div>
-                      <% if app.universities_program.documents - app.documents == []%>
-                        <div class="mark-complete m-2">
-                          <%= simple_form_for(app) do |f|%>
-
-                            <%= hidden_field_tag "application_url", app.universities_program.application_url, id: "hidden-field" %>
-                            <%= f.button :submit, "Submit application", class: "btn btn-light", id:"send-button", onsubmit: "return false" %>
-
-                          <%end%>
-                        </div>
-                      <% end %>
-                  <%end%>
-                </div>
-              <% end %>
-            </div>
-            </div>
-
-                      <div id= finished-apps-tab class="tabcontent col-12 ml-0 ">
-                        <% @applications_complete.each do |app|%>
-                          <div class = "card-dashboard-done mt-3 p-3 mb-3 border-top border-primary">
-                            <% @appdoc = ApplicationsDocument.new %>
-                            <%if current_user.id == app.user.id%>
-                              <div class="ml-2 mt-2" style="text-align:left">
-                                <h2><%= app.universities_program.program.name %></h2>
-                                <h2 style="font-size:20px;"><%= app.university.name %></h2>
-                                <h5 class=deadline>Deadline: <%= app.universities_program.start_time.strftime("%d %B %Y") %></h5>
-                                <% uploaded_documents = [] %>
-                                <% app.documents.each do |doc| %>
-                                  <% uploaded_documents << doc.name %>
-                                <%end%>
-
-                              </div>
-                              <h3 class="ml-2 my-2" style=text-align:left>Required Documents:</h3>
-                              <div class="required-docs-container ml-2 mb-2"style="background:white;border:1px solid gray,border-radius:8px;">
-                                <div class="ml-2 d-flex justify-content-around p-2">
-                                  <% app.universities_program.documents.each do |doc| %>
-                                    <% if uploaded_documents.include? doc.name %>
-                                      <div class=mx-3 style="color:#84a98c">
-                                        <%= doc.name %>
-                                      </div>
-                                    <% else %>
-                                      <div class=mx-3 style="color:#84a98c">
-                                        <%=doc.name%>
-                                      </div>
-                                    <%end%>
-                                  <%end%>
-                                </div>
-                              </div>
-                              <div class="progress-container ml-2 mb-2">
-                                <% docs_count = uploaded_documents.count %>
-                                <% docs_required = app.universities_program.documents.count %>
-                                <% ratio_docs_uploaded = 100 * (docs_count.to_f / docs_required.to_f) %>
-                                <%if ratio_docs_uploaded < 34%>
-                                  <div class="progress mt-2 ml-0 mr-0"  style="height:25px;border-radius: 8px;">
-                                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#FFADAD" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
-                                  </div>
-                                <%elsif ratio_docs_uploaded <= 99 %>
-                                  <div class="progress mt-2 ml-0 mr-0"  style="height:25px;border-radius: 8px;">
-                                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#FDFFB6" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
-                                  </div>
-                                <% else %>
-                                  <div class="progress mt-2 ml-0 mr-0" style="height:25px;border-radius: 8px;">
-                                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#84a98c;" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
-                                  </div>
-                                <% end %>
-                                <div class=delete-icon>
-                                  <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <button class="btn btn-info">Delete application</button> <% end %>
-                                </div>
-                              </div>
-                            <% end %>
-                          </div>
-                        <% end %>
-                      </div>
-                  </div>
+          <% @applications.each do |app|%>
+          <div class = "card-dashboard mt-4 p-3  mb-3 border-top border-primary">
+            <% @appdoc = ApplicationsDocument.new %>
+            <%if current_user.id == app.user.id%>
+            <div class="ml-2 mt-1" style="text-align:left">
+              <h2><%= app.universities_program.program.name %></h2>
+              <h2 style="font-size:20px;"><%= app.university.name %></h2>
+              <div class=deadline>
+                <h5 >Deadline: <%= app.universities_program.start_time.strftime("%d %B %Y") %></h5>
+                <h5 style="text-align:right"><%=((app.universities_program.start_time - Time.now)/86400).ceil%> days left</h5>
               </div>
+              <% uploaded_documents = [] %>
+              <% app.documents.each do |doc| %>
+              <% uploaded_documents << doc.name %>
+              <%end%>
+            </div>
+            <h3 class="ml-2 mt-2 mb-2" style="text-align:left;">Required Documents:</h3>
+            <div class="required-docs-container ml-2 mb-2"style="background:white;border:1px solid gray;border-radius:8px;">
+              <div class="ml-2 d-flex justify-content-around p-2">
+                <% app.universities_program.documents.each do |doc| %>
+                <% if uploaded_documents.include? doc.name %>
+                <div class=mx-3 style="color:#00A76A;">
+                 <%= doc.name %>
+               </div>
+               <% else %>
+               <div class=mx-3 style="color:#FF6760">
+                <%=doc.name%>
+              </div>
+              <%end%>
+              <%end%>
+            </div>
+          </div>
+          <div class="progress-container ml-2 mb-3">
+            <% docs_count = uploaded_documents.count %>
+            <% docs_required = app.universities_program.documents.count %>
+            <% ratio_docs_uploaded = 100 * (docs_count.to_f / docs_required.to_f) %>
+            <%if ratio_docs_uploaded < 34%>
+            <div class="progress mt-2 ml-0 mr-0"  style="height:25px;border-radius: 8px;">
+              <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#720026" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+            </div>
+            <%elsif ratio_docs_uploaded <= 99 %>
+            <div class="progress mt-2 ml-0 mr-0"  style="height:25px;border-radius: 8px;">
+              <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#fe7f2d" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+            </div>
+            <% else %>
+            <div class="progress mt-2 ml-0 mr-0" style="height:25px;border-radius: 8px;">
+              <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#28a745 !important;" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+            </div>
+            <% end %>
+          </div>
+          <div class="document-form ml-0" style="text-align:left">
+            <%= simple_form_for([app, @appdoc]) do |f| %>
+            <h5>Attach a required document</h5>
+            <%= f.association :document, label: false , class: "btn secondary-btn" %>
+            <label class="btn btn-primary" style="border-radius:8px;width:124px;">
+              Choose a file!
+              <span style="display:none;">
+                <%= f.file_field :image, required: true, multiple: true, name: 'picture' %>
+              </span>
+            </label>
+            <br>
+            <%= f.button :submit, "Add document", class: "btn transparent-btn",onsubmit: "return false" %>
+            <% end %>
+
+          </div>
+          <div class="delete mb-0">
+            <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <button class="btn btn-info" style="height:34px;">Delete application</button> <% end %>
+          </div>
+          <% if app.universities_program.documents - app.documents == []%>
+          <div class="mark-complete mt-0 mx-2 mb-2">
+            <%= simple_form_for(app) do |f|%>
+
+            <%= hidden_field_tag "application_url", app.universities_program.application_url, id: "hidden-field" %>
+            <%= f.button :submit, "Submit application", class: "btn btn-light", id:"send-button", onsubmit: "return false" %>
+
+            <%end%>
+          </div>
+          <% end %>
+          <%end%>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div id= finished-apps-tab class="tabcontent col-12 ml-0  ">
+      <% @applications_complete.each do |app|%>
+      <div class = "card-dashboard-done mt-3 p-3 mb-3 border-top border-primary">
+        <% @appdoc = ApplicationsDocument.new %>
+        <%if current_user.id == app.user.id%>
+        <div class="ml-2 mt-2" style="text-align:left">
+          <h2><%= app.universities_program.program.name %></h2>
+          <h2 style="font-size:20px;"><%= app.university.name %></h2>
+          <h5 class=deadline>Deadline: <%= app.universities_program.start_time.strftime("%d %B %Y") %></h5>
+          <% uploaded_documents = [] %>
+          <% app.documents.each do |doc| %>
+          <% uploaded_documents << doc.name %>
+          <%end%>
+
+        </div>
+        <h3 class="ml-2 my-2" style=text-align:left>Required Documents:</h3>
+        <div class="required-docs-container ml-2 mb-2"style="background:white;border:1px solid gray;border-radius:8px;">
+          <div class="ml-2 d-flex justify-content-around p-2">
+            <% app.universities_program.documents.each do |doc| %>
+            <% if uploaded_documents.include? doc.name %>
+            <div class=mx-3 style="color:#00A76A">
+              <%= doc.name %>
+            </div>
+            <% else %>
+            <div class=mx-3 style="color:#00A76A">
+              <%=doc.name%>
+            </div>
+            <%end%>
+            <%end%>
           </div>
         </div>
+        <div class="progress-container ml-2 mb-2">
+          <% docs_count = uploaded_documents.count %>
+          <% docs_required = app.universities_program.documents.count %>
+          <% ratio_docs_uploaded = 100 * (docs_count.to_f / docs_required.to_f) %>
+          <%if ratio_docs_uploaded < 34%>
+          <div class="progress mt-2 ml-0 mr-0"  style="height:25px;border-radius: 8px;">
+            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#FFADAD" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+          </div>
+          <%elsif ratio_docs_uploaded <= 99 %>
+          <div class="progress mt-2 ml-0 mr-0"  style="height:25px;border-radius: 8px;">
+            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#FDFFB6" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+          </div>
+          <% else %>
+          <div class="progress mt-2 ml-0 mr-0" style="height:25px;border-radius: 8px;">
+            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%=ratio_docs_uploaded%>%;background-color:#00A76A;" aria-valuenow="0" aria-valuemin='0' aria-valuemax="100"></div>
+          </div>
+          <% end %>
+          <div class=delete-icon>
+            <%= link_to "/applications/#{app.id}", method: :delete, data: { confirm: "Are you sure? "} do %> <button class="btn btn-info">Delete application</button> <% end %>
+          </div>
+        </div>
+        <% end %>
       </div>
+      <% end %>
     </div>
   </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 <script>
-var button1 = document.getElementById("send-button");
-var hiddenField = document.getElementById("hidden-field");
+  var button1 = document.getElementById("send-button");
+  var hiddenField = document.getElementById("hidden-field");
 
-button1.addEventListener("click", function() {
-window.open(hiddenField.value, "_blank")
-});
+  button1.addEventListener("click", function() {
+    window.open(hiddenField.value, "_blank")
+  });
 </script>
 
 
@@ -189,7 +190,7 @@ window.open(hiddenField.value, "_blank")
 function handleForm(event) { event.preventDefault(); }
 form.addEventListener('submit', handleForm); %>
 
- function openTab(evt, tabName) {
+function openTab(evt, tabName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
@@ -205,21 +206,21 @@ form.addEventListener('submit', handleForm); %>
 
 document.getElementById("defaultOpen").click();
 
-  document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function(){
     // document.querySelector(".calendar-wrapper").style.display='none';
   });
 
-  function myFunction() {
-    var x = document.querySelector(".calendar-wrapper");
-    x.style.display = "block";
-  }
+function myFunction() {
+  var x = document.querySelector(".calendar-wrapper");
+  x.style.display = "block";
+}
 
-  function myOtherFunction() {
-    var x = document.querySelector(".calendar-wrapper");
-    x.style.display = "none";
-  }
+function myOtherFunction() {
+  var x = document.querySelector(".calendar-wrapper");
+  x.style.display = "none";
+}
 
-  var today = document.querySelector(".today")
-  today.classList.add("round")
+var today = document.querySelector(".today")
+today.classList.add("round")
 
 </script>

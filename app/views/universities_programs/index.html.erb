@@ -1,4 +1,4 @@
-<div class="container" style="min-height:100vh;">
+<div class="container mt-4" style="min-height:100vh;">
   <div class="row">
     <div class="col-3 left-frame border-top border-primary ">
       <div class="w-100">
@@ -37,14 +37,14 @@
 
           <%= link_to "universities_programs/#{program.id}" do %>
           <div class="card-product  mt-3 col-12 pl-0 d-flex flex-row text-center transition1 grow" style="border-radius: 4px" >
+            <div class="color-add">
             <div class="logo">
-
-              <%= image_tag(program.picture, class:"ml-3", style: "width: 150px;height:120px;object-fit:contain;") %>
+              <%= image_tag(program.picture, style: "width: 150px;height:120px;object-fit:contain;") %>
+            </div>
             </div>
             <div class="col-7 text-left " style="line-height: 150%;">
-              <h3 style="display:inline"><%= program.university.name %></h3>
-              <br>
-              <br>
+              <h3 style="margin-bottom: 8px;"><%= program.university.name %></h3>
+
               <label class="tag-label"><%= program.program.name%></label>
               <h3 id="degree" style="font-size: 14px;"><%=program.degree%></h3>
             </div>

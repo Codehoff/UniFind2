@@ -34,14 +34,13 @@
               <% else %>
                 <% @notifications.each do |notification|%>
                   <%if notification.application.user_id == current_user.id%>
-                    <div class = "notifications-content p-2 m-2" style="color:black;" >
-                      <div class="logo">
-                        <%= image_tag(notification.application.universities_program.picture, class:"ml-3") %>
+                    <div class = "notifications-content d-flex flex-row align-items-center p-2 m-2" style="border-radius:8px;color:#121E72;background:white" >
+                      <div>
+                        <%= image_tag(notification.application.universities_program.picture, style: "border-radius:8px;width:100px;height:63px;object-fit:contain;margin-right:8px;") %>
                       </div>
                       <%= notification.content%>
-                      <%= link_to "/applications", method: :get do %><i class="fas fa-search ml-1 ml-3" style=color:$primary></i>
-                      <% end %>
-                      <%= link_to notification_path(notification), method: :delete do %><i class="fa fa-times" style="color:red"aria-hidden="true"></i><% end %>
+                      <%= link_to "/applications", method: :get do %><i class="fas fa-search mx-2" style="color:#6C77FF"></i></i><% end %>
+                      <%= link_to notification_path(notification), method: :delete do %><i class="fa fa-times" style="color:red;"aria-hidden="true"></i><% end %>
                     </div>
                   <% end %>
                 <% end %>

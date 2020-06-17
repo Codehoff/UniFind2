@@ -3,42 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <script src="https://kit.fontawesome.com/9bc9c7a1c8.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
 
-  <div class="container" id="showpage">
-    <div class="row" id="show-row">
-      <div class="col-4 border-top border-primary" id="application-info">
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-4 border-top border-primary pr-0 mr-0" id="application-info">
 
        <div class="card-application">
         <br>
         <h2 style="display: inline"><%= @universities_program.university.name %></h2>
         <br>
         <br>
-        <h4><%=@universities_program.program.name%></h4>
+        <label class="tag-label" style="padding: 8px 16px; font-size:18px;"><%=@universities_program.program.name%></label>
         <br>
         <br>
         <br>
         <br>
-        <h5> 📍 <%=@universities_program.university.city%></h5>
-        <h5> ⏰ <%= @universities_program.semesters %> Semesters</h5>
-        <h5> 🎓 <%= @universities_program.degree %></h5>
+        <h5> <i class="fad fa-map-marked-alt"></i> <%=@universities_program.university.city%></h5>
+        <h5> <i class="fad fa-calendar"></i> <%= @universities_program.semesters %> Semesters</h5>
+        <h5> <i class="fad fa-graduation-cap"></i> <%= @universities_program.degree %></h5>
         <br>
         <br>
         <br>
         <% if @universities_program.applications.where(user_id: current_user.id) == []%>
         <%= form_tag applications_path, method: :post do %>
         <%= hidden_field_tag "application[universities_program_id]", @universities_program.id %>
-        <%= submit_tag "Apply now!", class: "btn btn-primary" %>
+        <%= button_tag class: "btn primary-btn" do %>
+        Apply now <i class="fad fa-layer-plus ml-2"></i>
+        <%end%>
         <% end %>
         <% else %>
-        <%= link_to "/applications" do %> <button class="btn btn-primary">See it on the dashboard</button> <% end %>
+
+        <%= link_to "/applications" do %> <button class="btn primary-btn">See on Dashboard</button> <% end %>
+
         <% end %>
       </div>
     </div>
 
-    <div class="col-8" id="carousel">
+    <div class="col-8 pr-0 ml-0" id="carousel">
       <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active" data-interval="3000">
@@ -60,19 +65,21 @@
   </div>
 
 </div>
-<div class="row" id="show-row">
+<div class="row transition1" id="show-row">
   <div class="col-12 border-top" id="uniinfo">
     <h3 style="font-size: 22px;">Learn more about the faculty</h3>
-    <p style="font-size: 14px;"><%= @universities_program.university_info %></p>
-    <a href= "<%= @universities_program.webpage_url %>" target="_blank"><label class="secondary-btn">Official Page</label></a>
+    <p style="font-size: 16px;"><%= @universities_program.university_info %></p>
+    <a href= "<%= @universities_program.webpage_url %>" target="_blank"><label class="btn secondary-btn">Official Page</label></a>
     <br>
     <br>
     <h3 style="font-size: 22px;" >What it's like to study architecture at our university</h3>
-    <p style="font-size: 14px;"> <%=  @universities_program.application_info %> </p>
-    <a style="margin-bottom: 40px;" href="<%= @universities_program.application_url %>" target="_blank"><label class="secondary-btn">Application Site</label></a>
+    <p style="font-size: 16px;"> <%=  @universities_program.application_info %> </p>
+
+    <label class="secondary-btn"><a style="margin-bottom: 40px;" href="<%= @universities_program.application_url %>" target="_blank">Application Site</label></a>
+
   </div>
 </div>
-<a href="/universities_programs">← Back to all Programs</a>
+<a id="buttonshow" href="/universities_programs">← Back to all Programs</a>
 </div>
 
 </body>
