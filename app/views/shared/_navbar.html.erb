@@ -38,7 +38,6 @@
                       <div>
                         <%= image_tag(notification.application.universities_program.picture, style: "border-radius:8px;width:100px;height:63px;object-fit:contain;margin-right:8px;") %>
                       </div>
-
                       <%= notification.content%>
                       <%= link_to "/applications", method: :get do %><i class="fas fa-search mx-2" style="color:#6C77FF"></i></i><% end %>
                       <%= link_to notification_path(notification), method: :delete do %><i class="fa fa-times" style="color:red;"aria-hidden="true"></i><% end %>
@@ -60,6 +59,9 @@
       <% else %>
         <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign up", "/users/sign_up", class: "nav-link" %>
         </li>
       <% end %>
     </ul>
