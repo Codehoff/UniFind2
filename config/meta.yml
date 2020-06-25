@@ -2,4 +2,3 @@ meta_product_name: "UniFind"
 meta_title: "UniFind - Organize & track all your university applications at once"
 meta_description: "UniFind manages and tracks all your university applications. Save time and never feel stressed about organizing your university applications again."
 meta_image: "unifind_social.jpg" # should exist in `app/assets/images/`
-twitter_account: "@product_twitter_account"   # required for Twitter Cards
